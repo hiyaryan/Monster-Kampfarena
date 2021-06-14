@@ -1,29 +1,74 @@
-Ever wanted to show more support for your favorite team and mascot? Then have no fear because Mascotmon is here! 
-This simulator allows mascots to battle each other to see which is the strongest one of all. 
-The mascots have a specific Type (fire, water, ground, or normal) and three stats that consist of: attack, defense, and health.
-The battlefield's weather as well as Type advantages may have positive or negative effects on the attack or defense stats of certain types.
+# Monster Kampfarena
+> by Ryan Meneses <br>
+> GitHub https://github.com/hiyaryan/ser316-summer2021-C-rmenese1-DP
 
-# Code Review Defect List
-> Reviewer: Ryan Meneses
-> GH Repo: https://github.com/hiyaryan/ser316-summer2021-C-rmenese1/tree/Review
+## Description
+> The monsters of Kampfarena are in a constant battle for survival and only one species amongst
+> them have the ability to determine which of them make it, the trainer. The trainers are
+> the only monsters whom can tame themselves yet depends on the monsters of Kampfarena to provide
+> them resources for their own survival. When a monster forms a bond with a trainer they become a
+> code-a-mon, only then does a power awaken within the monster that just might give them the
+> ability to survive. 
 
-| ID #  |       Location [File/Line Number]       | Problem Description |      Problem [Category/Severity]     |
-|---|---|---|---|                
-| 1  |  ALL  | No source code file has a file banner comment present.  | CG/LOW  |
-| 2  |  ALL  | No source code file has a class banner comment present.  | CG/LOW  |
-| 3  |  ALL  | No constructor has a method banner comment present.  | CG/LOW  |
-| 4  | Mascotmon/148 & Environment/45 | Enums are not in all CAPS  | CG/LOW  |
-| 5  | type  | Class name is not capitalized  | CG/LOW |
-| 6  | Mascotmon10 & Mascotmon/59 | Variable names are not camel cased  | CG/LOW  |
-| 7  |  ALL  | No attributes are private  | CG/MJ |
-| 8  | Mascotmon/8-9 | Literal values are not final  | CG/MJ  |
-| 9  | Description/11-17 & Type/14-18 | Complex statements do not include explicit {} | CG/MJ  |
-| 10  | BattleScenario/60-93  | Duplicate code  | CS/LOW  |
-| 11  | Mascotmon/76-142  | Features Attack constructor extensively  | CS/LOW  |
-| 12  | Attack  | Lazy class  | CS/LOW |
-| 13  | Mascotmon/4-7 & Stats/3-5 & Type/4 | Attributes are directly accessed by BattleScenario (accessing Mascotmon) and Mascotmon (accessing Stats and Type) with a potential hazard for being overwritten  | FD/MJ  |
-| 14  | BattleScenario/144-146  | calculateDamage method is implemented incorrectly   | FD/BR  |
+## About
+### Git & GitHub
+> This program uses git for version control using GitHub as the remote repository. Please clone
+> the program locally from the GitHub repository listed above.
+>
+> Initial commit. The initial commit is based on the Mascotmon code which comes equipped with all
+> the build and test tools. The original code is included for testing purposes but is removed in
+> later commits to fit the requirements for Monster Kampfarena.
 
-Category:	CS – Code Smell defect. CG – Violation of a coding guideline. Provide the guideline number. FD – Functional defect. Code will not produce the expected result. MD – Miscellaneous defect, for all other defects.
+### Design Patterns
+> The design patterns used in the Monster Kampfarena simulation are as suggested
+    
+    - Decorator Pattern
+      This pattern is used for code-e-mon evolutions
+ 
+    - Factory pattern
+      Builds codemon and trainer entities
+      
+    - Mediator pattern
+      Mediates the simulation where for each tick an event occurs.
+    
+### Gradle
+> Build and generate Checkstyle and SpotBugs report
 
-Severity: BR - Blocker, must be fixed asap. MJ – Major, of high importance but not a Blocker LOW – Low. 
+    gradle build
+
+> Run program
+
+    gradle run
+
+> Run JUnit tests and create report
+
+    gradle test
+
+> Run Jacoco test report
+
+    gradle jacocoTestReport
+
+> Clean build files
+
+    gradle clean
+    
+### TravisCI
+> This program uses TravisCI for continuous integration testings. Please view the GitHub
+> repository for the test report or checkout the link below
+>
+> https://travis-ci.com/github/hiyaryan/ser316-summer2021-C-rmenese1-DP   
+
+### JUnit Tests
+> This program strives for 80% code coverage with JUnit 4 test suites for each class in the test
+ package with a test for each method minus setters and getters.
+>
+> List of Test Suites
+>
+> * \<SUITE-1\>
+> * \<SUITE-2\>
+> * \<SUITE-3\>
+
+### Screencast
+> Please view the following link for a short screen cast
+>
+> \<VIDEO-LINK\>
