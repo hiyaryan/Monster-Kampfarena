@@ -5,10 +5,10 @@
 ## Description
 > The monsters of Kampfarena are in a constant battle for survival and only one species amongst
 > them have the ability to determine which of them make it, the trainer. The trainers are
-> the only monsters whom can tame themselves yet depends on the monsters of Kampfarena to provide
-> them resources for their own survival. When a monster forms a bond with a trainer they become a
+> the only monsters whom can tame themselves yet depend on other monsters to provide them
+> resources for their own survival. When a monster forms a bond with a trainer they become a
 > code-a-mon, only then does a power awaken within the monster that just might give them the
-> ability to survive. 
+> ability to survive.
 
 ## About
 ### Git & GitHub
