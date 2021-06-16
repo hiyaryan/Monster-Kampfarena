@@ -3,12 +3,15 @@
 > GitHub https://github.com/hiyaryan/ser316-summer2021-C-rmenese1-DP
 
 ## Description
-> The monsters of Kampfarena are in a constant battle for survival and only one species amongst
-> them have the ability to determine which of them make it, the trainer. The trainers are
-> the only monsters whom can tame themselves yet depend on other monsters to provide them
-> resources for their own survival. When a monster forms a bond with a trainer they become a
-> code-a-mon, only then does a power awaken within the monster that just might give them the
-> ability to survive.
+> The monsters of the Wildes Land are in a constant battle for survival and only one species
+> amongst them have the ability to determine which of them make it, the trainer—the only monster
+> with the capacity to tame itself. The monsters depend on the trainers to tame them so that they
+> may reach peak power to defend themselves, and the trainers on the monsters whom are the only
+> ones physically capable of providing the trainer with resources for their own survival. When a
+> monster forms a bond with a trainer they become a code-a-mon, only then does a growing power
+> awaken within the monster that just might give them the ability to survive. Life and the very
+> nature of survival has since become a spectacle to all those visiting the Wildes Land, with the
+> best view at the colossal Kampfarena.
 
 ## About
 ### Git & GitHub
