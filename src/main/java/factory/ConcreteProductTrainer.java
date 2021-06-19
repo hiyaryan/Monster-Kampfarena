@@ -1,7 +1,46 @@
 package factory;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConcreteProductTrainer extends AbstractProductTrainer {
     public ConcreteProductTrainer() {
-        System.out.println("Instantiating a concrete trainer...");
+        super.codex = new HashMap<>();
+    }
+
+    @Override
+    public ConcreteProductTrainer getTrainer() {
+        return this;
+    }
+
+    @Override
+    public Map<String, ConcreteProductMonster> getCodex() {
+        return super.codex;
+    }
+
+    @Override
+    public void setCodex(String name, ConcreteProductMonster monster) {
+        super.codex.put(name, monster);
+    }
+
+    @Override
+    public String getName() {
+        return super.name;
+    }
+
+    @Override
+    public void setName(String name) {
+        super.name = name;
+    }
+
+    @Override
+    public String listMonsters() {
+        StringBuilder sb = new StringBuilder("--- " + name + " CODEX ---\n");
+
+        for(String name : codex.keySet()) {
+            sb.append(" -> ").append(super.codex.get(name).getName()).append("\n");
+        }
+
+        return sb.toString();
     }
 }

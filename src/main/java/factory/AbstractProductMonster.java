@@ -1,7 +1,11 @@
 package factory;
 
 public abstract class AbstractProductMonster {
-    public AbstractProductMonster() {
-        System.out.println("Declaring an abstract code-a-mon...");
-    }
+    protected String name;
+
+    public abstract ConcreteProductMonster getMonster();
+
+    public abstract String getName();
+
+    public abstract void setName(String name);
 }
