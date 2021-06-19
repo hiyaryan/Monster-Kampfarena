@@ -17,7 +17,6 @@ repositories {
 
 // In this section you declare the dependencies for your production and test code
 dependencies {
-    compile (name:'UnderTest', ext:'jar')
     compile "junit:junit:4.12"
 }
 
