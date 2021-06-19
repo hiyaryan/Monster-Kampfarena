@@ -3,7 +3,7 @@ import factory.*;
 /**
  * Player (Player.java)
  *
- * This class simulates a player.
+ * This class simulates the Client as a player.
  *
  * @author Ryan Meneses
  * @version 1.0
@@ -38,28 +38,31 @@ public class Player {
     }
 
     /**
+     * This class builds a single trainer and returns an instance of it.
      *
-     * @param controller
-     * @param name
-     * @return
+     * @param controller Player: Instance of this player
+     * @param name String: Name of trainer
+     * @return ConcreteProductTrainer
      */
     public ConcreteProductTrainer buildTrainer(Player controller, String name) {
         AbstractProductTrainer trainer = controller.getAbstractTrainer();
-
         trainer.setName(name);
+
+        trainer.setHP((int) (Math.random() * 30));
+        trainer.setMP((int) (Math.random() * 15));
 
         return trainer.getTrainer();
     }
 
     /**
+     * This class build a single monster and returns an instance of it.
      *
-     * @param controller
-     * @param name
-     * @return
+     * @param controller Player: Instance of this player
+     * @param name String: Name of monster
+     * @return ConcreteProductMonster
      */
     public ConcreteProductMonster buildMonster(Player controller, String name) {
         AbstractProductMonster monster = controller.getAbstractMonster();
-
         monster.setName(name);
 
         return monster.getMonster();

@@ -34,13 +34,43 @@ public class ConcreteProductTrainer extends AbstractProductTrainer {
     }
 
     @Override
+    public int getHP() {
+        return super.hp;
+    }
+
+    @Override
+    public void setHP(int hp) {
+        super.hp = hp;
+    }
+
+    @Override
+    public int getMP() {
+        return super.mp;
+    }
+
+    @Override
+    public void setMP(int mp) {
+        super.mp = mp;
+    }
+
+    @Override
     public String listMonsters() {
-        StringBuilder sb = new StringBuilder("--- " + name + " CODEX ---\n");
+        StringBuilder sb = new StringBuilder("--- " + super.name + " CODEX ---\n");
 
         for(String name : codex.keySet()) {
             sb.append(" -> ").append(super.codex.get(name).getName()).append("\n");
         }
 
         return sb.toString();
+    }
+
+    @Override
+    public String getStats() {
+        StringBuilder sb = new StringBuilder(">>> " + super.name + " <<<").append("\n");
+        sb.append("Type: ").append("Trainer").append("\n");
+        sb.append("HP:   ").append(super.hp).append("\n");
+        sb.append("MP:   ").append(super.mp).append("\n");
+
+        return sb.toString() + "\n" + listMonsters();
     }
 }
