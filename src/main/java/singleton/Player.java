@@ -1,3 +1,5 @@
+package singleton;
+
 import factory.*;
 
 /**
@@ -48,7 +50,7 @@ public class Player {
     }
 
     /**
-     * This class builds a single trainer and returns an instance of it.
+     * This class builds a new trainer and returns an instance of it.
      *
      * @param controller Player: Instance of this player
      * @param name String: Name of trainer
@@ -65,7 +67,7 @@ public class Player {
     }
 
     /**
-     * This class build a single monster and returns an instance of it.
+     * This class build a new monster and returns an instance of it.
      *
      * @param controller Player: Instance of this player
      * @param name String: Name of monster
@@ -74,6 +76,59 @@ public class Player {
     public ConcreteProductMonster buildMonster(Player controller, String name) {
         AbstractProductMonster monster = controller.getAbstractMonster();
         monster.setName(name);
+        monster.setLvl(1);
+
+
+        // Base level HP/MP--will vary based on code-a-mon type and evolution
+        // FIXME: Right now all code-a-mon are typeless--use decorator to make typefull
+        // TODO: Once typefull, adjust code-a-mon hp/mp from base mp
+        // TODO: Use decorator to add skills to a particular code-a-mon
+        monster.setHP((int) ((Math.random() * 99) + 30));
+        monster.setMP((int) ((Math.random() * 30) + 15));
+
+
+        // FIXME: Move the following code somewhere else
+//        int lvl = monster.getLvl();
+//        if(lvl < 10) {
+//            monster.setHP((int) ((Math.random() * 99) + 30));
+//            monster.setMP((int) ((Math.random() * 30) + 15));
+//
+//        } else if (lvl < 20) {
+//            monster.setHP((int) ((Math.random() * 198) + 30));
+//            monster.setMP((int) ((Math.random() * 60) + 15));
+//
+//        } else if (lvl < 30) {
+//            monster.setHP((int) ((Math.random() * 396) + 30));
+//            monster.setMP((int) ((Math.random() * 90) + 15));
+//
+//        } else if (lvl < 40) {
+//            monster.setHP((int) ((Math.random() * 792) + 30));
+//            monster.setMP((int) ((Math.random() * 120) + 15));
+//
+//        } else if (lvl < 50) {
+//            monster.setHP((int) ((Math.random() * 1584) + 30));
+//            monster.setMP((int) ((Math.random() * 150) + 15));
+//
+//        } else if (lvl < 60) {
+//            monster.setHP((int) ((Math.random() * 3168) + 30));
+//            monster.setMP((int) ((Math.random() * 180) + 15));
+//
+//        } else if (lvl < 70) {
+//            monster.setHP((int) ((Math.random() * 6336) + 30));
+//            monster.setMP((int) ((Math.random() * 210) + 15));
+//
+//        } else if (lvl < 80) {
+//            monster.setHP((int) ((Math.random() * 9999) + 30));
+//            monster.setMP((int) ((Math.random() * 240) + 15));
+//
+//        } else if (lvl < 90) {
+//            monster.setHP((int) ((Math.random() * 9999) + 30));
+//            monster.setMP((int) ((Math.random() * 280) + 15));
+//
+//        } else if (lvl < 100) {
+//            monster.setHP((int) ((Math.random() * 9999) + 30));
+//            monster.setMP((int) ((Math.random() * 310) + 15));
+//        }
 
         return monster.getMonster();
     }

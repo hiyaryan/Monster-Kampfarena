@@ -1,3 +1,4 @@
+import singleton.Player;
 import factory.*;
 
 /**
@@ -10,23 +11,52 @@ import factory.*;
  * @since June 19, 2021
  */
 public class Main {
-    // Initialize a new static player
-    public static Player controller = new Player();
-
     public static void main(String[] args) {
-        // Build trainer1 and monster1
-        ConcreteProductTrainer trainer1 = controller.buildTrainer(controller, "Dock");
-        ConcreteProductMonster monster1 = controller.buildMonster(controller, "Whaler");
+        // Instantiate Player singleton
+        Player controller = Player.getController();
 
-        trainer1.setCodex(monster1.getName(), monster1.getMonster());
-        System.out.println(trainer1.getStats());
+        // Build trainers
+        ConcreteProductTrainer dock = controller.buildTrainer(controller, "Dock");
+        ConcreteProductTrainer tomm = controller.buildTrainer(controller, "Tomm");
 
+        // Build monsters
+        ConcreteProductMonster wale = controller.buildMonster(controller, "Wale");
+        ConcreteProductMonster kaht = controller.buildMonster(controller, "Kaht");
 
-        // Build trainer2 and monster2
-        ConcreteProductTrainer trainer2 = controller.buildTrainer(controller, "Tomm");
-        ConcreteProductMonster monster2 = controller.buildMonster(controller, "Kat");
+        // Build team 1
+        setCodex(dock, wale);
+        printTeamData(dock, wale);
 
-        trainer2.setCodex(monster2.getName(), monster2.getMonster());
-        System.out.println(trainer2.getStats());
+        // Build team 2
+        setCodex(tomm, kaht);
+        printTeamData(tomm, kaht);
+
+        // Decorate monster
+    }
+
+    /**
+     * Set trainer CODEX.
+     *
+     * @param trainer ConcreteProductTrainer
+     * @param monster ConcreteProductMonster
+     */
+    public static void setCodex(ConcreteProductTrainer trainer, ConcreteProductMonster monster) {
+        trainer.setCodex(monster.getName(), monster.getMonster());
+    }
+
+    /**
+     * Print team data.
+     *
+     * @param trainer ConcreteProductTrainer
+     * @param monster ConcreteProductMonster
+     */
+    public static void printTeamData(ConcreteProductTrainer trainer, ConcreteProductMonster monster) {
+        // Print trainer data
+        System.out.println(trainer.getStats());
+        System.out.println(trainer.listMonsters());
+
+        // Print monster data
+        System.out.println(trainer.getCodex().get(monster.getName()).getStats());
+        System.out.println(trainer.getCodex().get(monster.getName()).listSkills());
     }
 }
