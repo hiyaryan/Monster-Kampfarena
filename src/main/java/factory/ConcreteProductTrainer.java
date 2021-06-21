@@ -66,11 +66,11 @@ public class ConcreteProductTrainer extends AbstractProductTrainer {
 
     @Override
     public String getStats() {
-        StringBuilder sb = new StringBuilder(">>> " + super.name + " <<<").append("\n");
+        StringBuilder sb = new StringBuilder(">>> " + super.name + " <<<\n");
         sb.append("Type: ").append("Trainer").append("\n");
         sb.append("HP:   ").append(super.hp).append("\n");
         sb.append("MP:   ").append(super.mp).append("\n");
 
-        return sb.toString() + "\n" + listMonsters();
+        return sb.toString();
     }
 }

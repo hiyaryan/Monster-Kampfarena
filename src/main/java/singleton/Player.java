@@ -3,20 +3,30 @@ import factory.*;
 /**
  * Player (Player.java)
  *
- * This class simulates the Client as a player.
+ * This class uses the Singleton design pattern simulating a client as a player.
  *
  * @author Ryan Meneses
  * @version 1.0
  * @since June 19, 2021
  */
 public class Player {
+    private static Player controller = new Player();
     private AbstractFactory factory;
 
     /**
      * Instantiate a ConcreteFactory.
      */
-    public Player() {
+    private Player() {
         this.factory = new ConcreteFactory();
+    }
+
+    /**
+     * Getter returns a single instance of this class.
+     *
+     * @return Player
+     */
+    public static Player getController() {
+        return controller;
     }
 
     /**
