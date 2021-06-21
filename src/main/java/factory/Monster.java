@@ -1,25 +1,32 @@
 package factory;
 
+import decorator.CodeAMon;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class ConcreteProductMonster extends AbstractProductMonster {
-    public ConcreteProductMonster() {
+public class Monster extends AbstractMonster implements CodeAMon {
+    public Monster() {
         super.skills = new HashMap<>();
     }
 
+//    @Override
+//    public Monster getMonster() {
+//        return this;
+//    }
+
     @Override
-    public ConcreteProductMonster getMonster() {
+    public Monster getMonster() {
         return this;
     }
 
     @Override
-    public Map<String, ConcreteProductMonster> getSkills() {
+    public Map<String, Monster> getSkills() {
         return super.skills;
     }
 
     @Override
-    public void setSkills(String name, ConcreteProductMonster monster) {
+    public void setSkills(String name, Monster monster) {
         super.skills.put(name, monster);
     }
 
@@ -87,10 +94,15 @@ public class ConcreteProductMonster extends AbstractProductMonster {
     @Override
     public String getStats() {
         StringBuilder sb = new StringBuilder(">>> " + super.name + " <<<\n");
-        sb.append("Type: ").append(super.type).append("\n");
+        sb.append("Initial: ").append(super.type).append("\n");
         sb.append("HP:   ").append(super.hp).append("\n");
         sb.append("MP:   ").append(super.mp).append("\n");
 
         return sb.toString();
+    }
+
+    @Override
+    public void operation() {
+        System.out.println(name + " is wild.");
     }
 }

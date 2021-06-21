@@ -3,23 +3,23 @@ package factory;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ConcreteProductTrainer extends AbstractProductTrainer {
-    public ConcreteProductTrainer() {
+public class Trainer extends AbstractTrainer {
+    public Trainer() {
         super.codex = new HashMap<>();
     }
 
     @Override
-    public ConcreteProductTrainer getTrainer() {
+    public Trainer getTrainer() {
         return this;
     }
 
     @Override
-    public Map<String, ConcreteProductMonster> getCodex() {
+    public Map<String, Monster> getCodex() {
         return super.codex;
     }
 
     @Override
-    public void setCodex(String name, ConcreteProductMonster monster) {
+    public void setCodex(String name, Monster monster) {
         super.codex.put(name, monster);
     }
 
@@ -67,7 +67,7 @@ public class ConcreteProductTrainer extends AbstractProductTrainer {
     @Override
     public String getStats() {
         StringBuilder sb = new StringBuilder(">>> " + super.name + " <<<\n");
-        sb.append("Type: ").append("Trainer").append("\n");
+        sb.append("Initial: ").append("Trainer").append("\n");
         sb.append("HP:   ").append(super.hp).append("\n");
         sb.append("MP:   ").append(super.mp).append("\n");
 

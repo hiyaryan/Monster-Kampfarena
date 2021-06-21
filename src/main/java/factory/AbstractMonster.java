@@ -2,9 +2,10 @@ package factory;
 
 import java.util.Map;
 
-public abstract class AbstractProductMonster {
+public abstract class AbstractMonster {
+
     protected String name;
-    protected Map<String, ConcreteProductMonster> skills;
+    protected Map<String, Monster> skills;
 
     protected int hp;
     protected int mp;
@@ -12,10 +13,8 @@ public abstract class AbstractProductMonster {
     protected int lvl;
     protected String type;
 
-    public abstract ConcreteProductMonster getMonster();
-
-    public abstract Map<String, ConcreteProductMonster> getSkills();
-    public abstract void setSkills(String name, ConcreteProductMonster monster);
+    public abstract Map<String, Monster> getSkills();
+    public abstract void setSkills(String name, Monster monster);
 
     public abstract String getName();
     public abstract void setName(String name);

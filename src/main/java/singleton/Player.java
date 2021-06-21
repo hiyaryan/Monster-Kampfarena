@@ -1,5 +1,7 @@
 package singleton;
 
+import factory.Monster;
+import factory.Trainer;
 import factory.*;
 
 /**
@@ -19,7 +21,7 @@ public class Player {
      * Instantiate a ConcreteFactory.
      */
     private Player() {
-        this.factory = new ConcreteFactory();
+        this.factory = new Factory();
     }
 
     /**
@@ -36,7 +38,7 @@ public class Player {
      *
      * @return trainer
      */
-    public AbstractProductTrainer getAbstractTrainer() {
+    public AbstractTrainer getAbstractTrainer() {
         return factory.createTrainer();
     }
 
@@ -45,7 +47,7 @@ public class Player {
      *
      * @return monster
      */
-    public AbstractProductMonster getAbstractMonster() {
+    public AbstractMonster getAbstractMonster() {
         return factory.createMonster();
     }
 
@@ -56,8 +58,8 @@ public class Player {
      * @param name String: Name of trainer
      * @return ConcreteProductTrainer
      */
-    public ConcreteProductTrainer buildTrainer(Player controller, String name) {
-        AbstractProductTrainer trainer = controller.getAbstractTrainer();
+    public Trainer buildTrainer(Player controller, String name) {
+        AbstractTrainer trainer = controller.getAbstractTrainer();
         trainer.setName(name);
 
         trainer.setHP((int) (Math.random() * 30));
@@ -73,8 +75,8 @@ public class Player {
      * @param name String: Name of monster
      * @return ConcreteProductMonster
      */
-    public ConcreteProductMonster buildMonster(Player controller, String name) {
-        AbstractProductMonster monster = controller.getAbstractMonster();
+    public Monster buildMonster(Player controller, String name) {
+        AbstractMonster monster = controller.getAbstractMonster();
         monster.setName(name);
         monster.setLvl(1);
 
@@ -130,6 +132,6 @@ public class Player {
 //            monster.setMP((int) ((Math.random() * 310) + 15));
 //        }
 
-        return monster.getMonster();
+        return (Monster) monster;
     }
 }

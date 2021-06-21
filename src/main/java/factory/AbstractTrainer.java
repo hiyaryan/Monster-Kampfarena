@@ -2,17 +2,17 @@ package factory;
 
 import java.util.Map;
 
-public abstract class AbstractProductTrainer {
+public abstract class AbstractTrainer {
     protected String name;
-    protected Map<String, ConcreteProductMonster> codex;
+    protected Map<String, Monster> codex;
 
     protected int hp;
     protected int mp;
 
-    public abstract ConcreteProductTrainer getTrainer();
+    public abstract Trainer getTrainer();
 
-    public abstract Map<String, ConcreteProductMonster> getCodex();
-    public abstract void setCodex(String name, ConcreteProductMonster monster);
+    public abstract Map<String, Monster> getCodex();
+    public abstract void setCodex(String name, Monster monster);
 
     public abstract String getName();
     public abstract void setName(String name);
