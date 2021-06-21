@@ -1,14 +1,21 @@
 package decorator;
 
-public abstract class DecoratorBase implements ComponentBase {
-    private ComponentBase component;
+import factory.Monster;
 
-    public DecoratorBase(ComponentBase component) {
-        this.component = component;
+public abstract class CodeAMonDecorator implements CodeAMon {
+    private CodeAMon codeAMon;
+
+    public CodeAMonDecorator(CodeAMon codeAMon) {
+        this.codeAMon = codeAMon;
+    }
+
+    @Override
+    public Monster getMonster() {
+        return (Monster) codeAMon;
     }
 
     @Override
     public void operation() {
-        component.operation();
+        codeAMon.operation();
     }
 }

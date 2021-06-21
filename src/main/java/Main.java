@@ -1,5 +1,8 @@
+import decorator.CodeAMon;
+import decorator.Initial;
+import factory.Monster;
+import factory.Trainer;
 import singleton.Player;
-import factory.*;
 
 /**
  * Main (Main.java)
@@ -16,12 +19,17 @@ public class Main {
         Player controller = Player.getController();
 
         // Build trainers
-        ConcreteProductTrainer dock = controller.buildTrainer(controller, "Dock");
-        ConcreteProductTrainer tomm = controller.buildTrainer(controller, "Tomm");
+        Trainer dock = controller.buildTrainer(controller, "Dock");
+        Trainer tomm = controller.buildTrainer(controller, "Tomm");
 
         // Build monsters
-        ConcreteProductMonster wale = controller.buildMonster(controller, "Wale");
-        ConcreteProductMonster kaht = controller.buildMonster(controller, "Kaht");
+        Monster wildWale = controller.buildMonster(controller, "Wale");
+        CodeAMon wale = new Initial(wildWale);
+        wale.operation();
+
+        Monster wildKaht = controller.buildMonster(controller, "Kaht");
+        CodeAMon kaht = new Initial(wildKaht);
+        kaht.operation();
 
         // Build team 1
         setCodex(dock, wale);
@@ -30,33 +38,31 @@ public class Main {
         // Build team 2
         setCodex(tomm, kaht);
         printTeamData(tomm, kaht);
-
-        // Decorate monster
     }
 
     /**
      * Set trainer CODEX.
      *
      * @param trainer ConcreteProductTrainer
-     * @param monster ConcreteProductMonster
+     * @param codeAMon ConcreteProductMonster
      */
-    public static void setCodex(ConcreteProductTrainer trainer, ConcreteProductMonster monster) {
-        trainer.setCodex(monster.getName(), monster.getMonster());
+    public static void setCodex(Trainer trainer, CodeAMon codeAMon) {
+        trainer.setCodex(codeAMon.getMonster().getName(), codeAMon.getMonster());
     }
 
     /**
      * Print team data.
      *
      * @param trainer ConcreteProductTrainer
-     * @param monster ConcreteProductMonster
+     * @param codeAMon ConcreteProductMonster
      */
-    public static void printTeamData(ConcreteProductTrainer trainer, ConcreteProductMonster monster) {
+    public static void printTeamData(Trainer trainer, CodeAMon codeAMon) {
         // Print trainer data
         System.out.println(trainer.getStats());
         System.out.println(trainer.listMonsters());
 
         // Print monster data
-        System.out.println(trainer.getCodex().get(monster.getName()).getStats());
-        System.out.println(trainer.getCodex().get(monster.getName()).listSkills());
+        System.out.println(trainer.getCodex().get(codeAMon.getMonster().getName()).getStats());
+        System.out.println(trainer.getCodex().get(codeAMon.getMonster().getName()).listSkills());
     }
 }
