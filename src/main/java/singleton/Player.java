@@ -61,8 +61,8 @@ public class Player {
         Trainer dock = controller.buildTrainer(controller, "Dock");
         Trainer tomm = controller.buildTrainer(controller, "Tomm");
 
-        System.out.println(dock.getStats());
-        System.out.println(tomm.getStats());
+        dock.statsToString();
+        tomm.statsToString();
 
         // Form bonds
         CodeAMon wale = dock.formBond(wildWale);
@@ -165,7 +165,7 @@ public class Player {
      */
     public void printTeamData(Trainer trainer) {
         // Print trainer data
-        System.out.println(trainer.getStats());
+        trainer.statsToString();
         System.out.println(trainer.listMonsters());
     }
 }

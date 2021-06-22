@@ -21,5 +21,5 @@ public abstract class AbstractMonster {
     public abstract int getLvl();
     public abstract void setLvl(int lvl);
 
-    public abstract String getStats();
+    public abstract String statsToString();
 }

@@ -21,6 +21,12 @@ public class Initial extends MonsterDecorator {
         super.skills = new HashMap<>();
     }
 
+    /**
+     * The init method is the main method of this class. This method establishes a connection
+     * between trainer and monster which awakens the monster to their code-a-mon potential.
+     *
+     * @param trainer
+     */
     @Override
     public void init(Trainer trainer) {
         super.init(trainer);
@@ -41,7 +47,9 @@ public class Initial extends MonsterDecorator {
         this.type = type;
     }
 
-
+    /**
+     * This method gives a newly awakened code-e-mon a type based on their original monster name
+     */
     @Override
     public void giveMonsterType() {
         String name = getMonster().getName();
@@ -126,7 +134,7 @@ public class Initial extends MonsterDecorator {
      * @return String stat list
      */
     @Override
-    public String getStats() {
+    public String statsToString() {
         StringBuilder sb = new StringBuilder("   >>> " + getMonster().getName() + " <<<\n");
         sb.append("   Type: ").append(getType()).append("\n");
         sb.append("   HP:   ").append(getMonster().getHP()).append("\n");

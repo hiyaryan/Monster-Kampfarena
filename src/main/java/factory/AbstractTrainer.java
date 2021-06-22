@@ -29,5 +29,5 @@ public abstract class AbstractTrainer {
 
     public abstract String listMonsters();
 
-    public abstract String getStats();
+    public abstract String statsToString();
 }

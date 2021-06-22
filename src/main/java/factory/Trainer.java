@@ -78,14 +78,14 @@ public class Trainer extends AbstractTrainer {
         StringBuilder sb = new StringBuilder("--- " + super.name + " CODEX ---\n");
 
         for(String name : codex.keySet()) {
-            sb.append(super.codex.get(name).getStats()).append("\n");
+            sb.append(super.codex.get(name).statsToString()).append("\n");
         }
 
         return sb.toString();
     }
 
     @Override
-    public String getStats() {
+    public String statsToString() {
         StringBuilder sb = new StringBuilder(">>> " + super.name + " <<<\n");
         sb.append("Type: ").append("Trainer").append("\n");
         sb.append("HP:   ").append(super.hp).append("\n");

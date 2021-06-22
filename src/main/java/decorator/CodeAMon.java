@@ -16,7 +16,7 @@ public interface CodeAMon {
 
     void init(Trainer trainer);
 
-    String getStats();
+    String statsToString();
 
     String listSkills();
 }

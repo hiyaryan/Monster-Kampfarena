@@ -65,7 +65,7 @@ public class Monster extends AbstractMonster implements CodeAMon {
 //    }
 
     @Override
-    public String getStats() {
+    public String statsToString() {
         StringBuilder sb = new StringBuilder(">>> " + super.name + " <<<\n");
         sb.append("Type: ").append("None").append("\n");
         sb.append("HP:   ").append(super.hp).append("\n");
