@@ -76,13 +76,6 @@ public class Player {
         CodeAMon kaht = tomm.formBond(wildKaht);
         System.out.println(tomm.listMonsters());
         System.out.println(kaht.listSkills());
-
-        System.out.println("==================================");
-        System.out.println("Wild Wale");
-        System.out.println(wildWale.statsToString());
-
-        System.out.println("Tamed Wale");
-        System.out.println(wale.statsToString());
     }
 
     /**
