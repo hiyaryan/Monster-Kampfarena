@@ -1,7 +1,6 @@
 package singleton;
 
-import factory.Monster;
-import factory.Trainer;
+import decorator.CodeAMon;
 import factory.*;
 
 /**
@@ -49,6 +48,30 @@ public class Player {
      */
     public AbstractMonster getAbstractMonster() {
         return factory.createMonster();
+    }
+
+    public void initializeTheWildeLand() {
+        System.out.println("Initializing world...\n");
+
+        // Build monsters
+        Monster wildWale = controller.buildMonster(controller, "Wale");
+        Monster wildKaht = controller.buildMonster(controller, "Kaht");
+
+        // Build trainers
+        Trainer dock = controller.buildTrainer(controller, "Dock");
+        Trainer tomm = controller.buildTrainer(controller, "Tomm");
+
+        System.out.println(dock.getStats());
+        System.out.println(tomm.getStats());
+
+        // Form bonds
+        CodeAMon wale = dock.formBond(wildWale);
+        System.out.println(dock.listMonsters());
+        System.out.println(wale.listSkills());
+
+        CodeAMon kaht = tomm.formBond(wildKaht);
+        System.out.println(tomm.listMonsters());
+        System.out.println(kaht.listSkills());
     }
 
     /**
@@ -133,5 +156,16 @@ public class Player {
 //        }
 
         return (Monster) monster;
+    }
+
+    /**
+     * Print team data.
+     *
+     * @param trainer Trainer
+     */
+    public void printTeamData(Trainer trainer) {
+        // Print trainer data
+        System.out.println(trainer.getStats());
+        System.out.println(trainer.listMonsters());
     }
 }

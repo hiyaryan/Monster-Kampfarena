@@ -1,18 +1,22 @@
 package factory;
 
+import decorator.CodeAMon;
+
 import java.util.Map;
 
 public abstract class AbstractTrainer {
     protected String name;
-    protected Map<String, Monster> codex;
+    protected Map<String, CodeAMon> codex;
 
     protected int hp;
     protected int mp;
 
     public abstract Trainer getTrainer();
 
-    public abstract Map<String, Monster> getCodex();
-    public abstract void setCodex(String name, Monster monster);
+    public abstract Map<String, CodeAMon> getCodex();
+    public abstract void setCodex(String name, CodeAMon codeAMon);
+
+    public abstract CodeAMon formBond(Monster monster);
 
     public abstract String getName();
     public abstract void setName(String name);

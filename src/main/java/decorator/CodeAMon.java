@@ -1,6 +1,7 @@
 package decorator;
 
 import factory.Monster;
+import factory.Trainer;
 
 /**
  * This interface represents a Code-a-mon
@@ -12,5 +13,10 @@ import factory.Monster;
 // http://www.blackwasp.co.uk/Decorator.aspx
 public interface CodeAMon {
     Monster getMonster();
-    void operation();
+
+    void init(Trainer trainer);
+
+    String getStats();
+
+    String listSkills();
 }

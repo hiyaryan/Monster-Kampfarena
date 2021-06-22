@@ -1,5 +1,8 @@
 package factory;
 
+import decorator.CodeAMon;
+import decorator.Initial;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,13 +17,30 @@ public class Trainer extends AbstractTrainer {
     }
 
     @Override
-    public Map<String, Monster> getCodex() {
+    public Map<String, CodeAMon> getCodex() {
         return super.codex;
     }
 
     @Override
-    public void setCodex(String name, Monster monster) {
-        super.codex.put(name, monster);
+    public void setCodex(String name, CodeAMon codeAMon) {
+        super.codex.put(name, codeAMon);
+    }
+
+    /**
+     * This method forms a contract between the trainer and the monster. Once
+     * the contract has been formed, the monster becomes a code-a-mon and is
+     * initialized with a type and set of skills.
+     *
+     * @param monster
+     * @return
+     */
+    @Override
+    public CodeAMon formBond(Monster monster) {
+        CodeAMon codeAMon = new Initial(monster);
+        codeAMon.init(this);
+
+        setCodex(monster.name, codeAMon);
+        return codeAMon;
     }
 
     @Override
@@ -58,7 +78,7 @@ public class Trainer extends AbstractTrainer {
         StringBuilder sb = new StringBuilder("--- " + super.name + " CODEX ---\n");
 
         for(String name : codex.keySet()) {
-            sb.append(" -> ").append(super.codex.get(name).getName()).append("\n");
+            sb.append(super.codex.get(name).getStats()).append("\n");
         }
 
         return sb.toString();
@@ -67,7 +87,7 @@ public class Trainer extends AbstractTrainer {
     @Override
     public String getStats() {
         StringBuilder sb = new StringBuilder(">>> " + super.name + " <<<\n");
-        sb.append("Initial: ").append("Trainer").append("\n");
+        sb.append("Type: ").append("Trainer").append("\n");
         sb.append("HP:   ").append(super.hp).append("\n");
         sb.append("MP:   ").append(super.mp).append("\n");
 

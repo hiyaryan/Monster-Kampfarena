@@ -2,32 +2,16 @@ package factory;
 
 import decorator.CodeAMon;
 
-import java.util.HashMap;
-import java.util.Map;
-
+/**
+ * Monster (Monster.java)
+ *
+ * This class is a ConcreteProduct created from the AbstractFactory class
+ * and is
+ */
 public class Monster extends AbstractMonster implements CodeAMon {
-    public Monster() {
-        super.skills = new HashMap<>();
-    }
-
-//    @Override
-//    public Monster getMonster() {
-//        return this;
-//    }
-
     @Override
     public Monster getMonster() {
         return this;
-    }
-
-    @Override
-    public Map<String, Monster> getSkills() {
-        return super.skills;
-    }
-
-    @Override
-    public void setSkills(String name, Monster monster) {
-        super.skills.put(name, monster);
     }
 
     @Override
@@ -70,39 +54,33 @@ public class Monster extends AbstractMonster implements CodeAMon {
         super.lvl = lvl;
     }
 
-    @Override
-    public String getType() {
-        return super.type;
-    }
-
-    @Override
-    public void setType(String type) {
-        super.type = type;
-    }
-
-    @Override
-    public String listSkills() {
-        StringBuilder sb = new StringBuilder("--- " + super.name +  " Skills ---\n");
-
-        for(String name : skills.keySet()) {
-            sb.append(" -> ").append(super.skills.get(name).getName()).append("\n");
-        }
-
-        return sb.toString();
-    }
+//    @Override
+//    public String getType() {
+//        return super.type;
+//    }
+//
+//    @Override
+//    public void setType(String type) {
+//        super.type = type;
+//    }
 
     @Override
     public String getStats() {
         StringBuilder sb = new StringBuilder(">>> " + super.name + " <<<\n");
-        sb.append("Initial: ").append(super.type).append("\n");
+        sb.append("Type: ").append("None").append("\n");
         sb.append("HP:   ").append(super.hp).append("\n");
-        sb.append("MP:   ").append(super.mp).append("\n");
+        sb.append("MP:   ").append(super.mp);
 
         return sb.toString();
     }
 
     @Override
-    public void operation() {
-        System.out.println(name + " is wild.");
+    public String listSkills() {
+        return name + " has not skills.";
+    }
+
+    @Override
+    public void init(Trainer trainer) {
+        System.out.println(name + " is wild.\n");
     }
 }
