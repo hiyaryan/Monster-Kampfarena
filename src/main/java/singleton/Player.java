@@ -1,6 +1,5 @@
 package singleton;
 
-import decorator.CodeAMon;
 import factory.*;
 
 /**
@@ -48,32 +47,6 @@ public class Player {
      */
     public AbstractMonster getAbstractMonster(String name) {
         return factory.createMonster(name);
-    }
-
-    public void initializeTheWildeLand() {
-        System.out.println("Initializing world...\n");
-
-        // Build monsters
-        Monster wildWale = controller.buildMonster(controller, "Wale");
-        Monster wildKaht = controller.buildMonster(controller, "Kaht");
-        Monster wildPyth = controller.buildMonster(controller, "Pyth");
-        Monster wildJaxx = controller.buildMonster(controller, "Jaxx");
-
-        // Build trainers
-        Trainer dock = controller.buildTrainer(controller, "Dock");
-        Trainer tomm = controller.buildTrainer(controller, "Tomm");
-
-        System.out.println(dock.statsToString());
-        System.out.println(tomm.statsToString());
-
-        // Form bonds
-        CodeAMon wale = dock.formBond(wildWale);
-        System.out.println(dock.listMonsters());
-        System.out.println(wale.listSkills());
-
-        CodeAMon kaht = tomm.formBond(wildKaht);
-        System.out.println(tomm.listMonsters());
-        System.out.println(kaht.listSkills());
     }
 
     /**
