@@ -17,7 +17,7 @@ import java.util.Map;
 public class Initial extends MonsterDecorator {
     private String type;
 
-    public Initial(CodeAMon codeAMon, Trainer trainer) {
+    public Initial(CodeAMon codeAMon) {
         super(codeAMon);
         super.skills = new HashMap<>();
     }

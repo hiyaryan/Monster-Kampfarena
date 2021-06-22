@@ -8,7 +8,6 @@ import java.util.HashMap;
 
 public abstract class MonsterDecorator implements CodeAMon {
     private CodeAMon monster;
-    private Trainer trainer;
     protected HashMap<String, Skill> skills; // initialized in Initial
 
     public MonsterDecorator(CodeAMon monster) {
@@ -29,7 +28,6 @@ public abstract class MonsterDecorator implements CodeAMon {
                     + " is forming a bond with "
                     + trainer.getName()
                     + "...");
-
 
         } else {
             System.out.println(monster.getMonster().getName()
