@@ -28,6 +28,10 @@ public abstract class MonsterDecorator implements CodeAMon {
                 + "...");
     }
 
+    public HashMap<String, Skill> getSkills() {
+        return skills;
+    }
+
     public abstract String getType();
 
     public abstract void setType(String type);
@@ -39,7 +43,7 @@ public abstract class MonsterDecorator implements CodeAMon {
     /**
      * This inner class provides the data structure for a skill
      */
-     class Skill {
+    static class Skill {
         private final String NAME;
         private final String TYPE;
         private int level;

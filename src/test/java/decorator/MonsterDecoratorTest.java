@@ -13,8 +13,11 @@ public class MonsterDecoratorTest {
     AbstractMonster monster;
     AbstractTrainer trainer;
 
+    /**
+     * Setup a new monster and trainer for every unit test.
+     */
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         System.out.println("\n===============================");
         System.out.println("MonsterDecorator.java Test Suite");
         System.out.println("===============================");
@@ -23,12 +26,20 @@ public class MonsterDecoratorTest {
         trainer = new Trainer();
     }
 
+    /**
+     * Set class attributes to null after every test.
+     */
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         monster = null;
         trainer = null;
     }
 
+    /**
+     * This unit test tests the MonsterDecorator constructor. If a wild monster is passed to
+     * the constructor, it is expected to have no skills as the constructor decorates only
+     * code-e-mon.
+     */
     @Test
     public void testMonsterDecoratorWithAWildMonster() {
         System.out.println("+TEST: testMonsterDecoratorWithAWildMonster\n");
@@ -46,6 +57,11 @@ public class MonsterDecoratorTest {
                 initial.listSkills());
     }
 
+    /**
+     * This unit test tests the MonsterDecorator constructor. If a code-a-mon is passed to the
+     * constructor, it is expected to have skills as the constructor decorates the code-a-mon
+     * with initial skills.
+     */
     @Test
     public void testMonsterDecoratorWithATamedMonster() {
         System.out.println("+TEST: testMonsterDecoratorWithATamedMonster\n");
