@@ -3,6 +3,7 @@ package decorator;
 import factory.Trainer;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Initial (Initial.java)
@@ -119,10 +120,10 @@ public class Initial extends MonsterDecorator {
     public String listSkills() {
         StringBuilder sb = new StringBuilder("--- " + getMonster().getName() +  " Skills ---\n");
 
-        for(String name : skills.keySet()) {
-            sb.append(skills.get(name).getName()).append(" ")
-                    .append("[lvl. " + skills.get(name).getLevel()).append(" ")
-                    .append(skills.get(name).getType()).append("]\n");
+        for(Map.Entry<String, Skill> skill : skills.entrySet()) {
+            sb.append(skill.getValue().getName()).append(" ")
+                    .append("[lvl. " + skill.getValue().getLevel()).append(" ")
+                    .append(skill.getValue().getType()).append("]\n");
         }
 
         return sb.toString();

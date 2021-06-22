@@ -3,6 +3,8 @@ package singleton;
 import decorator.CodeAMon;
 import factory.*;
 
+import java.util.Random;
+
 /**
  * Player (Player.java)
  *
@@ -56,13 +58,16 @@ public class Player {
         // Build monsters
         Monster wildWale = controller.buildMonster(controller, "Wale");
         Monster wildKaht = controller.buildMonster(controller, "Kaht");
+        Monster wildPyth = controller.buildMonster(controller, "Pyth");
+        Monster wildJaxx = controller.buildMonster(controller, "Jaxx");
+//        Monster wildJaxx = controller.buildMonster(controller, "Jaxx");
 
         // Build trainers
         Trainer dock = controller.buildTrainer(controller, "Dock");
         Trainer tomm = controller.buildTrainer(controller, "Tomm");
 
-        dock.statsToString();
-        tomm.statsToString();
+        System.out.println(dock.statsToString());
+        System.out.println(tomm.statsToString());
 
         // Form bonds
         CodeAMon wale = dock.formBond(wildWale);
@@ -85,8 +90,10 @@ public class Player {
         AbstractTrainer trainer = controller.getAbstractTrainer();
         trainer.setName(name);
 
-        trainer.setHP((int) (Math.random() * 30));
-        trainer.setMP((int) (Math.random() * 15));
+        Random random = new Random();
+
+        trainer.setHP(random.nextInt(30));
+        trainer.setMP(random.nextInt(15));
 
         return trainer.getTrainer();
     }
@@ -108,8 +115,11 @@ public class Player {
         // FIXME: Right now all code-a-mon are typeless--use decorator to make typefull
         // TODO: Once typefull, adjust code-a-mon hp/mp from base mp
         // TODO: Use decorator to add skills to a particular code-a-mon
-        monster.setHP((int) ((Math.random() * 99) + 30));
-        monster.setMP((int) ((Math.random() * 30) + 15));
+        Random random = new Random();
+//        monster.setHP((int) ((Math.random() * 99) + 30));
+        monster.setHP(random.nextInt(99) + 30);
+//        monster.setMP((int) ((Math.random() * 30) + 15));
+        monster.setMP(random.nextInt(30) + 15);
 
 
         // FIXME: Move the following code somewhere else

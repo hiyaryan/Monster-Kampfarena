@@ -45,6 +45,16 @@ public class Monster extends AbstractMonster implements CodeAMon {
     }
 
     @Override
+    public void setIsTamed(boolean isTamed) {
+        super.isTamed = isTamed;
+    }
+
+    @Override
+    public boolean isTamed() {
+        return super.isTamed;
+    }
+
+    @Override
     public int getLvl() {
         return super.lvl;
     }
@@ -53,16 +63,6 @@ public class Monster extends AbstractMonster implements CodeAMon {
     public void setLvl(int lvl) {
         super.lvl = lvl;
     }
-
-//    @Override
-//    public String getType() {
-//        return super.type;
-//    }
-//
-//    @Override
-//    public void setType(String type) {
-//        super.type = type;
-//    }
 
     @Override
     public String statsToString() {
