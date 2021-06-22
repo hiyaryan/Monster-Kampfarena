@@ -25,13 +25,19 @@ public class Trainer extends AbstractTrainer {
      */
     @Override
     public CodeAMon formBond(Monster monster) {
-        CodeAMon codeAMon = new Initial(monster);
+        if(getCodex().size() != MAX_CODEX_SIZE) {
 
-        codeAMon.init(this);
-        monster.isWild(true);
+            CodeAMon codeAMon = new Initial(monster);
 
-        setCodex(monster.getName(), codeAMon);
-        return codeAMon;
+            codeAMon.init(this);
+            monster.isWild(true);
+
+            setCodex(monster.getName(), codeAMon);
+            return codeAMon;
+
+        } else {
+            return null;
+        }
     }
 
     @Override

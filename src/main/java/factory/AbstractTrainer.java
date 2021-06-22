@@ -11,6 +11,8 @@ public abstract class AbstractTrainer {
     private int hp;
     private int mp;
 
+    public final static int MAX_CODEX_SIZE = 6;
+
     public abstract String listMonsters();
     public abstract String statsToString();
     public abstract CodeAMon formBond(Monster monster);
