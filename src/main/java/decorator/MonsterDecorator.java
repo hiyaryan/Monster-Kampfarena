@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public abstract class MonsterDecorator implements CodeAMon {
     private CodeAMon monster;
-    protected HashMap<String, Skill> skills;
+    protected HashMap<String, Skill> skills; // initialized in Initial
 
     public MonsterDecorator(CodeAMon monster) {
         this.monster = monster;
@@ -32,10 +32,6 @@ public abstract class MonsterDecorator implements CodeAMon {
     public HashMap<String, Skill> getSkills() {
         return skills;
     }
-
-//    public abstract String getType();
-//
-//    public abstract void setType(String type);
 
     public abstract void giveMonsterType();
 
