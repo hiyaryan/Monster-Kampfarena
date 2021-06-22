@@ -39,7 +39,8 @@ public class Initial extends MonsterDecorator {
                     + getMonster().getName()
                     + " has become a code-a-mon!\n");
 
-            giveMonsterType();
+            boostStats();
+            giveType();
             declareSkill();
         }
     }
@@ -52,11 +53,23 @@ public class Initial extends MonsterDecorator {
         this.type = type;
     }
 
+    @Override
+    protected void boostStats() {
+        System.out.println(getMonster().getName()
+                + " has discovered its inner strength!");
+
+        System.out.println("   +HP 1.2x");
+        System.out.println("      +MP 1.2x\n");
+
+        getMonster().setMaxHp((int) (1.2 * getMonster().getMaxHp()));
+        getMonster().setMaxMp((int) (1.2 * getMonster().getMaxMp()));
+    }
+
     /**
      * This method gives a newly awakened code-e-mon a type based on their original monster name
      */
     @Override
-    public void giveMonsterType() {
+    protected void giveType() {
         String name = getMonster().getName();
 
         switch (name) {
@@ -80,7 +93,7 @@ public class Initial extends MonsterDecorator {
      * Initialize the new code-a-mon's first skill.
      */
     @Override
-    public void declareSkill() {
+    protected void declareSkill() {
         String name = getMonster().getName();
         Skill skill = null;
 
@@ -142,8 +155,8 @@ public class Initial extends MonsterDecorator {
     public String statsToString() {
         StringBuilder sb = new StringBuilder("   >>> " + getMonster().getName() + " <<<\n");
         sb.append("   Type: ").append(getType()).append("\n");
-        sb.append("   HP:   ").append(getMonster().getHp()).append("\n");
-        sb.append("   MP:   ").append(getMonster().getMp());
+        sb.append("   HP:   ").append(getMonster().getMaxHp()).append("\n");
+        sb.append("   MP:   ").append(getMonster().getMaxMp());
 
         return sb.toString();
     }

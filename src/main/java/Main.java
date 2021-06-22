@@ -21,6 +21,17 @@ public class Main {
     public static void initializeTheWildeLand(Player controller) {
         System.out.println("Initializing world...\n");
 
+        System.out.println("Building trainers...");
+        System.out.println("======================");
+        // Build trainers
+        Trainer dock = controller.buildTrainer(controller, "Dock");
+        Trainer tomm = controller.buildTrainer(controller, "Tomm");
+
+        System.out.println(dock.statsToString());
+        System.out.println(tomm.statsToString());
+
+        System.out.println("Building monsters...");
+        System.out.println("======================");
         // Build monsters
         Monster wildWale = controller.buildMonster(controller, "Wale");
         Monster wildKaht = controller.buildMonster(controller, "Kaht");
@@ -29,23 +40,30 @@ public class Main {
         Monster wildCoco = controller.buildMonster(controller, "Coco");
         Monster wildAntt = controller.buildMonster(controller, "Antt");
 
-        // Build trainers
-        Trainer dock = controller.buildTrainer(controller, "Dock");
-        Trainer tomm = controller.buildTrainer(controller, "Tomm");
+        System.out.println(wildWale.statsToString());
+        System.out.println(wildKaht.statsToString());
 
-        System.out.println(dock.statsToString());
-        System.out.println(tomm.statsToString());
+        System.out.println("\nWelcome to the Wilde Land!\n\n");
+
+        System.out.println("   Watch the most significant event of a new trainers journey...");
+        System.out.println("      the forming of bonds between trainer and monster.\n\n");
 
         // Form bonds
         CodeAMon wale = dock.formBond(wildWale);
         System.out.println(dock.listMonsters());
         System.out.println(wale.listSkills());
 
+        System.out.println("\n   What a beautiful sight...");
+        System.out.println("        A monster awakening into Code-a-mon.\n\n");
+
         CodeAMon kaht = tomm.formBond(wildKaht);
         System.out.println(tomm.listMonsters());
         System.out.println(kaht.listSkills());
 
-        System.out.println("Registration at Kampfarena is now open!");
+        System.out.println("\n   Hang tight everyone!");
+        System.out.println("        You will soon get to witness what you all came here for.\n\n");
+
+        System.out.println("Registration is now open at the Kampfarena!");
         // TODO: Set up registration
     }
 }

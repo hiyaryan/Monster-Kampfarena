@@ -10,6 +10,10 @@ public abstract class MonsterDecorator implements CodeAMon {
     private CodeAMon monster;
     protected HashMap<String, Skill> skills; // initialized in Initial
 
+    protected abstract void boostStats();
+    protected abstract void giveType();
+    protected abstract void declareSkill();
+
     public MonsterDecorator(CodeAMon monster) {
         this.monster = monster;
     }
@@ -47,10 +51,6 @@ public abstract class MonsterDecorator implements CodeAMon {
     public void setSkills(Skill skill) {
         skills.put(skill.getName(), skill);;
     }
-
-    public abstract void giveMonsterType();
-
-    public abstract void declareSkill();
 
     /**
      * This inner class provides the data structure for a skill
