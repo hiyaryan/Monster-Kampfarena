@@ -12,6 +12,7 @@ import factory.Trainer;
  */
 // http://www.blackwasp.co.uk/Decorator.aspx
 public interface CodeAMon {
+
     AbstractMonster getMonster();
 
     void init(Trainer trainer);

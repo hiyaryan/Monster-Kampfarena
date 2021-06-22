@@ -60,7 +60,6 @@ public class Player {
         Monster wildKaht = controller.buildMonster(controller, "Kaht");
         Monster wildPyth = controller.buildMonster(controller, "Pyth");
         Monster wildJaxx = controller.buildMonster(controller, "Jaxx");
-//        Monster wildJaxx = controller.buildMonster(controller, "Jaxx");
 
         // Build trainers
         Trainer dock = controller.buildTrainer(controller, "Dock");
@@ -77,6 +76,13 @@ public class Player {
         CodeAMon kaht = tomm.formBond(wildKaht);
         System.out.println(tomm.listMonsters());
         System.out.println(kaht.listSkills());
+
+        System.out.println("==================================");
+        System.out.println("Wild Wale");
+        System.out.println(wildWale.statsToString());
+
+        System.out.println("Tamed Wale");
+        System.out.println(wale.statsToString());
     }
 
     /**
@@ -92,10 +98,10 @@ public class Player {
 
         Random random = new Random();
 
-        trainer.setHP(random.nextInt(30) + 1);
-        trainer.setMP(random.nextInt(15) + 1);
+        trainer.setHp(random.nextInt(30) + 1);
+        trainer.setMp(random.nextInt(15) + 1);
 
-        return trainer.getTrainer();
+        return (Trainer) trainer;
     }
 
     /**
@@ -116,9 +122,7 @@ public class Player {
         // TODO: Once typefull, adjust code-a-mon hp/mp from base mp
         // TODO: Use decorator to add skills to a particular code-a-mon
         Random random = new Random();
-//        monster.setHP((int) ((Math.random() * 99) + 30));
         monster.setHp(random.nextInt(99) + 30);
-//        monster.setMP((int) ((Math.random() * 30) + 15));
         monster.setMp(random.nextInt(30) + 15);
 
 
