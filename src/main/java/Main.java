@@ -26,6 +26,8 @@ public class Main {
         Monster wildKaht = controller.buildMonster(controller, "Kaht");
         Monster wildPyth = controller.buildMonster(controller, "Pyth");
         Monster wildJaxx = controller.buildMonster(controller, "Jaxx");
+        Monster wildCoco = controller.buildMonster(controller, "Coco");
+        Monster wildAntt = controller.buildMonster(controller, "Antt");
 
         // Build trainers
         Trainer dock = controller.buildTrainer(controller, "Dock");
@@ -42,5 +44,8 @@ public class Main {
         CodeAMon kaht = tomm.formBond(wildKaht);
         System.out.println(tomm.listMonsters());
         System.out.println(kaht.listSkills());
+
+        System.out.println("Registration at Kampfarena is now open!");
+        // TODO: Set up registration
     }
 }
