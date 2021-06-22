@@ -28,7 +28,7 @@ public class Trainer extends AbstractTrainer {
         CodeAMon codeAMon = new Initial(monster);
 
         codeAMon.init(this);
-        monster.isTamed(true);
+        monster.isWild(true);
 
         setCodex(monster.getName(), codeAMon);
         return codeAMon;

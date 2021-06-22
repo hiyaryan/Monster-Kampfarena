@@ -77,7 +77,35 @@ public class MonsterDecoratorTest {
         System.out.println("Actual:\n" + codeAMon.listSkills());
 
         Assert.assertEquals("--- " + codeAMon.getMonster().getName() +  " Skills ---\n"
-                        + "Splash [lvl. 1 Water]\n"
-                , codeAMon.listSkills());
+                        + "Splash [lvl. 1 Water]\n", codeAMon.listSkills());
+    }
+
+    @Test
+    public void testInitWithAnUntamedMonster() {
+        monster = new Monster("Wale");
+
+        trainer = new Trainer("Dock");
+        trainer.formBond((Monster) monster);
+
+        System.out.println("Expected: Dock");
+        System.out.println("Actual: " + monster.getTrainer().getName() + "\n");
+
+        Assert.assertEquals("Dock", monster.getTrainer().getName());
+    }
+
+    @Test
+    public void testInitWithATamedMonster() {
+        monster = new Monster("Wale");
+
+        trainer = new Trainer("Dock");
+        trainer.formBond((Monster) monster);
+
+        trainer = new Trainer("Tomm");
+        trainer.formBond((Monster) monster);
+
+        System.out.println("Unexpected: Tomm");
+        System.out.println("Actual: " + monster.getTrainer().getName() + "\n");
+
+        Assert.assertNotEquals("Tomm", monster.getTrainer().getName());
     }
 }

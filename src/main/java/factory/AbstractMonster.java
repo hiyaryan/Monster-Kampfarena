@@ -7,14 +7,10 @@ public abstract class AbstractMonster {
     private int mp;
     private int maxMp;
     private int lvl;
-    protected boolean isTamed;
+    private boolean isWild;
     private Trainer trainer;
 
     public abstract String statsToString();
-
-    public AbstractMonster() {
-        this.isTamed = false;
-    }
 
     public String getName() {
         return this.name;
@@ -56,12 +52,12 @@ public abstract class AbstractMonster {
         this.maxMp = maxMp;
     }
 
-    public boolean isTamed() {
-        return !this.isTamed;
+    public boolean isWild() {
+        return !this.isWild;
     }
 
-    public void isTamed(boolean tamed) {
-        this.isTamed = tamed;
+    public void isWild(boolean isWild) {
+        this.isWild = isWild;
     }
 
     public Trainer getTrainer() {

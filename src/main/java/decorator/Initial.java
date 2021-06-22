@@ -32,7 +32,7 @@ public class Initial extends MonsterDecorator {
     public void init(Trainer trainer) {
         super.init(trainer);
 
-        if(getMonster().isTamed()) {
+        if(getMonster().isWild()) {
             getMonster().setTrainer(trainer);
 
             System.out.println("    "

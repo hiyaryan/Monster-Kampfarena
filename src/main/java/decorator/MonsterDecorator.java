@@ -21,8 +21,12 @@ public abstract class MonsterDecorator implements CodeAMon {
 
     @Override
     public void init(Trainer trainer) {
-        if(monster.getMonster().isTamed()) {
-            monster.init(trainer); // Invokes the init method in factory.Monster
+        monster.init(trainer); // Invokes the init method in factory.Monster
+
+        System.out.println(trainer.getName() + " is trying to form a bond with "
+                + monster.getMonster().getName() + ".\n");
+
+        if(monster.getMonster().isWild()) {
 
             System.out.println(monster.getMonster().getName()
                     + " is forming a bond with "
@@ -32,7 +36,7 @@ public abstract class MonsterDecorator implements CodeAMon {
         } else {
             System.out.println(monster.getMonster().getName()
                     + " is already bonded with "
-                    + monster.getMonster().getTrainer().getName() + ".");
+                    + monster.getMonster().getTrainer().getName() + ".\n");
         }
     }
 
