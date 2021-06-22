@@ -2,12 +2,12 @@ package factory;
 
 public class Factory extends AbstractFactory {
     @Override
-    public AbstractTrainer createTrainer() {
-        return new Trainer();
+    public AbstractTrainer createTrainer(String name) {
+        return new Trainer(name);
     }
 
     @Override
-    public AbstractMonster createMonster() {
-        return new Monster();
+    public AbstractMonster createMonster(String name) {
+        return new Monster(name);
     }
 }

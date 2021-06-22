@@ -2,6 +2,8 @@ package factory;
 
 import decorator.CodeAMon;
 
+import java.util.Random;
+
 /**
  * Monster (Monster.java)
  *
@@ -9,6 +11,17 @@ import decorator.CodeAMon;
  * and is
  */
 public class Monster extends AbstractMonster implements CodeAMon {
+    public Monster(String name) {
+        setName(name);
+        setLvl(1);
+
+        setMaxHp(new Random().nextInt(99) + 30);
+        setMaxMp(new Random().nextInt(30) + 15);
+
+        setHp(getMaxHp());
+        setMp(getMaxMp());
+    }
+
     @Override
     public Monster getMonster() {
         return this;

@@ -3,7 +3,16 @@ package factory;
 import decorator.CodeAMon;
 import decorator.Initial;
 
+import java.util.Random;
+
 public class Trainer extends AbstractTrainer {
+    public Trainer(String name) {
+        setName(name);
+
+        setHp(new Random().nextInt(30) + 1);
+        setMp(new Random().nextInt(15) + 1);
+    }
+
     /**
      * This method forms a contract between the trainer and the monster. Once
      * the contract has been formed, the monster becomes a code-a-mon and is

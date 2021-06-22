@@ -3,8 +3,6 @@ package singleton;
 import decorator.CodeAMon;
 import factory.*;
 
-import java.util.Random;
-
 /**
  * Player (Player.java)
  *
@@ -39,8 +37,8 @@ public class Player {
      *
      * @return trainer
      */
-    public AbstractTrainer getAbstractTrainer() {
-        return factory.createTrainer();
+    public AbstractTrainer getAbstractTrainer(String name) {
+        return factory.createTrainer(name);
     }
 
     /**
@@ -48,8 +46,8 @@ public class Player {
      *
      * @return monster
      */
-    public AbstractMonster getAbstractMonster() {
-        return factory.createMonster();
+    public AbstractMonster getAbstractMonster(String name) {
+        return factory.createMonster(name);
     }
 
     public void initializeTheWildeLand() {
@@ -86,14 +84,7 @@ public class Player {
      * @return ConcreteProductTrainer
      */
     public Trainer buildTrainer(Player controller, String name) {
-        AbstractTrainer trainer = controller.getAbstractTrainer();
-        trainer.setName(name);
-
-        Random random = new Random();
-
-        trainer.setHp(random.nextInt(30) + 1);
-        trainer.setMp(random.nextInt(15) + 1);
-
+        AbstractTrainer trainer = controller.getAbstractTrainer(name);
         return (Trainer) trainer;
     }
 
@@ -105,19 +96,10 @@ public class Player {
      * @return ConcreteProductMonster
      */
     public Monster buildMonster(Player controller, String name) {
-        AbstractMonster monster = controller.getAbstractMonster();
-        monster.setName(name);
-        monster.setLvl(1);
-
+        AbstractMonster monster = controller.getAbstractMonster(name);
 
         // Base level HP/MP--will vary based on code-a-mon type and evolution
-        // FIXME: Right now all code-a-mon are typeless--use decorator to make typefull
         // TODO: Once typefull, adjust code-a-mon hp/mp from base mp
-        // TODO: Use decorator to add skills to a particular code-a-mon
-        Random random = new Random();
-        monster.setHp(random.nextInt(99) + 30);
-        monster.setMp(random.nextInt(30) + 15);
-
 
         // FIXME: Move the following code somewhere else
 //        int lvl = monster.getLvl();
