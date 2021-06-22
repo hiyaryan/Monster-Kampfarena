@@ -1,6 +1,6 @@
 package decorator;
 
-import factory.Monster;
+import factory.AbstractMonster;
 import factory.Trainer;
 
 /**
@@ -12,7 +12,7 @@ import factory.Trainer;
  */
 // http://www.blackwasp.co.uk/Decorator.aspx
 public interface CodeAMon {
-    Monster getMonster();
+    AbstractMonster getMonster();
 
     void init(Trainer trainer);
 

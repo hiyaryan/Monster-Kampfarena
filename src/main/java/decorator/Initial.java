@@ -38,12 +38,10 @@ public class Initial extends MonsterDecorator {
         declareSkill();
     }
 
-    @Override
     public String getType() {
         return type;
     }
 
-    @Override
     public void setType(String type) {
         this.type = type;
     }
@@ -138,8 +136,8 @@ public class Initial extends MonsterDecorator {
     public String statsToString() {
         StringBuilder sb = new StringBuilder("   >>> " + getMonster().getName() + " <<<\n");
         sb.append("   Type: ").append(getType()).append("\n");
-        sb.append("   HP:   ").append(getMonster().getHP()).append("\n");
-        sb.append("   MP:   ").append(getMonster().getMP());
+        sb.append("   HP:   ").append(getMonster().getHp()).append("\n");
+        sb.append("   MP:   ").append(getMonster().getMp());
 
         return sb.toString();
     }

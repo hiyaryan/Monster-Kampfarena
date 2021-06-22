@@ -108,15 +108,18 @@ public class InitialTest {
         Initial temp = new Initial(null);
         MonsterDecorator.Skill skill = temp.initSkill("Splash", "Water");
 
-        System.out.println("Expected: Wale Water Splash");
+        System.out.println("Expected: Wale Water 1 Splash");
         System.out.println("Actual: "
                 + codeAMon.getMonster().getName()
-                + " " + initial.getType() + " "
+                + " " + initial.getType()
+                + initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getLevel() + " "
                 + initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getName()
                 + "\n");
 
         Assert.assertEquals("Wale", codeAMon.getMonster().getName());
         Assert.assertEquals("Water", initial.getType());
+        Assert.assertEquals(skill.getLevel(),
+                initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getLevel());
         Assert.assertEquals(skill.getName(),
                 initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getName());
     }
@@ -140,15 +143,18 @@ public class InitialTest {
         Initial temp = new Initial(null);
         MonsterDecorator.Skill skill = temp.initSkill("Scratch", "Poison");
 
-        System.out.println("Expected: Kaht Poison Scratch");
+        System.out.println("Expected: Kaht Poison 1 Scratch");
         System.out.println("Actual: "
                 + codeAMon.getMonster().getName()
                 + " " + initial.getType() + " "
+                + initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getLevel() + " "
                 + initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getName()
                 + "\n");
 
         Assert.assertEquals("Kaht", codeAMon.getMonster().getName());
         Assert.assertEquals("Poison", initial.getType());
+        Assert.assertEquals(skill.getLevel(),
+                initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getLevel());
         Assert.assertEquals(skill.getName(),
                 initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getName());
     }
@@ -171,5 +177,25 @@ public class InitialTest {
         System.out.println("Actual: skills.size == " + initial.skills.size() + "\n");
 
         Assert.assertEquals(0, initial.skills.size());
+    }
+
+    /**
+     * This unit test tests the statsToString method to check proper format
+     */
+    @Test
+    public void testStatsToString() {
+        System.out.println("+TEST: testStatsToString\n");
+
+        Initial initial = new Initial((Monster) monster);
+
+        StringBuilder sb = new StringBuilder("   >>> " + null + " <<<\n");
+        sb.append("   Type: ").append("null").append("\n");
+        sb.append("   HP:   ").append("0").append("\n");
+        sb.append("   MP:   ").append("0");
+
+        System.out.println("\nExpected: " + sb.toString());
+        System.out.println("Actual: " + initial.statsToString());
+
+        Assert.assertEquals(sb.toString(), initial.statsToString());
     }
 }

@@ -92,8 +92,8 @@ public class Player {
 
         Random random = new Random();
 
-        trainer.setHP(random.nextInt(30));
-        trainer.setMP(random.nextInt(15));
+        trainer.setHP(random.nextInt(30) + 1);
+        trainer.setMP(random.nextInt(15) + 1);
 
         return trainer.getTrainer();
     }
@@ -117,9 +117,9 @@ public class Player {
         // TODO: Use decorator to add skills to a particular code-a-mon
         Random random = new Random();
 //        monster.setHP((int) ((Math.random() * 99) + 30));
-        monster.setHP(random.nextInt(99) + 30);
+        monster.setHp(random.nextInt(99) + 30);
 //        monster.setMP((int) ((Math.random() * 30) + 15));
-        monster.setMP(random.nextInt(30) + 15);
+        monster.setMp(random.nextInt(30) + 15);
 
 
         // FIXME: Move the following code somewhere else

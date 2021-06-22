@@ -1,5 +1,6 @@
 package decorator;
 
+import factory.AbstractMonster;
 import factory.Monster;
 import factory.Trainer;
 
@@ -14,7 +15,7 @@ public abstract class MonsterDecorator implements CodeAMon {
     }
 
     @Override
-    public Monster getMonster() {
+    public AbstractMonster getMonster() {
         return (Monster) monster;
     }
 
@@ -32,9 +33,9 @@ public abstract class MonsterDecorator implements CodeAMon {
         return skills;
     }
 
-    public abstract String getType();
-
-    public abstract void setType(String type);
+//    public abstract String getType();
+//
+//    public abstract void setType(String type);
 
     public abstract void giveMonsterType();
 
