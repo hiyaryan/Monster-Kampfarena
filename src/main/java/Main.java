@@ -19,10 +19,10 @@ public class Main {
     }
 
     public static void initializeTheWildeLand(Player controller) {
-        System.out.println("Initializing world...\n");
+        System.out.println("\nInitializing world...\n");
 
-        System.out.println("Building trainers...");
-        System.out.println("======================");
+        System.out.println("   Building trainers...\n");
+
         // Build trainers
         Trainer dock = controller.buildTrainer(controller, "Dock");
         Trainer tomm = controller.buildTrainer(controller, "Tomm");
@@ -30,8 +30,8 @@ public class Main {
         System.out.println(dock.statsToString());
         System.out.println(tomm.statsToString());
 
-        System.out.println("Building monsters...");
-        System.out.println("======================");
+        System.out.println("   Building monsters...\n");
+
         // Build monsters
         Monster wildWale = controller.buildMonster(controller, "Wale");
         Monster wildKaht = controller.buildMonster(controller, "Kaht");
