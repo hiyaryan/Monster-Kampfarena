@@ -17,7 +17,7 @@ import java.util.Map;
 public class Initial extends MonsterDecorator {
     private String type;
 
-    public Initial(CodeAMon codeAMon) {
+    public Initial(CodeAMon codeAMon, Trainer trainer) {
         super(codeAMon);
         super.skills = new HashMap<>();
     }
@@ -31,11 +31,17 @@ public class Initial extends MonsterDecorator {
     @Override
     public void init(Trainer trainer) {
         super.init(trainer);
-        System.out.println("    "
-                + getMonster().getName()
-                + " has become a code-a-mon!\n");
-        giveMonsterType();
-        declareSkill();
+
+        if(getMonster().isTamed()) {
+            getMonster().setTrainer(trainer);
+
+            System.out.println("    "
+                    + getMonster().getName()
+                    + " has become a code-a-mon!\n");
+
+            giveMonsterType();
+            declareSkill();
+        }
     }
 
     public String getType() {
@@ -91,7 +97,7 @@ public class Initial extends MonsterDecorator {
         }
 
         if(skill != null) {
-            super.skills.put(skill.getName(), skill);
+            setSkills(skill);
 
         } else {
             System.out.println("A skill cannot be set for an unidentified code-a-mon.");

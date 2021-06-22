@@ -23,9 +23,9 @@ public class Trainer extends AbstractTrainer {
      */
     @Override
     public CodeAMon formBond(Monster monster) {
-        CodeAMon codeAMon = new Initial(monster);
+        CodeAMon codeAMon = new Initial(monster, this);
         codeAMon.init(this);
-        monster.setTamed(true);
+        monster.isTamed(true);
 
         setCodex(monster.getName(), codeAMon);
         return codeAMon;

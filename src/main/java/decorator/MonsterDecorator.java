@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public abstract class MonsterDecorator implements CodeAMon {
     private CodeAMon monster;
+    private Trainer trainer;
     protected HashMap<String, Skill> skills; // initialized in Initial
 
     public MonsterDecorator(CodeAMon monster) {
@@ -21,16 +22,28 @@ public abstract class MonsterDecorator implements CodeAMon {
 
     @Override
     public void init(Trainer trainer) {
-        monster.init(trainer);
+        if(monster.getMonster().isTamed()) {
+            monster.init(trainer); // Invokes the init method in factory.Monster
 
-        System.out.println(monster.getMonster().getName()
-                + " is forming a bond with "
-                + trainer.getName()
-                + "...");
+            System.out.println(monster.getMonster().getName()
+                    + " is forming a bond with "
+                    + trainer.getName()
+                    + "...");
+
+
+        } else {
+            System.out.println(monster.getMonster().getName()
+                    + " is already bonded with "
+                    + monster.getMonster().getTrainer().getName() + ".");
+        }
     }
 
     public HashMap<String, Skill> getSkills() {
         return skills;
+    }
+
+    public void setSkills(Skill skill) {
+        skills.put(skill.getName(), skill);;
     }
 
     public abstract void giveMonsterType();
