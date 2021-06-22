@@ -198,6 +198,4 @@ public class InitialTest {
 
         Assert.assertEquals(sb.toString(), initial.statsToString());
     }
-
-
 }
