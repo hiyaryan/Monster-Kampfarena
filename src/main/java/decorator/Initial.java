@@ -32,7 +32,7 @@ public class Initial extends MonsterDecorator {
         super.init(trainer);
         System.out.println("    "
                 + getMonster().getName()
-                + " has become code-a-mon!\n");
+                + " has become a code-a-mon!\n");
         giveMonsterType();
         declareSkill();
     }
