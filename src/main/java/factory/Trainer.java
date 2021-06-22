@@ -7,10 +7,12 @@ import java.util.Random;
 
 public class Trainer extends AbstractTrainer {
     public Trainer(String name) {
-        setName(name);
+        if (name != null) {
+            setName(name);
 
-        setHp(new Random().nextInt(30) + 1);
-        setMp(new Random().nextInt(15) + 1);
+            setHp(new Random().nextInt(30) + 1);
+            setMp(new Random().nextInt(15) + 1);
+        }
     }
 
     /**

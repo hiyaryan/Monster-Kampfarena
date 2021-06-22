@@ -22,8 +22,8 @@ public class InitialTest {
         System.out.println("    Initial.java Test Suite");
         System.out.println("===============================");
 
-        monster = new Monster();
-        trainer = new Trainer();
+        monster = new Monster(null);
+        trainer = new Trainer(null);
     }
 
     /**
@@ -198,4 +198,6 @@ public class InitialTest {
 
         Assert.assertEquals(sb.toString(), initial.statsToString());
     }
+
+
 }

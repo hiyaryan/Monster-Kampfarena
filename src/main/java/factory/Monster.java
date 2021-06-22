@@ -12,14 +12,16 @@ import java.util.Random;
  */
 public class Monster extends AbstractMonster implements CodeAMon {
     public Monster(String name) {
-        setName(name);
-        setLvl(1);
+        if(name != null) {
+            setName(name);
+            setLvl(1);
 
-        setMaxHp(new Random().nextInt(99) + 30);
-        setMaxMp(new Random().nextInt(30) + 15);
+            setMaxHp(new Random().nextInt(99) + 30);
+            setMaxMp(new Random().nextInt(30) + 15);
 
-        setHp(getMaxHp());
-        setMp(getMaxMp());
+            setHp(getMaxHp());
+            setMp(getMaxMp());
+        }
     }
 
     @Override

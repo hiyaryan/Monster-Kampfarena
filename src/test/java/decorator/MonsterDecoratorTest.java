@@ -22,8 +22,8 @@ public class MonsterDecoratorTest {
         System.out.println("MonsterDecorator.java Test Suite");
         System.out.println("===============================");
 
-        monster = new Monster();
-        trainer = new Trainer();
+        monster = new Monster(null);
+        trainer = new Trainer(null);
     }
 
     /**
