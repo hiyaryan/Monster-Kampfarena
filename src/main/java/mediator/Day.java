@@ -1,7 +1,12 @@
 package mediator;
 
 public class Day extends World{
-    public Day(World time) {
-        super(time);
+    public Day() {
+
+    }
+
+    @Override
+    public String whatTimeIsIt() {
+        return "day";
     }
 }

@@ -1,24 +1,31 @@
 import decorator.CodeAMon;
 import factory.Monster;
 import factory.Trainer;
+import mediator.Mediator;
+import mediator.WorldMediator;
 import singleton.Player;
 
 /**
- * Main (Main.java)
- * This runs the simulation.
+ * Main (Main.java) This runs the simulation.
  *
  * @author Ryan Meneses
  * @version 1.0
  * @since June 19, 2021
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException, ClassNotFoundException {
         Player controller = Player.getController();
-        initializeTheWildeLand(controller);
+        Mediator mediator = WorldMediator.getMediator();
+        initializeTheWildeLand(controller, mediator);
     }
 
-    public static void initializeTheWildeLand(Player controller) {
+    public static void initializeTheWildeLand(Player controller, Mediator mediator)
+            throws InterruptedException {
         System.out.println("\nInitializing world...\n");
+
+        // Start the clock
+        Thread tick = new Thread((Runnable) mediator);
+        tick.start();
 
         System.out.println("   Building trainers...\n");
 
@@ -42,10 +49,7 @@ public class Main {
         System.out.println(wildWale.statsToString());
         System.out.println(wildKaht.statsToString());
 
-        System.out.println("\nWelcome to the Wilde Land!\n\n");
-
-        System.out.println("   Watch the most significant event of a new trainers journey...");
-        System.out.println("      the forming of bonds between trainer and monster.\n\n");
+        Thread.sleep(8000);
 
         // Form bonds
         try {
@@ -57,8 +61,7 @@ public class Main {
             System.out.println(dock.getName() + "'s Codex is full.");
         }
 
-        System.out.println("\n   What a beautiful sight...");
-        System.out.println("        A monster awakening into Code-a-mon.\n\n");
+        Thread.sleep(4000);
 
         try {
             CodeAMon kaht = tomm.formBond(wildKaht);
@@ -69,10 +72,8 @@ public class Main {
             System.out.println(dock.getName() + "'s Codex is full.");
         }
 
-        System.out.println("\n   Hang tight everyone!");
-        System.out.println("        You will soon get to witness what you all came here for.\n\n");
+        Thread.sleep(2000);
 
-        System.out.println("Registration is now open at the Kampfarena!");
         // TODO: Set up registration
     }
 }
