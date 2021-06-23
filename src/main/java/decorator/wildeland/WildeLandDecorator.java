@@ -1,4 +1,7 @@
-package decorator;
+package decorator.wildeland;
+
+import decorator.wildeland.Environment;
+import decorator.wildeland.Weather;
 
 public abstract class WildeLandDecorator implements Environment {
     private Environment environment;

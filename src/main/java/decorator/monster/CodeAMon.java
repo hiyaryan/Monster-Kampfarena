@@ -1,4 +1,4 @@
-package decorator;
+package decorator.monster;
 
 import factory.AbstractMonster;
 import factory.Trainer;

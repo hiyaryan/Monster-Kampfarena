@@ -1,4 +1,4 @@
-import decorator.CodeAMon;
+import decorator.monster.CodeAMon;
 import factory.Monster;
 import factory.Trainer;
 import mediator.Mediator;
@@ -19,6 +19,7 @@ public class Main {
 
         initializeTheWildeLand(controller, mediator);
         // TODO: Set up registration
+
 
 //        System.exit(0);
     }

@@ -1,6 +1,6 @@
 package factory;
 
-import decorator.CodeAMon;
+import decorator.monster.CodeAMon;
 
 import java.util.Random;
 

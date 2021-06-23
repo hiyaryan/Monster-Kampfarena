@@ -1,7 +1,7 @@
 package factory;
 
-import decorator.CodeAMon;
-import decorator.Initial;
+import decorator.monster.CodeAMon;
+import decorator.monster.Initial;
 
 import java.util.Random;
 

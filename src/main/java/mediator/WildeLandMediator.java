@@ -1,7 +1,7 @@
 package mediator;
 
-import decorator.Environment;
-import decorator.Weather;
+import decorator.wildeland.Environment;
+import decorator.wildeland.Weather;
 import narrator.Narration;
 import narrator.Narrator;
 

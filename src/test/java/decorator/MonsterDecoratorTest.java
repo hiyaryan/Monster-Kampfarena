@@ -1,5 +1,7 @@
 package decorator;
 
+import decorator.monster.CodeAMon;
+import decorator.monster.Initial;
 import factory.AbstractMonster;
 import factory.AbstractTrainer;
 import factory.Monster;

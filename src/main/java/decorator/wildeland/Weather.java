@@ -1,4 +1,4 @@
-package decorator;
+package decorator.wildeland;
 
 import java.util.Random;
 

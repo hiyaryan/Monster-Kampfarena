@@ -1,6 +1,6 @@
 package mediator;
 
-import decorator.Environment;
+import decorator.wildeland.Environment;
 
 /**
  * Mediator (Mediator.java)

@@ -1,5 +1,8 @@
 package decorator;
 
+import decorator.monster.CodeAMon;
+import decorator.monster.Initial;
+import decorator.monster.MonsterDecorator;
 import factory.AbstractMonster;
 import factory.AbstractTrainer;
 import factory.Monster;
@@ -174,9 +177,9 @@ public class InitialTest {
         initial.init((Trainer) trainer);
 
         System.out.println("\nExpected: skills.size == 0");
-        System.out.println("Actual: skills.size == " + initial.skills.size() + "\n");
+        System.out.println("Actual: skills.size == " + initial.getSkills().size() + "\n");
 
-        Assert.assertEquals(0, initial.skills.size());
+        Assert.assertEquals(0, initial.getSkills().size());
     }
 
     /**

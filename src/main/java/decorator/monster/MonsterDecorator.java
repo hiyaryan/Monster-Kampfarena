@@ -1,4 +1,4 @@
-package decorator;
+package decorator.monster;
 
 import factory.AbstractMonster;
 import factory.Monster;
@@ -55,7 +55,7 @@ public abstract class MonsterDecorator implements CodeAMon {
     /**
      * This inner class provides the data structure for a skill
      */
-    static class Skill {
+    public static class Skill {
         private final String NAME;
         private final String TYPE;
         private int level;
