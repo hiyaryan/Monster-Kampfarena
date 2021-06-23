@@ -16,7 +16,11 @@ public class Main {
     public static void main(String[] args) throws InterruptedException, ClassNotFoundException {
         Player controller = Player.getController();
         Mediator mediator = WildeLandMediator.getMediator();
+
         initializeTheWildeLand(controller, mediator);
+        // TODO: Set up registration
+
+        System.exit(0);
     }
 
     public static void initializeTheWildeLand(Player controller, Mediator mediator)
@@ -49,7 +53,10 @@ public class Main {
         System.out.println(wildWale.statsToString());
         System.out.println(wildKaht.statsToString());
 
+        // Pause for narration
         Thread.sleep(10000);
+        System.out.println("[" + mediator.getWorld().whatTimeIsIt(mediator.getDate()) + "]");
+        System.out.println();
 
         // Form bonds
         try {
@@ -61,7 +68,10 @@ public class Main {
             System.out.println(dock.getName() + "'s Codex is full.");
         }
 
+        // Pause for narration
         Thread.sleep(10000);
+        System.out.println("[" + mediator.getWorld().whatTimeIsIt(mediator.getDate()) + "]");
+        System.out.println();
 
         try {
             CodeAMon kaht = tomm.formBond(wildKaht);
@@ -72,10 +82,12 @@ public class Main {
             System.out.println(dock.getName() + "'s Codex is full.");
         }
 
+        // Pause for narration
         Thread.sleep(2000);
+        System.out.println("[" + mediator.getWorld().whatTimeIsIt(mediator.getDate()) + "]");
+        System.out.println();
 
-        // TODO: Set up registration
-        System.out.println(mediator.getWorld().whatTimeIsIt(mediator.getDate()));
-//        mediator.getWorld().whatTimeIsIt(mediator.getDate());
+        // Pause for narration
+        Thread.sleep(7000);
     }
 }
