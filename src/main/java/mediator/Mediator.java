@@ -1,12 +1,22 @@
 package mediator;
 
-// http://www.blackwasp.co.uk/Mediator.aspx
+/**
+ * Mediator (Mediator.java)
+ *
+ * This interface is implemented in WildeLandMediator.java.
+ *
+ * @author Ryan Meneses
+ * @version 1.0
+ * @since June 23, 2021
+ */
 public interface Mediator {
-    World mediateTime(int time);
+    WildeLand mediateTime(int time);
+
+    String getDate();
 
     int getDay();
 
     int getTime();
 
-    World getWorld();
+    WildeLand getWorld();
 }

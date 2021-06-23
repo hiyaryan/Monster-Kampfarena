@@ -1,12 +1,12 @@
 package mediator;
 
-public class Day extends World{
+public class Day extends WildeLand {
     public Day() {
 
     }
 
     @Override
-    public String whatTimeIsIt() {
-        return "day";
+    public String whatTimeIsIt(String date) {
+        return "Day, " + date;
     }
 }

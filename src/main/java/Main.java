@@ -2,7 +2,7 @@ import decorator.CodeAMon;
 import factory.Monster;
 import factory.Trainer;
 import mediator.Mediator;
-import mediator.WorldMediator;
+import mediator.WildeLandMediator;
 import singleton.Player;
 
 /**
@@ -15,7 +15,7 @@ import singleton.Player;
 public class Main {
     public static void main(String[] args) throws InterruptedException, ClassNotFoundException {
         Player controller = Player.getController();
-        Mediator mediator = WorldMediator.getMediator();
+        Mediator mediator = WildeLandMediator.getMediator();
         initializeTheWildeLand(controller, mediator);
     }
 
@@ -75,5 +75,7 @@ public class Main {
         Thread.sleep(2000);
 
         // TODO: Set up registration
+        System.out.println(mediator.getWorld().whatTimeIsIt(mediator.getDate()));
+//        mediator.getWorld().whatTimeIsIt(mediator.getDate());
     }
 }
