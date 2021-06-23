@@ -1,5 +1,7 @@
 package decorator;
 
-public class Environment extends WeatherDecorator {
+public interface Environment {
+    Environment getEnvironment();
 
+    String howIsTheWeather(String time);
 }

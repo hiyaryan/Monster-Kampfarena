@@ -1,5 +1,7 @@
 package mediator;
 
+import decorator.Environment;
+
 /**
  * WildeLand (WildeLand.java)
  *
@@ -11,8 +13,6 @@ package mediator;
  * @version 1.0
  * @since June 23, 2021
  */
-public abstract class WildeLand {
-    Mediator mediator = WildeLandMediator.getMediator();
-
+public abstract class WildeLand implements Environment {
     public abstract String whatTimeIsIt(String date);
 }
