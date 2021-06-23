@@ -49,7 +49,7 @@ public class Main {
         System.out.println(wildWale.statsToString());
         System.out.println(wildKaht.statsToString());
 
-        Thread.sleep(8000);
+        Thread.sleep(10000);
 
         // Form bonds
         try {
@@ -61,7 +61,7 @@ public class Main {
             System.out.println(dock.getName() + "'s Codex is full.");
         }
 
-        Thread.sleep(4000);
+        Thread.sleep(10000);
 
         try {
             CodeAMon kaht = tomm.formBond(wildKaht);
