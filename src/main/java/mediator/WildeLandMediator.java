@@ -1,5 +1,8 @@
 package mediator;
 
+import narrator.Narrator;
+import narrator.Narration;
+
 /**
  * WildeLandMediator (WildeLandMediator.java)
  *
@@ -78,6 +81,8 @@ public class WildeLandMediator implements Mediator, Runnable {
      */
     @Override
     public void run() {
+        Narrator narrator;
+
         this.time = 1;
         this.day = 0;
 
@@ -88,7 +93,9 @@ public class WildeLandMediator implements Mediator, Runnable {
 
             while (time != 7) {
                 this.world = mediateTime(this.time);
-                world.narrateDay(day, time, counter);
+
+                narrator = new Narration(day, time, counter);
+                narrator.narrateDay();
 
                 try {
                     Thread.sleep(1000);
