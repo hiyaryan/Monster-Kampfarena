@@ -13,7 +13,7 @@ import singleton.Player;
  * @since June 19, 2021
  */
 public class Main {
-    public static void main(String[] args) throws InterruptedException, ClassNotFoundException {
+    public static void main(String[] args) throws InterruptedException {
         Player controller = Player.getController();
         Mediator mediator = WildeLandMediator.getMediator();
 
