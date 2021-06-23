@@ -53,6 +53,12 @@ public class WildeLandMediator implements Mediator, Runnable {
     }
 
     @Override
+    public Environment mediateWeather() {
+        return new Weather(this.wildeLand, this.wildeLand.whatTimeIsIt(this.date));
+    }
+
+
+    @Override
     public synchronized WildeLand getWildeLand() {
         return this.wildeLand;
     }
@@ -100,12 +106,8 @@ public class WildeLandMediator implements Mediator, Runnable {
                 this.wildeLand = mediateTime(this.time);
 
                 // Check the weather twice a day
-                if(this.time == 1 && counter == 0) {
-                    environment = new Weather(this.wildeLand, this.wildeLand.whatTimeIsIt(this.date));
-                    System.out.println(environment.howIsTheWeather(this.wildeLand.whatTimeIsIt(this.date)));
-
-                } else if(this.time == 3 && counter == 0) {
-                    environment = new Weather(this.wildeLand, this.wildeLand.whatTimeIsIt(this.date));
+                if((this.time == 1 && counter == 0) || (this.time == 3 && counter == 0)) {
+                    environment = mediateWeather();
                     System.out.println(environment.howIsTheWeather(this.wildeLand.whatTimeIsIt(this.date)));
                 }
 

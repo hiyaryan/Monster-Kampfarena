@@ -1,5 +1,7 @@
 package mediator;
 
+import decorator.Environment;
+
 /**
  * Mediator (Mediator.java)
  *
@@ -11,6 +13,8 @@ package mediator;
  */
 public interface Mediator {
     WildeLand mediateTime(int time);
+
+    Environment mediateWeather();
 
     String getDate();
 

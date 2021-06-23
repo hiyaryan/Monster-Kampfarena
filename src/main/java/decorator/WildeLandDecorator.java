@@ -7,11 +7,6 @@ public abstract class WildeLandDecorator implements Environment {
         this.environment = environment;
     }
 
-    @Override
-    public Environment getEnvironment() {
-        return environment;
-    }
-
     public abstract Weather determineTheDayWeatherForecast();
     public abstract Weather determineTheNightWeatherForecast();
 }

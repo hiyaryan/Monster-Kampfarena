@@ -15,16 +15,6 @@ public class Night extends WildeLand {
         return "Night " + date;
     }
 
-    /**
-     * This method is an implementation of the Environment decorator method.
-     *
-     * @return Night
-     */
-    @Override
-    public WildeLand getEnvironment() {
-        return this;
-    }
-
     @Override
     public String howIsTheWeather(String time) {
         return "Tonight's forecast: \n   " + time + " neutral\n";
