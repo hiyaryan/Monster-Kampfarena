@@ -1,7 +1,9 @@
 package mediator;
 
-import narrator.Narrator;
+import decorator.Environment;
+import decorator.Weather;
 import narrator.Narration;
+import narrator.Narrator;
 
 /**
  * WildeLandMediator (WildeLandMediator.java)
@@ -17,10 +19,16 @@ import narrator.Narration;
  */
 public class WildeLandMediator implements Mediator, Runnable {
     private static WildeLandMediator mediator = new WildeLandMediator();
-    private WildeLand world;
+    private WildeLand wildeLand;
     private String date;
     private int time;
     private int day;
+
+    public WildeLandMediator() {
+        this.date = "0d:1t:0c";
+        this.time = 1;
+        this.day = 0;
+    }
 
     public static WildeLandMediator getMediator() {
         return mediator;
@@ -45,8 +53,8 @@ public class WildeLandMediator implements Mediator, Runnable {
     }
 
     @Override
-    public synchronized WildeLand getWorld() {
-        return this.world;
+    public synchronized WildeLand getWildeLand() {
+        return this.wildeLand;
     }
 
     @Override
@@ -83,16 +91,23 @@ public class WildeLandMediator implements Mediator, Runnable {
     public void run() {
         Narrator narrator;
 
-        this.time = 1;
-        this.day = 0;
-
         while(day != 8) {
-
+            Environment environment;
             long start = System.currentTimeMillis() / 1000;
             int counter = 0;
 
-            while (time != 7) {
-                this.world = mediateTime(this.time);
+            while (time != 4) {
+                this.wildeLand = mediateTime(this.time);
+
+                // Check the weather twice a day
+                if(this.time == 1 && counter == 0) {
+                    environment = new Weather(this.wildeLand, this.wildeLand.whatTimeIsIt(this.date));
+                    System.out.println(environment.howIsTheWeather(this.wildeLand.whatTimeIsIt(this.date)));
+
+                } else if(this.time == 3 && counter == 0) {
+                    environment = new Weather(this.wildeLand, this.wildeLand.whatTimeIsIt(this.date));
+                    System.out.println(environment.howIsTheWeather(this.wildeLand.whatTimeIsIt(this.date)));
+                }
 
                 narrator = new Narration(day, time, counter);
                 narrator.narrateDay();

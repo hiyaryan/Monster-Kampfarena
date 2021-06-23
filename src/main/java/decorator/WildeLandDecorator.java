@@ -12,5 +12,6 @@ public abstract class WildeLandDecorator implements Environment {
         return environment;
     }
 
-    public abstract Weather determineTheWeatherForecast();
+    public abstract Weather determineTheDayWeatherForecast();
+    public abstract Weather determineTheNightWeatherForecast();
 }

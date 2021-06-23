@@ -12,7 +12,7 @@ public class Day extends WildeLand {
      */
     @Override
     public String whatTimeIsIt(String date) {
-        return "Day, " + date;
+        return "Day " + date;
     }
 
     /**
@@ -27,6 +27,6 @@ public class Day extends WildeLand {
 
     @Override
     public String howIsTheWeather(String time) {
-        return "Today's forecast: \n   " + time + " neutral";
+        return "Today's forecast: \n   " + time + " neutral\n";
     }
 }

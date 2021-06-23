@@ -20,7 +20,7 @@ public class Main {
         initializeTheWildeLand(controller, mediator);
         // TODO: Set up registration
 
-        System.exit(0);
+//        System.exit(0);
     }
 
     public static void initializeTheWildeLand(Player controller, Mediator mediator)
@@ -55,7 +55,7 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(10000);
-        System.out.println("[" + mediator.getWorld().whatTimeIsIt(mediator.getDate()) + "]");
+        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt(mediator.getDate()) + "]");
         System.out.println();
 
         // Form bonds
@@ -70,7 +70,7 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(10000);
-        System.out.println("[" + mediator.getWorld().whatTimeIsIt(mediator.getDate()) + "]");
+        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt(mediator.getDate()) + "]");
         System.out.println();
 
         try {
@@ -84,7 +84,7 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(2000);
-        System.out.println("[" + mediator.getWorld().whatTimeIsIt(mediator.getDate()) + "]");
+        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt(mediator.getDate()) + "]");
         System.out.println();
 
         // Pause for narration

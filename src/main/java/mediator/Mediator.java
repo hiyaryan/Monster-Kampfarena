@@ -18,5 +18,5 @@ public interface Mediator {
 
     int getTime();
 
-    WildeLand getWorld();
+    WildeLand getWildeLand();
 }

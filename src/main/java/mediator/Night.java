@@ -27,6 +27,6 @@ public class Night extends WildeLand {
 
     @Override
     public String howIsTheWeather(String time) {
-        return "Tonight's forecast: \n   " + time + " neutral";
+        return "Tonight's forecast: \n   " + time + " neutral\n";
     }
 }
