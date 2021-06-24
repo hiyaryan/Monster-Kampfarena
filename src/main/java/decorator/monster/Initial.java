@@ -37,7 +37,7 @@ public class Initial extends MonsterDecorator {
 
             System.out.println("    "
                     + getMonster().getName()
-                    + " has become a code-a-mon!\n");
+                    + " has become a Code-a-mon!\n");
 
             boostStats();
             giveType();

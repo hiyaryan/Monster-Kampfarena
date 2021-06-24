@@ -22,10 +22,10 @@ public class Monster extends AbstractMonster implements CodeAMon {
             setHp(getMaxHp());
             setMp(getMaxMp());
 
-            setStrength(new Random().nextInt(20) + 1);
-            setMagic(new Random().nextInt(10) + 1);
-            setDefense(new Random().nextInt(10) + 1);
-            setHit(new Random().nextInt(15) + 1);
+            setStrength(new Random().nextInt(20) + 10);
+            setMagic(new Random().nextInt(10) + 15);
+            setDefense(new Random().nextInt(10) + 5);
+            setHit(new Random().nextInt(15) + 5);
             setEvasion(new Random().nextInt(5) + 1);
         }
     }
