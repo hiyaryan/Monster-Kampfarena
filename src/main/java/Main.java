@@ -24,7 +24,7 @@ public class Main {
 
         while(true) {
             System.out.println(mediator.getEnvironment().getWeather());
-            System.out.println(mediator.getWildeLand().whatTimeIsIt(mediator.getDate()));
+            System.out.println(mediator.getWildeLand().whatTimeIsIt());
 
             Thread.sleep(10000);
         }
@@ -64,7 +64,7 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(10000);
-        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt(mediator.getDate()) + "]");
+        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt() + "]");
         System.out.println();
 
         // Form bonds
@@ -79,7 +79,7 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(10000);
-        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt(mediator.getDate()) + "]");
+        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt() + "]");
         System.out.println();
 
         try {
@@ -93,7 +93,7 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(2000);
-        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt(mediator.getDate()) + "]");
+        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt() + "]");
         System.out.println();
 
         // Pause for narration

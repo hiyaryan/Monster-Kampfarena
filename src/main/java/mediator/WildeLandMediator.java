@@ -29,7 +29,6 @@ public class WildeLandMediator implements Mediator, Runnable {
     private int day;
 
     public WildeLandMediator() {
-        environment = new Day();
         this.date = "0d:1t:0c";
         this.time = 1;
         this.day = 0;
@@ -50,16 +49,16 @@ public class WildeLandMediator implements Mediator, Runnable {
     @Override
     public synchronized WildeLand mediateTime(int time) {
         if(time > 0 && time < 3) {
-            return new Day();
+            return new Day(this.date);
 
         } else {
-            return new Night();
+            return new Night(this.date);
         }
     }
 
     @Override
     public synchronized Environment mediateWeather() {
-        return new Weather(this.wildeLand.whatTimeIsIt(this.date));
+        return new Weather(this.wildeLand.whatTimeIsIt());
     }
 
 
@@ -118,7 +117,7 @@ public class WildeLandMediator implements Mediator, Runnable {
                 if((this.time == 1 && counter == 0) || (this.time == 3 && counter == 0)) {
                     // Print the weather forecast
                     this.environment = mediateWeather();
-                    System.out.println(environment.howIsTheWeather(this.wildeLand.whatTimeIsIt(this.date)));
+                    System.out.println(environment.howIsTheWeather(this.wildeLand.whatTimeIsIt()));
                 }
 
                 narrator = new Narration(day, time, counter);

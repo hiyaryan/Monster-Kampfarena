@@ -1,8 +1,8 @@
 package mediator.colleague;
 
 public class Night extends WildeLand {
-    public Night() {
-
+    public Night(String date) {
+        super(date);
     }
 
     /**
@@ -11,8 +11,8 @@ public class Night extends WildeLand {
      * @return String "Night, day:time:counter"
      */
     @Override
-    public String whatTimeIsIt(String date) {
-        return "Night " + date;
+    public String whatTimeIsIt() {
+        return "Night " + super.date;
     }
 
     @Override

@@ -1,8 +1,8 @@
 package mediator.colleague;
 
 public class Day extends WildeLand {
-    public Day() {
-
+    public Day(String date) {
+        super(date);
     }
 
     /**
@@ -11,8 +11,8 @@ public class Day extends WildeLand {
      * @return String "Day, day:time:counter"
      */
     @Override
-    public String whatTimeIsIt(String date) {
-        return "Day " + date;
+    public String whatTimeIsIt() {
+        return "Day " + super.date;
     }
 
     @Override
