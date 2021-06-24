@@ -1,8 +1,11 @@
-import factory.*;
+import factory.AbstractFactory;
+import factory.Factory;
 import factory.product.AbstractMonster;
 import factory.product.AbstractTrainer;
 import factory.product.Monster;
 import factory.product.Trainer;
+
+import java.util.HashMap;
 
 /**
  * Player (Player.java)
@@ -16,12 +19,16 @@ import factory.product.Trainer;
 public class Player {
     private static Player controller = new Player();
     private AbstractFactory factory;
+    HashMap<String, Trainer> trainers;
+    HashMap<String, Monster> monsters;
 
     /**
      * Instantiate a ConcreteFactory.
      */
     private Player() {
         this.factory = new Factory();
+        trainers= new HashMap<>();
+        monsters = new HashMap<>();
     }
 
     /**
@@ -120,6 +127,32 @@ public class Player {
 //        }
 
         return (Monster) monster;
+    }
+
+    /**
+     * Add a trainer to the Wilde Land
+     *
+     * @param trainer Trainer
+     */
+    public void addTrainer(Trainer trainer) {
+        this.trainers.put(trainer.getName(), trainer);
+    }
+
+    public HashMap<String, Trainer> getTrainers() {
+        return trainers;
+    }
+
+    /**
+     * Add a wile monster to the Wilde Land.
+     *
+     * @param monster Monster
+     */
+    public void addMonster(Monster monster) {
+        this.monsters.put(monster.getName(), monster);
+    }
+
+    public HashMap<String, Monster> getMonsters() {
+        return monsters;
     }
 
     /**
