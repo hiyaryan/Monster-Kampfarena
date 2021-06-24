@@ -205,8 +205,8 @@ public class Initial extends MonsterDecorator {
     public String statsToString() {
         StringBuilder sb = new StringBuilder("   >>> " + getMonster().getName() + " <<<\n");
         sb.append("   Type: ").append(getType()).append("\n");
-        sb.append("   HP:   ").append(getMonster().getMaxHp()).append("\n");
-        sb.append("   MP:   ").append(getMonster().getMaxMp());
+        sb.append("   HP:   ").append(getMonster().getHp()).append("/").append(getMonster().getMaxHp()).append("\n");
+        sb.append("   MP:   ").append(getMonster().getMp()).append("/").append(getMonster().getMaxMp());
 
         return sb.toString();
     }

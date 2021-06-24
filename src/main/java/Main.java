@@ -23,17 +23,9 @@ public class Main {
         startSimulation();
 
         controller.printTeamData(controller.getTrainers().get("Dock"));
+        controller.printTeamData(controller.getTrainers().get("Tomm"));
 
-        System.out.println("Inside CODEX:");
-        System.out.println(controller.getTrainers().get("Dock").getCodex().get("Wale").statsToString());
-
-        System.out.println("SHELL Monster:");
-        System.out.println(controller.getMonsters().get("Wale").statsToString());
-
-//        controller.printTeamData(controller.getTrainers().get("Tomm"));
-//        System.out.println(controller.getMonsters().get("Kaht").statsToString());
-
-//        System.exit(0);
+        System.exit(0);
         // TODO: Set up registration
     }
 
