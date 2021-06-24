@@ -85,6 +85,11 @@ public class Main {
         controller.addMonster(wildAdle);
     }
 
+    /**
+     * This method initializes trainers with their first Code-a-mon.
+     *
+     * @throws InterruptedException
+     */
     public static void startSimulation() throws InterruptedException {
         // Start the clock
         Thread tick = new Thread((Runnable) mediator);
@@ -193,7 +198,11 @@ public class Main {
         Thread.sleep(8000);
     }
 
+    /**
+     * This method prints the game time in the Wilde Land
+     * Example: [Time: Day 0d:1t:9c]
+     */
     public static void printWildeLandTime() {
-        System.out.println("Time:\n   [" + mediator.getWildeLand().whatTimeIsIt() + "]\n");
+        System.out.println("[Time: " + mediator.getWildeLand().whatTimeIsIt() + "]\n");
     }
 }

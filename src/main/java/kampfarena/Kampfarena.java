@@ -1,20 +1,19 @@
 package kampfarena;
 
+import factory.product.Trainer;
 import mediator.Mediator;
 import mediator.WildeLandMediator;
 
-public class Registration {
+import java.util.Queue;
+
+public class Kampfarena {
     static Mediator mediator = WildeLandMediator.getMediator();
+    protected Battle battle;
+    Queue<Trainer> registry;
 
-    /**
-     *
-     */
-    public void register() {
+    public void openTheBattleGround() {
         if(mediator.getWildeLand().whatTimeIsIt().contains("1t") || mediator.getWildeLand().whatTimeIsIt().contains("2t")) {
-
-        } else {
-            System.out.println("Sorry we're closed!");
-            System.out.println("   Registration is open everyday from 1t-2t.");
+            this.battle = Battle.initializeBattle();
         }
     }
 }
