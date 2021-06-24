@@ -19,8 +19,8 @@ import java.util.HashMap;
 public class Player {
     private static Player controller = new Player();
     private AbstractFactory factory;
-    HashMap<String, Trainer> trainers;
-    HashMap<String, Monster> monsters;
+    private HashMap<String, Trainer> trainers;
+    private HashMap<String, Monster> monsters;
 
     /**
      * Instantiate a ConcreteFactory.

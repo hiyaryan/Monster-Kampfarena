@@ -71,7 +71,7 @@ public class Main {
         System.out.println(wildExml.statsToString());
         System.out.println(wildAdle.statsToString());
 
-        controller.addMonster(wildAdle);
+        controller.addMonster(wildWale);
         controller.addMonster(wildKaht);
         controller.addMonster(wildPyth);
         controller.addMonster(wildJaxx);
@@ -100,16 +100,45 @@ public class Main {
             CodeAMon wale = controller
                     .getTrainers().get("Dock")
                     .formBond(controller.getMonsters().get("Wale"));
-
-            System.out.println(controller
-                    .getTrainers().get("Dock").listMonsters());
-
             System.out.println(wale.listSkills());
+
+            CodeAMon pyth = controller
+                    .getTrainers().get("Dock")
+                    .formBond(controller.getMonsters().get("Pyth"));
+            System.out.println(pyth.listSkills());
+
+            CodeAMon coco = controller
+                    .getTrainers().get("Dock")
+                    .formBond(controller.getMonsters().get("Coco"));
+            System.out.println(coco.listSkills());
+
+            CodeAMon clie = controller
+                    .getTrainers().get("Dock")
+                    .formBond(controller.getMonsters().get("Clie"));
+            System.out.println(clie.listSkills());
+
+            CodeAMon exml = controller
+                    .getTrainers().get("Dock")
+                    .formBond(controller.getMonsters().get("Exml"));
+            System.out.println(exml.listSkills());
+
+            CodeAMon desi = controller
+                    .getTrainers().get("Dock")
+                    .formBond(controller.getMonsters().get("Desi"));
+            System.out.println(desi.listSkills());
+
+            CodeAMon kaht = controller
+                    .getTrainers().get("Dock")
+                    .formBond(controller.getMonsters().get("Kaht"));
+            System.out.println(kaht.listSkills());
 
         } catch (NullPointerException npe) {
             System.out.println(controller
-                    .getTrainers().get("Dock").getName() + "'s Codex is full.");
+                    .getTrainers().get("Dock").getName() + "'s Codex is full.\n");
         }
+
+        System.out.println(controller
+                .getTrainers().get("Dock").listMonsters());
 
         // Pause for narration
         Thread.sleep(10000);
@@ -119,16 +148,40 @@ public class Main {
             CodeAMon kaht = controller
                     .getTrainers().get("Tomm")
                     .formBond(controller.getMonsters().get("Kaht"));
-
-            System.out.println(controller
-                    .getTrainers().get("Tomm").listMonsters());
-
             System.out.println(kaht.listSkills());
+
+            CodeAMon jaxx = controller
+                    .getTrainers().get("Tomm")
+                    .formBond(controller.getMonsters().get("Jaxx"));
+            System.out.println(jaxx.listSkills());
+
+            CodeAMon antt = controller
+                    .getTrainers().get("Tomm")
+                    .formBond(controller.getMonsters().get("Antt"));
+            System.out.println(antt.listSkills());
+
+            CodeAMon gith = controller
+                    .getTrainers().get("Tomm")
+                    .formBond(controller.getMonsters().get("Gith"));
+            System.out.println(gith.listSkills());
+
+            CodeAMon adle = controller
+                    .getTrainers().get("Tomm")
+                    .formBond(controller.getMonsters().get("Adle"));
+            System.out.println(adle.listSkills());
+
+            CodeAMon serv = controller
+                    .getTrainers().get("Tomm")
+                    .formBond(controller.getMonsters().get("Serv"));
+            System.out.println(serv.listSkills());
 
         } catch (NullPointerException npe) {
             System.out.println(controller
-                    .getTrainers().get("Tomm").getName() + "'s Codex is full.");
+                    .getTrainers().get("Tomm").getName() + "'s Codex is full.\n");
         }
+
+        System.out.println(controller
+                .getTrainers().get("Tomm").listMonsters());
 
         // Pause for narration
         Thread.sleep(2000);

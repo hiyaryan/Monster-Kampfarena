@@ -74,10 +74,30 @@ public class Initial extends MonsterDecorator {
 
         switch (name) {
             case "Wale":
-                setType("Water");
+            case "Adle":
+                setType(Type.WATER.toString());
                 break;
             case "Kaht":
-                setType("Poison");
+            case "Antt":
+                setType(Type.BIO.toString());
+                break;
+            case "Pyth":
+            case "Clie":
+                setType(Type.BLIZZARD.toString());
+                break;
+            case "Jaxx":
+            case "Serv":
+                setType(Type.LIGHTNING.toString());
+                break;
+            case "Coco":
+            case "Gith":
+                setType(Type.FIRE.toString());
+                break;
+            case "Desi":
+                setType(Type.DARK.toString());
+                break;
+            case "Exml":
+                setType(Type.LIGHT.toString());
                 break;
             default:
                 System.out.println("Unidentified code-a-mon.");
@@ -99,10 +119,40 @@ public class Initial extends MonsterDecorator {
 
         switch (name) {
             case "Wale":
-                skill = initSkill("Splash", "Water");
+                skill = initSkill("Splash", this.type);
                 break;
             case "Kaht":
-                skill = initSkill("Scratch", "Poison");
+                skill = initSkill("Scratch", this.type);
+                break;
+            case "Pyth":
+                skill = initSkill("Stare", Type.NONE.toString());
+                break;
+            case "Jaxx":
+                skill = initSkill("Strike", Type.NONE.toString());
+                break;
+            case "Coco":
+                skill = initSkill("Bounce", Type.NONE.toString());
+                break;
+            case "Antt":
+                skill = initSkill("Bite", this.type);
+                break;
+            case "Gith":
+                skill = initSkill("Ignite", this.type);
+                break;
+            case "Serv":
+                skill = initSkill("Shock", this.type);
+                break;
+            case "Clie":
+                skill = initSkill("Flurry", this.type);
+                break;
+            case "Desi":
+                skill = initSkill("Expel", this.type);
+                break;
+            case "Exml":
+                skill = initSkill("Repel", this.type);
+                break;
+            case "Adle":
+                skill = initSkill("Mist", this.type);
                 break;
             default:
                 System.out.println("Unidentified code-a-mon.");

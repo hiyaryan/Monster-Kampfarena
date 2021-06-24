@@ -82,4 +82,18 @@ public abstract class MonsterDecorator implements CodeAMon {
             this.level = level;
         }
     }
+
+    /**
+     * This enum lists the elemental types.
+     */
+    public enum Type {
+        FIRE,
+        LIGHTNING,
+        BLIZZARD,
+        WATER,
+        BIO,
+        DARK,
+        LIGHT,
+        NONE
+    }
 }
