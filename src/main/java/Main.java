@@ -26,7 +26,6 @@ public class Main {
         controller.printTeamData(controller.getTrainers().get("Tomm"));
 
         System.exit(0);
-        // TODO: Set up registration
     }
 
     public static void initializeTheWildeLand()

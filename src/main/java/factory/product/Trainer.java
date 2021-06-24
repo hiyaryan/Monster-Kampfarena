@@ -9,9 +9,13 @@ public class Trainer extends AbstractTrainer {
     public Trainer(String name) {
         if (name != null) {
             setName(name);
+            setLvl(1);
 
-            setHp(new Random().nextInt(30) + 1);
-            setMp(new Random().nextInt(15) + 1);
+            setMaxHp(new Random().nextInt(30) + 1);
+            setMaxMp(new Random().nextInt(15) + 1);
+
+            setHp(getMaxHp());
+            setMp(getMaxMp());
         }
     }
 
