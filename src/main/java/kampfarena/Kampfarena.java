@@ -55,11 +55,8 @@ public class Kampfarena {
         if(isRegistrationOpen()) {
             for(String name : trainers.keySet()) {
                 Registration registration = new Registration();
-                System.out.println(trainers.get(name));
                 registry.add(registration.register(trainers.get(name)));
             }
-
-            System.out.println("Registry size: " + registry.size());
         }
     }
 
@@ -67,6 +64,18 @@ public class Kampfarena {
      * Initiate a new battle.
      */
     public void initiateBattle() {
-        new Battle().battle();
+        if(mediator.getWildeLand().whatTimeIsIt().contains("1t") || mediator.getWildeLand().whatTimeIsIt().contains("2t")) {
+            if(registry.size() >= 2) {
+                new Battle(registry).battle();
+
+            } else {
+                System.out.println("At least two trainers must be registered to commence a battle.");
+                System.out.println("   Currently there is " + registry.size() + " trainer registered.\n");
+            }
+
+        } else {
+            System.out.println("The arena is open from 1t-2t.");
+            System.out.println("   Get some rest!\n");
+        }
     }
 }

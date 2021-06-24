@@ -15,10 +15,14 @@ import mediator.WildeLandMediator;
  */
 public class Registration {
     static Mediator mediator = WildeLandMediator.getMediator();
-    Trainer trainer;
+    private Trainer trainer;
 
     public Registration() {
-        System.out.println("Setting up registry.");
+        System.out.println("A trainer has just registered!\n");
+    }
+
+    public Trainer getTrainer() {
+        return trainer;
     }
 
     /**

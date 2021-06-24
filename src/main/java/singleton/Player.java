@@ -156,10 +156,10 @@ public class Player {
     /**
      * Randomly select an option from the menu.
      */
-    public String getMenuSelection() {
+    public String getMenuSelection(Trainer trainer) {
+        // TODO: Make this random ALSO include the Code-a-mon menu
         BattleMenu<Trainer> battleMenu = new BattleMenu<>();
-        battleMenu = battleMenu.builtTrainerMenu(controller.getTrainers().get("Dock"));
-
+        battleMenu = battleMenu.builtTrainerMenu(controller.getTrainers().get(trainer.getName()));
         return battleMenu.toString();
     }
 }
