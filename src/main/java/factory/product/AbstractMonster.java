@@ -57,7 +57,7 @@ public abstract class AbstractMonster {
     }
 
     public void isWild(boolean isWild) {
-        this.isWild = isWild;
+        this.isWild = !isWild;
     }
 
     public Trainer getTrainer() {
