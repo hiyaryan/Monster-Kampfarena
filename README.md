@@ -43,22 +43,28 @@
               plays out, it refers to this thread to determine what actions it can perform next.
             
             * A simulation runs on an in-game clock. The clock reads day:time:counter [d:t:c]
-                - 1 simulation has 8 days
-                - 1 day = 4 times
-                - 1 time = 16 counters
-                - 1 counter tick = 1 real-world second
+                * 1 simulation has 8 days
+                * 1 day = 4 times
+                * 1 time = 16 counters
+                * 1 counter tick = 1 real-world second
                 
             * The simuation begins at [0d:1t:0c]
-               - Day time is from 1t-2t (the game begins during the day)
-               - Night time is from 3t-0t
+               * Day time is from 1t-2t (the game begins during the day)
+               * Night time is from 3t-0t
+               
+            * The simulation ends at [7d:3t:15c]
+               * A basic simulation with two trainers can end it two ways
+                    1. Neither trainer can beat the other before [7d:3t:15c]
+                    2. A trainer defeats all of another trainers Code-a-mon and finishes it
+                       off with a final blow.
                
             * The weather is read twice a day
-               - During the day at 1t
-               - During the night at 3t
+               * During the day at 1t
+               * During the night at 3t
                
             * Depending on the time of the day, determiens what a trainer may do
-               - During the day a trainer may fight at the Kampfarena
-               - During the night a trainer may heal its Code-a-mon
+               * During the day a trainer may fight at the Kampfarena
+               * During the night a trainer may heal its Code-a-mon
                
             * Depending on the weather, a Code-a-mon may be buffed or debuffed
                
