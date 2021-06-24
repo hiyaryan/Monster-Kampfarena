@@ -22,13 +22,7 @@ public class Main {
 
         initializeTheWildeLand();
 
-        while(true) {
-            System.out.println(mediator.getEnvironment().getWeather());
-            System.out.println(mediator.getWildeLand().whatTimeIsIt());
-
-            Thread.sleep(10000);
-        }
-
+        System.exit(0);
         // TODO: Set up registration
     }
 
@@ -64,8 +58,7 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(10000);
-        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt() + "]");
-        System.out.println();
+        printWildeLandTime();
 
         // Form bonds
         try {
@@ -79,8 +72,7 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(10000);
-        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt() + "]");
-        System.out.println();
+        printWildeLandTime();
 
         try {
             CodeAMon kaht = tomm.formBond(wildKaht);
@@ -93,10 +85,13 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(2000);
-        System.out.println("[" + mediator.getWildeLand().whatTimeIsIt() + "]");
-        System.out.println();
+        printWildeLandTime();
 
         // Pause for narration
         Thread.sleep(8000);
+    }
+
+    public static void printWildeLandTime() {
+        System.out.println("Time:\n   [" + mediator.getWildeLand().whatTimeIsIt() + "]\n");
     }
 }

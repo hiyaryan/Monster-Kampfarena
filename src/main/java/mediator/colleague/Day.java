@@ -16,12 +16,7 @@ public class Day extends WildeLand {
     }
 
     @Override
-    public String howIsTheWeather(String time) {
-        return "Today's forecast: \n   " + time + " NEUTRAL\n";
-    }
-
-    @Override
-    public String getWeather() {
-        return null;
+    public String howIsTheWeather(String date) {
+        return "Today's forecast: \n   [" + whatTimeIsIt() + "] " + super.getWeather() + "\n";
     }
 }

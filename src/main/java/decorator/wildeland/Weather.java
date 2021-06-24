@@ -3,8 +3,6 @@ package decorator.wildeland;
 import java.util.Random;
 
 public class Weather extends WildeLandDecorator {
-    private Day day;
-    private Night night;
     private String weather;
 
     private enum Day {
@@ -41,6 +39,7 @@ public class Weather extends WildeLandDecorator {
     public String determineTheDayWeatherForecast() {
         int forecast = new Random().nextInt(5) + 1;
 
+        Day day;
         switch (forecast) {
             case 1:
                 day = Day.NEUTRAL;
@@ -69,6 +68,7 @@ public class Weather extends WildeLandDecorator {
     public String determineTheNightWeatherForecast() {
         int forecast = new Random().nextInt(5) + 1;
 
+        Night night;
         switch (forecast) {
             case 1:
                 night = Night.NEUTRAL;
@@ -91,45 +91,6 @@ public class Weather extends WildeLandDecorator {
         }
 
         return night.toString();
-    }
-
-    @Override
-    public String howIsTheWeather(String date) {
-        if(date.contains("Day")) {
-            switch (day) {
-                case NEUTRAL:
-                    return "Today's forecast: \n   " + date + " neutral\n";
-                case SUNNY:
-                    return "Today's forecast: \n   " + date + " sunny\n";
-                case WINDY:
-                    return "Today's forecast: \n   " + date + " windy\n";
-                case RAINY:
-                    return "Today's forecast: \n   " + date + " rainy\n";
-                case SNOWY:
-                    return "Today's forecast: \n   " + date + " snowy\n";
-                default:
-                    return "Some strange weather out here.";
-            }
-
-        } else if(date.contains("Night")) {
-            switch (night) {
-                case NEUTRAL:
-                    return "Tonight's forecast: \n   " + date + " neutral\n";
-                case TWILIGHT:
-                    return "Tonight's forecast: \n   " + date + " twilight\n";
-                case WINDY:
-                    return "Tonight's forecast: \n   " + date + " windy\n";
-                case RAINY:
-                    return "Tonight's forecast: \n   " + date + " rainy\n";
-                case SNOWY:
-                    return "Tonight's forecast: \n   " + date + " snowy\n";
-                default:
-                    return "Some strange weather out here.";
-            }
-
-        } else {
-            return "and time stood still.";
-        }
     }
 
     @Override
