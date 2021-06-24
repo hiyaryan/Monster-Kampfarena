@@ -3,7 +3,6 @@ import factory.product.Monster;
 import factory.product.Trainer;
 import mediator.Mediator;
 import mediator.WildeLandMediator;
-import singleton.Player;
 
 /**
  * Main (Main.java) This runs the simulation.

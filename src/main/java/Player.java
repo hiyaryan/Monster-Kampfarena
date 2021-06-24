@@ -1,5 +1,3 @@
-package singleton;
-
 import factory.*;
 import factory.product.AbstractMonster;
 import factory.product.AbstractTrainer;

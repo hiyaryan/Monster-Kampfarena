@@ -26,13 +26,45 @@
 > The design patterns used in the Monster Kampfarena simulation are as suggested
     
     - Decorator Pattern
-      This pattern is used for code-e-mon evolutions
+        - Initial monster transformation to a Code-a-mon
+        - All other Code-a-mon evolutions
+        - Day and night weather 
  
-    - Factory pattern
-      Builds codemon and trainer entities
+    - Factory Pattern
+        - Build trainer entities
+        - Builds Code-a-mon entities
       
-    - Mediator pattern
-      Mediates the simulation where for each tick an event occurs.
+    - Mediator Pattern
+        - Mediates between day and night
+        - Mediates the weather
+        
+        Note: 
+            * The mediator pattern runs in a synchronized thread to main. While the simulation
+              plays out, it refers to this thread to determine what actions it can perform next.
+            
+            * A simulation runs on an in-game clock. The clock reads day:time:counter [d:t:c]
+                - 1 simulation has 8 days
+                - 1 day = 4 times
+                - 1 time = 16 counters
+                - 1 counter tick = 1 real-world second
+                
+            * The simuation begins at [0d:1t:0c]
+               - Day time is from 1t-2t (the game begins during the day)
+               - Night time is from 3t-0t
+               
+            * The weather is read twice a day
+               - During the day at 1t
+               - During the night at 3t
+               
+            * Depending on the time of the day, determiens what a trainer may do
+               - During the day a trainer may fight at the Kampfarena
+               - During the night a trainer may heal its Code-a-mon
+               
+            * Depending on the weather, a Code-a-mon may be buffed or debuffed
+               
+    - Singleton Pattern
+        - One player can play the game
+        - One mediator can change mediate the Wilde Land
     
 ### Gradle
 > Build and generate Checkstyle and SpotBugs report
@@ -67,9 +99,12 @@
 >
 > List of Test Suites
 >
-> * \<SUITE-1\>
-> * \<SUITE-2\>
-> * \<SUITE-3\>
+> * decorator
+> * factory
+> * kampfarena
+> * mediator
+> * narrator
+> * main
 
 ### Screencast
 > Please view the following link for a short screen cast
