@@ -113,11 +113,12 @@ public class WildeLandMediator implements Mediator, Runnable {
             while (time != 4) {
                 this.wildeLand = mediateTime(this.time);
 
-                // Check the weather twice a day
+                // Check the weather and announcements twice a day
                 if((this.time == 1 && counter == 0) || (this.time == 3 && counter == 0)) {
                     // Print the weather forecast
                     this.environment = mediateWeather();
-                    System.out.println(this.wildeLand.howIsTheWeather(this.date));
+                    this.wildeLand.howIsTheWeather(this.date);
+                    this.wildeLand.isTheBattleGroundOpen();
                 }
 
                 narrator = new Narration(day, time, counter);

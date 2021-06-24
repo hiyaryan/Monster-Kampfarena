@@ -63,15 +63,15 @@ public class DayZero  {
     public void narrateHourTwo() {
         switch (counter) {
             case 7:
-                System.out.println("\n   It is almost that time...");
+                System.out.println("\n   It's almost that time...");
                 System.out.println("        for you to witness the might of the monsters of the Wilde Land.\n\n");
                 break;
             case 13:
-                System.out.println("\n   Registration is now open at the Kampfarena!\n\n");
+                System.out.println("\n   Our trainers are ready for battle!\n\n");
                 break;
             case 15:
-                System.out.println("\n   Our newest trainers are ready for battle.");
-                System.out.println("        Join us tomorrow on day one for the greatest spectacle of your life!\n\n");
+                System.out.println("\n   Join us tomorrow, 1t:1t:0c,...");
+                System.out.println("        at the Monster Kampfarena for the fight of their lives.\n\n");
             default:
                 break;
         }

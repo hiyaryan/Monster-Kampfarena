@@ -3,6 +3,15 @@ package kampfarena;
 import mediator.Mediator;
 import mediator.WildeLandMediator;
 
+/**
+ * Registration (Registration.java)
+ *
+ * This class provides the data structure for the registry.
+ *
+ * @author Ryan Meneses
+ * @version 1.0
+ * @since June 24, 2021
+ */
 public class Registration {
     static Mediator mediator = WildeLandMediator.getMediator();
 

@@ -5,6 +5,11 @@ public class Day extends WildeLand {
         super(date);
     }
 
+    @Override
+    public void isTheBattleGroundOpen() {
+        super.kampfarena.isRegistrationOpen();
+    }
+
     /**
      * This method is an implementation of the Mediator method.
      *
@@ -16,7 +21,7 @@ public class Day extends WildeLand {
     }
 
     @Override
-    public String howIsTheWeather(String date) {
-        return "Today's forecast: \n   [" + whatTimeIsIt() + "] " + super.getWeather() + "\n";
+    public void howIsTheWeather(String date) {
+        System.out.println("Today's forecast: \n   [" + whatTimeIsIt() + "] " + super.getWeather() + "\n");
     }
 }

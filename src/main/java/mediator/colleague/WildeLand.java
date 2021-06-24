@@ -1,6 +1,7 @@
 package mediator.colleague;
 
 import decorator.wildeland.Environment;
+import kampfarena.Kampfarena;
 import mediator.Mediator;
 import mediator.WildeLandMediator;
 
@@ -16,12 +17,15 @@ import mediator.WildeLandMediator;
  * @since June 23, 2021
  */
 public abstract class WildeLand implements Environment {
-    Mediator mediator = WildeLandMediator.getMediator();
+    protected Mediator mediator = WildeLandMediator.getMediator();
+    protected Kampfarena kampfarena = Kampfarena.getKampfarena();
     String date;
+
+    public abstract void isTheBattleGroundOpen();
 
     public abstract String whatTimeIsIt();
 
-    public abstract String howIsTheWeather(String date);
+    public abstract void howIsTheWeather(String date);
 
     public WildeLand(String date) {
         this.date = date;
