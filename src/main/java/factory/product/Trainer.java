@@ -16,6 +16,12 @@ public class Trainer extends AbstractTrainer {
 
             setHp(getMaxHp());
             setMp(getMaxMp());
+
+            setStrength(new Random().nextInt(10) + 1);
+            setMagic(new Random().nextInt(15) + 1);
+            setDefense(new Random().nextInt(5) + 1);
+            setHit(new Random().nextInt(5) + 1);
+            setEvasion(new Random().nextInt(1) + 1);
         }
     }
 
@@ -61,6 +67,11 @@ public class Trainer extends AbstractTrainer {
         sb.append("Type: ").append("Trainer").append("\n");
         sb.append("HP:   ").append(getHp()).append("/").append(getHp()).append("\n");
         sb.append("MP:   ").append(getMp()).append("/").append(getMp()).append("\n");
+        sb.append("STR:  ").append(getStrength()).append("\n");
+        sb.append("MAG:  ").append(getMagic()).append("\n");
+        sb.append("DEF:  ").append(getDefense()).append("\n");
+        sb.append("HIT:  ").append(getHit()).append("\n");
+        sb.append("EVA:  ").append(getEvasion()).append("\n");
 
         return sb.toString();
     }

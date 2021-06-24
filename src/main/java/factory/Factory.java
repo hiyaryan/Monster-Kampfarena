@@ -12,6 +12,11 @@ public class Factory extends AbstractFactory {
     protected int mp;
     protected int maxMp;
     protected int lvl;
+    protected int strength;
+    protected int defense;
+    protected int magic;
+    protected int hit;
+    protected int evasion;
 
     @Override
     public AbstractTrainer createTrainer(String name) {
@@ -69,5 +74,45 @@ public class Factory extends AbstractFactory {
 
     public void setLvl(int lvl) {
         this.lvl = lvl;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    public int getMagic() {
+        return magic;
+    }
+
+    public void setMagic(int magic) {
+        this.magic = magic;
+    }
+
+    public int getHit() {
+        return hit;
+    }
+
+    public void setHit(int hit) {
+        this.hit = hit;
+    }
+
+    public int getEvasion() {
+        return evasion;
+    }
+
+    public void setEvasion(int evasion) {
+        this.evasion = evasion;
     }
 }
