@@ -25,6 +25,13 @@ public class Main {
         controller.printTeamData(controller.getTrainers().get("Dock"));
         controller.printTeamData(controller.getTrainers().get("Tomm"));
 
+        // 1. TODO: register for battle
+
+        // 2. TODO: initiate battle
+
+        // 3. TODO: make a move in battle
+        controller.selectOptionFromMenu();
+
         System.exit(0);
     }
 

@@ -75,4 +75,9 @@ public class Trainer extends AbstractTrainer {
 
         return sb.toString();
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

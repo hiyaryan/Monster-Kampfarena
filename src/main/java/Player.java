@@ -4,6 +4,7 @@ import factory.product.AbstractMonster;
 import factory.product.AbstractTrainer;
 import factory.product.Monster;
 import factory.product.Trainer;
+import kampfarena.BattleMenu;
 import kampfarena.Kampfarena;
 
 import java.util.HashMap;
@@ -170,5 +171,11 @@ public class Player {
         // Print trainer data
         trainer.statsToString();
         System.out.println(trainer.listMonsters());
+    }
+
+    public void selectOptionFromMenu() {
+        BattleMenu<Trainer> battleMenu = new BattleMenu<>();
+        battleMenu = battleMenu.getTrainerMenu(controller.getTrainers().get("Dock"));
+        System.out.println(battleMenu.toString());
     }
 }

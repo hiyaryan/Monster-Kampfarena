@@ -1,0 +1,91 @@
+package kampfarena;
+
+import decorator.monster.CodeAMon;
+import factory.product.Trainer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * BattleMenu (BattleMenu.java)
+ *
+ * This class creates a battle menu for a specific trainer and their Code-a-mon.
+ * The simulation will select an option from the menu and perform the actions.
+ * A trainer has two options, Attack and CODEX. If CODEX is selected, the simulation
+ * will select from a list of available Code-a-mon. When a code-a-mon is selected
+ * a new menu will appear for the specific Code-a-mon. Menu's only exist in battle.
+ *
+ * @author Ryan Meneses
+ * @version 1.0
+ * @since June 24, 2021
+ */
+public class BattleMenu<T> {
+    private T entity;
+    private HashMap<String, Option> options;
+
+    public BattleMenu() {
+        System.out.println("\nNext up!\n");
+    }
+
+    /**
+     * All entities are initialized with a basic attack option.
+     */
+    public BattleMenu(T entity) {
+        System.out.println("   " + entity.toString());
+
+        this.entity = entity;
+        options = new HashMap<>();
+
+        String op = "Attack";
+        Option<String> attack = new Option<>(op);
+        options.put(op, attack);
+    }
+
+    /**
+     * This method gets the trainer menu. It uses the option class to build
+     * the list.
+     */
+    public BattleMenu<Trainer> getTrainerMenu(Trainer trainer) {
+        BattleMenu<Trainer> menu = new BattleMenu<>(trainer);
+
+        String op = "CODEX";
+        Option<Map<String, CodeAMon>> codex = new Option<>(trainer.getCodex());
+        menu.options.put(op, codex);
+
+        return menu;
+    }
+
+    /**
+     * This generic class sets up the menu options. A menu option may be
+     * as single string or a list of skills or code-a-mon
+     *
+     * @param <T>
+     */
+    static class Option<T> {
+        T selection;
+
+        public Option(T selection) {
+            this.selection = selection;
+        }
+
+        public T getSelection() {
+            return selection;
+        }
+    }
+
+    /**
+     * Print a representation of the BattleMenu object.
+     *
+     * @return String
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("   === MENU ===\n");
+
+        for(String key : options.keySet()) {
+            sb.append("   + ").append(key).append("\n");
+        }
+
+        return sb.toString();
+    }
+}
