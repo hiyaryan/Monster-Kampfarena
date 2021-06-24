@@ -1,22 +1,22 @@
-package mediator;
+package mediator.colleague;
 
-public class Night extends WildeLand {
-    public Night() {
+public class Day extends WildeLand {
+    public Day() {
 
     }
 
     /**
      * This method is an implementation of the Mediator method.
      *
-     * @return String "Night, day:time:counter"
+     * @return String "Day, day:time:counter"
      */
     @Override
     public String whatTimeIsIt(String date) {
-        return "Night " + date;
+        return "Day " + date;
     }
 
     @Override
     public String howIsTheWeather(String time) {
-        return "Tonight's forecast: \n   " + time + " neutral\n";
+        return "Today's forecast: \n   " + time + " neutral\n";
     }
 }

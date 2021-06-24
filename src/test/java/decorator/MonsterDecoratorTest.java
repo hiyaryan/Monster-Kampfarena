@@ -2,10 +2,10 @@ package decorator;
 
 import decorator.monster.CodeAMon;
 import decorator.monster.Initial;
-import factory.AbstractMonster;
-import factory.AbstractTrainer;
-import factory.Monster;
-import factory.Trainer;
+import factory.product.AbstractMonster;
+import factory.product.AbstractTrainer;
+import factory.product.Monster;
+import factory.product.Trainer;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

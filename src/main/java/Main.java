@@ -1,6 +1,6 @@
 import decorator.monster.CodeAMon;
-import factory.Monster;
-import factory.Trainer;
+import factory.product.Monster;
+import factory.product.Trainer;
 import mediator.Mediator;
 import mediator.WildeLandMediator;
 import singleton.Player;
@@ -13,18 +13,21 @@ import singleton.Player;
  * @since June 19, 2021
  */
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        Player controller = Player.getController();
-        Mediator mediator = WildeLandMediator.getMediator();
+    static Player controller;
+    static Mediator mediator;
 
-        initializeTheWildeLand(controller, mediator);
+    public static void main(String[] args) throws InterruptedException {
+        controller = Player.getController();
+        mediator = WildeLandMediator.getMediator();
+
+        initializeTheWildeLand();
         // TODO: Set up registration
 
 
-//        System.exit(0);
+        System.exit(0);
     }
 
-    public static void initializeTheWildeLand(Player controller, Mediator mediator)
+    public static void initializeTheWildeLand()
             throws InterruptedException {
         System.out.println("\nInitializing world...\n");
 
@@ -89,6 +92,6 @@ public class Main {
         System.out.println();
 
         // Pause for narration
-        Thread.sleep(7000);
+        Thread.sleep(8000);
     }
 }

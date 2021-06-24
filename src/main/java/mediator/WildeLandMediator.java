@@ -2,6 +2,9 @@ package mediator;
 
 import decorator.wildeland.Environment;
 import decorator.wildeland.Weather;
+import mediator.colleague.Day;
+import mediator.colleague.Night;
+import mediator.colleague.WildeLand;
 import narrator.Narration;
 import narrator.Narrator;
 

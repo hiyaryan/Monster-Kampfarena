@@ -1,6 +1,10 @@
 package singleton;
 
 import factory.*;
+import factory.product.AbstractMonster;
+import factory.product.AbstractTrainer;
+import factory.product.Monster;
+import factory.product.Trainer;
 
 /**
  * Player (Player.java)

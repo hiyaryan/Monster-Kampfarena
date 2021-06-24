@@ -1,6 +1,6 @@
 package decorator.monster;
 
-import factory.Trainer;
+import factory.product.Trainer;
 
 import java.util.HashMap;
 import java.util.Map;

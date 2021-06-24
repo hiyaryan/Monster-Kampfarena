@@ -1,4 +1,4 @@
-package factory;
+package factory.product;
 
 public abstract class AbstractMonster {
     private String name;

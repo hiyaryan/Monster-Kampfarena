@@ -1,4 +1,4 @@
-package factory;
+package factory.product;
 
 import decorator.monster.CodeAMon;
 import decorator.monster.Initial;

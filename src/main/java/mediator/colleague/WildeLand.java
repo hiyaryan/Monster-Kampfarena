@@ -1,4 +1,4 @@
-package mediator;
+package mediator.colleague;
 
 import decorator.wildeland.Environment;
 

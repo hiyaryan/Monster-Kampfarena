@@ -1,7 +1,7 @@
 package decorator.monster;
 
-import factory.AbstractMonster;
-import factory.Trainer;
+import factory.product.AbstractMonster;
+import factory.product.Trainer;
 
 /**
  * This interface represents a Code-a-mon
