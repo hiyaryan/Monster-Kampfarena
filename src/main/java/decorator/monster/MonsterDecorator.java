@@ -44,6 +44,7 @@ public abstract class MonsterDecorator implements CodeAMon {
         }
     }
 
+    @Override
     public HashMap<String, Skill> getSkills() {
         return skills;
     }

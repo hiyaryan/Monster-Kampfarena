@@ -1,7 +1,9 @@
 package factory.product;
 
 import decorator.monster.CodeAMon;
+import decorator.monster.MonsterDecorator;
 
+import java.util.HashMap;
 import java.util.Random;
 
 /**
@@ -48,6 +50,11 @@ public class Monster extends AbstractMonster implements CodeAMon {
         sb.append("EVA:  ").append(getEvasion()).append("\n");
 
         return sb.toString();
+    }
+
+    @Override
+    public HashMap<String, MonsterDecorator.Skill> getSkills() {
+        return null;
     }
 
     @Override

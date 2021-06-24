@@ -1,6 +1,7 @@
 package kampfarena;
 
 import decorator.monster.CodeAMon;
+import decorator.monster.MonsterDecorator;
 import factory.product.Trainer;
 
 import java.util.HashMap;
@@ -41,11 +42,18 @@ public class BattleMenu<T> {
         options.put(op, attack);
     }
 
+    public HashMap<String, Option> getOptions() {
+        return options;
+    }
+
     /**
      * This method gets the trainer menu. It uses the option class to build
      * the list.
+     *
+     * @param trainer Trainer up in battle
+     * @return Trainer menu
      */
-    public BattleMenu<Trainer> getTrainerMenu(Trainer trainer) {
+    public BattleMenu<Trainer> builtTrainerMenu(Trainer trainer) {
         BattleMenu<Trainer> menu = new BattleMenu<>(trainer);
 
         String op = "CODEX";
@@ -56,21 +64,20 @@ public class BattleMenu<T> {
     }
 
     /**
-     * This generic class sets up the menu options. A menu option may be
-     * as single string or a list of skills or code-a-mon
+     * This method gets the code-a-mon menu. It uses the option class to build
+     * the list.
      *
-     * @param <T>
+     * @param codeAMon Code-a-mon selected by the trainer
+     * @return Code-a-mon menu
      */
-    static class Option<T> {
-        T selection;
+    public BattleMenu<CodeAMon> buildCodeAMonMenu(CodeAMon codeAMon) {
+        BattleMenu<CodeAMon> menu = new BattleMenu<>(codeAMon);
 
-        public Option(T selection) {
-            this.selection = selection;
-        }
+        String op = "Skills";
+        Option<Map<String, MonsterDecorator.Skill>> skills = new Option<>(codeAMon.getSkills());
+        menu.options.put(op, skills);
 
-        public T getSelection() {
-            return selection;
-        }
+        return menu;
     }
 
     /**
@@ -87,5 +94,27 @@ public class BattleMenu<T> {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * This generic class sets up the menu options. A menu option may be
+     * as single string or a list of skills or code-a-mon
+     *
+     * @param <T>
+     */
+    public static class Option<T> {
+        T selection;
+
+        public Option() {
+
+        }
+
+        public Option(T selection) {
+            this.selection = selection;
+        }
+
+        public T getSelection() {
+            return selection;
+        }
     }
 }

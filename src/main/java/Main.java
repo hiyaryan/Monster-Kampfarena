@@ -3,6 +3,7 @@ import factory.product.Monster;
 import factory.product.Trainer;
 import mediator.Mediator;
 import mediator.WildeLandMediator;
+import singleton.Player;
 
 /**
  * Main (Main.java) This runs the simulation.
@@ -25,12 +26,9 @@ public class Main {
         controller.printTeamData(controller.getTrainers().get("Dock"));
         controller.printTeamData(controller.getTrainers().get("Tomm"));
 
-        // 1. TODO: register for battle
-
-        // 2. TODO: initiate battle
-
-        // 3. TODO: make a move in battle
-        controller.selectOptionFromMenu();
+        // Register for battle then start.
+        controller.registerTrainers();
+        controller.startBattle();
 
         System.exit(0);
     }

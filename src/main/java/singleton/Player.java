@@ -1,3 +1,5 @@
+package singleton;
+
 import factory.AbstractFactory;
 import factory.Factory;
 import factory.product.AbstractMonster;
@@ -48,6 +50,15 @@ public class Player {
     }
 
     /**
+     * Getter returns the only instance of Kampfarena.
+     *
+     * @return Kapmfarena
+     */
+    public Kampfarena getKampfarena() {
+        return kampfarena;
+    }
+
+    /**
      * Create a new trainer.
      *
      * @return trainer
@@ -86,53 +97,6 @@ public class Player {
      */
     public Monster buildMonster(Player controller, String name) {
         AbstractMonster monster = controller.getAbstractMonster(name);
-
-        // Base level HP/MP--will vary based on code-a-mon type and evolution
-        // TODO: Once typefull, adjust code-a-mon hp/mp from base mp
-
-        // FIXME: Move the following code somewhere else
-//        int lvl = monster.getLvl();
-//        if(lvl < 10) {
-//            monster.setHP((int) ((Math.random() * 99) + 30));
-//            monster.setMP((int) ((Math.random() * 30) + 15));
-//
-//        } else if (lvl < 20) {
-//            monster.setHP((int) ((Math.random() * 198) + 30));
-//            monster.setMP((int) ((Math.random() * 60) + 15));
-//
-//        } else if (lvl < 30) {
-//            monster.setHP((int) ((Math.random() * 396) + 30));
-//            monster.setMP((int) ((Math.random() * 90) + 15));
-//
-//        } else if (lvl < 40) {
-//            monster.setHP((int) ((Math.random() * 792) + 30));
-//            monster.setMP((int) ((Math.random() * 120) + 15));
-//
-//        } else if (lvl < 50) {
-//            monster.setHP((int) ((Math.random() * 1584) + 30));
-//            monster.setMP((int) ((Math.random() * 150) + 15));
-//
-//        } else if (lvl < 60) {
-//            monster.setHP((int) ((Math.random() * 3168) + 30));
-//            monster.setMP((int) ((Math.random() * 180) + 15));
-//
-//        } else if (lvl < 70) {
-//            monster.setHP((int) ((Math.random() * 6336) + 30));
-//            monster.setMP((int) ((Math.random() * 210) + 15));
-//
-//        } else if (lvl < 80) {
-//            monster.setHP((int) ((Math.random() * 9999) + 30));
-//            monster.setMP((int) ((Math.random() * 240) + 15));
-//
-//        } else if (lvl < 90) {
-//            monster.setHP((int) ((Math.random() * 9999) + 30));
-//            monster.setMP((int) ((Math.random() * 280) + 15));
-//
-//        } else if (lvl < 100) {
-//            monster.setHP((int) ((Math.random() * 9999) + 30));
-//            monster.setMP((int) ((Math.random() * 310) + 15));
-//        }
-
         return (Monster) monster;
     }
 
@@ -173,9 +137,29 @@ public class Player {
         System.out.println(trainer.listMonsters());
     }
 
-    public void selectOptionFromMenu() {
+    /**
+     * Register for battle
+     *
+     * @return
+     */
+    public void registerTrainers() {
+        kampfarena.registerForBattle(controller.getTrainers());
+    }
+
+    /**
+     * This method starts a battle at the Kampfarena.
+     */
+    public void startBattle() {
+        kampfarena.initiateBattle();
+    }
+
+    /**
+     * Randomly select an option from the menu.
+     */
+    public String getMenuSelection() {
         BattleMenu<Trainer> battleMenu = new BattleMenu<>();
-        battleMenu = battleMenu.getTrainerMenu(controller.getTrainers().get("Dock"));
-        System.out.println(battleMenu.toString());
+        battleMenu = battleMenu.builtTrainerMenu(controller.getTrainers().get("Dock"));
+
+        return battleMenu.toString();
     }
 }

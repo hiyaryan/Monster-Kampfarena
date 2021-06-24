@@ -4,6 +4,8 @@ import factory.product.Trainer;
 import mediator.Mediator;
 import mediator.WildeLandMediator;
 
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Queue;
 
 /**
@@ -20,11 +22,11 @@ import java.util.Queue;
 public class Kampfarena {
     protected static Kampfarena kampfarena = new Kampfarena();
     protected static Mediator mediator = WildeLandMediator.getMediator();
-    protected Battle battle;
     Queue<Registration> registry;
 
     private Kampfarena() {
         System.out.println("\n   An arena has been built off in the distance...");
+        registry = new LinkedList<>();
     }
 
     public static Kampfarena getKampfarena() {
@@ -37,15 +39,34 @@ public class Kampfarena {
         if(mediator.getWildeLand().whatTimeIsIt().contains("1t") || mediator.getWildeLand().whatTimeIsIt().contains("2t")) {
             System.out.println("   Registration is now open at the Kampfarena!\n\n");
             return true;
+
         } else {
             System.out.println("   Registration is open from 1t-2t.\n\n");
             return false;
         }
     }
 
-    public void registerForBattle(Trainer trainer) {
+    /**
+     * Register trainers for battle.
+     *
+     * @param trainers HashMap
+     */
+    public void registerForBattle(HashMap<String, Trainer> trainers) {
         if(isRegistrationOpen()) {
+            for(String name : trainers.keySet()) {
+                Registration registration = new Registration();
+                System.out.println(trainers.get(name));
+                registry.add(registration.register(trainers.get(name)));
+            }
 
+            System.out.println("Registry size: " + registry.size());
         }
+    }
+
+    /**
+     * Initiate a new battle.
+     */
+    public void initiateBattle() {
+        new Battle().battle();
     }
 }

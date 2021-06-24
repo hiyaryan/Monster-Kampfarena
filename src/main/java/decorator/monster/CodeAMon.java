@@ -3,6 +3,8 @@ package decorator.monster;
 import factory.product.AbstractMonster;
 import factory.product.Trainer;
 
+import java.util.HashMap;
+
 /**
  * This interface represents a Code-a-mon
  *
@@ -18,6 +20,8 @@ public interface CodeAMon {
     void init(Trainer trainer);
 
     String statsToString();
+
+    HashMap<String, MonsterDecorator.Skill> getSkills();
 
     String listSkills();
 }

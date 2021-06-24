@@ -1,5 +1,6 @@
 package kampfarena;
 
+import factory.product.Trainer;
 import mediator.Mediator;
 import mediator.WildeLandMediator;
 
@@ -14,16 +15,24 @@ import mediator.WildeLandMediator;
  */
 public class Registration {
     static Mediator mediator = WildeLandMediator.getMediator();
+    Trainer trainer;
+
+    public Registration() {
+        System.out.println("Setting up registry.");
+    }
 
     /**
-     *
+     * Register sets the trainer in this registration.
      */
-    public void register() {
+    public Registration register(Trainer trainer) {
         if(mediator.getWildeLand().whatTimeIsIt().contains("1t") || mediator.getWildeLand().whatTimeIsIt().contains("2t")) {
+            this.trainer = trainer;
+            return this;
 
         } else {
             System.out.println("Sorry we're closed!");
             System.out.println("   Registration is open everyday from 1t-2t.");
+            return null;
         }
     }
 }
