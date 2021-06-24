@@ -27,7 +27,7 @@ public abstract class MonsterDecorator implements CodeAMon {
     public void init(Trainer trainer) {
         monster.init(trainer); // Invokes the init method in factory.Monster
 
-        System.out.println(trainer.getName() + " is trying to form a bond with "
+        System.out.println("   " + trainer.getName() + " is trying to form a bond with "
                 + monster.getMonster().getName() + ".\n");
 
         if(monster.getMonster().isWild()) {

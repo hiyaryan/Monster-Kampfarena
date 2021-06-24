@@ -163,7 +163,7 @@ public class Initial extends MonsterDecorator {
             setSkills(skill);
 
         } else {
-            System.out.println("A skill cannot be set for an unidentified code-a-mon.");
+            System.out.println("A skill cannot be set for an unidentified Code-a-mon.");
         }
     }
 

@@ -51,7 +51,7 @@ public class Monster extends AbstractMonster implements CodeAMon {
                     + " suspiciously.\n");
 
         } else {
-            System.out.println(trainer.getName() + " has spotted a wild " + getName() + "!\n");
+            System.out.println(trainer.getName() + " has spotted a wild " + getName() + "!");
         }
     }
 }

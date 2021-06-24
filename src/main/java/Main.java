@@ -22,7 +22,7 @@ public class Main {
         initializeTheWildeLand();
         startSimulation();
 
-        System.exit(0);
+//        System.exit(0);
         // TODO: Set up registration
     }
 

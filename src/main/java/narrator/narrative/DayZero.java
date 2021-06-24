@@ -11,7 +11,7 @@ package narrator.narrative;
  * @version 1.0
  * @since June 23, 2021
  */
-public class DayZero {
+public class DayZero  {
     private int time;
     private int counter;
 
@@ -63,12 +63,15 @@ public class DayZero {
     public void narrateHourTwo() {
         switch (counter) {
             case 7:
-                System.out.println("\n   It is about that time...");
+                System.out.println("\n   It is almost that time...");
                 System.out.println("        for you to witness the might of the monsters of the Wilde Land.\n\n");
                 break;
             case 13:
                 System.out.println("\n   Registration is now open at the Kampfarena!\n\n");
                 break;
+            case 15:
+                System.out.println("\n   Our newest trainers are ready for battle.");
+                System.out.println("        Join us tomorrow on day one for the greatest spectacle of your life!\n\n");
             default:
                 break;
         }
