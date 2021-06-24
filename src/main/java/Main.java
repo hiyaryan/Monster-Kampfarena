@@ -28,9 +28,9 @@ public class Main {
 
     public static void initializeTheWildeLand()
             throws InterruptedException {
-        System.out.println("\nInitializing world...");
+        System.out.println("Initializing world.");
 
-        System.out.println("   Building trainers...");
+        System.out.println("   Building trainers...\n");
 
         // Build trainers
         Trainer dock = controller.buildTrainer(controller, "Dock");
@@ -203,6 +203,6 @@ public class Main {
      * Example: [Time: Day 0d:1t:9c]
      */
     public static void printWildeLandTime() {
-        System.out.println("[Time: " + mediator.getWildeLand().whatTimeIsIt() + "]\n");
+        System.out.println("[Time: " + mediator.getWildeLand().whatTimeIsIt() + "]\n\n");
     }
 }

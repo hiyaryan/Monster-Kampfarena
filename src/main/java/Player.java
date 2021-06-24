@@ -4,6 +4,7 @@ import factory.product.AbstractMonster;
 import factory.product.AbstractTrainer;
 import factory.product.Monster;
 import factory.product.Trainer;
+import kampfarena.Kampfarena;
 
 import java.util.HashMap;
 
@@ -18,6 +19,7 @@ import java.util.HashMap;
  */
 public class Player {
     private static Player controller = new Player();
+    private Kampfarena kampfarena;
     private AbstractFactory factory;
     private HashMap<String, Trainer> trainers;
     private HashMap<String, Monster> monsters;
@@ -26,9 +28,13 @@ public class Player {
      * Instantiate a ConcreteFactory.
      */
     private Player() {
+        System.out.println("A player has joined the simulation.");
+
+        this.kampfarena = Kampfarena.getKampfarena();
+
         this.factory = new Factory();
-        trainers= new HashMap<>();
-        monsters = new HashMap<>();
+        this.trainers= new HashMap<>();
+        this.monsters = new HashMap<>();
     }
 
     /**

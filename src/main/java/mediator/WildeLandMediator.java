@@ -29,6 +29,8 @@ public class WildeLandMediator implements Mediator, Runnable {
     private int day;
 
     private WildeLandMediator() {
+        System.out.println("      The monsters of the Wilde Land are flocking.\n");
+
         this.date = "0d:1t:0c";
         this.time = 1;
         this.day = 0;

@@ -21,10 +21,10 @@ public class Kampfarena {
     protected static Kampfarena kampfarena = new Kampfarena();
     protected static Mediator mediator = WildeLandMediator.getMediator();
     protected Battle battle;
-    Queue<Trainer> registry;
+    Queue<Registration> registry;
 
     private Kampfarena() {
-
+        System.out.println("\n   An arena has been built off in the distance...");
     }
 
     public static Kampfarena getKampfarena() {
@@ -43,7 +43,7 @@ public class Kampfarena {
         }
     }
 
-    public void registerForBattle() {
+    public void registerForBattle(Trainer trainer) {
         if(isRegistrationOpen()) {
 
         }
