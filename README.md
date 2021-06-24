@@ -62,7 +62,7 @@
                * During the day at 1t
                * During the night at 3t
                
-            * Depending on the time of the day, determiens what a trainer may do
+            * Depending on the time of the day, determines what a trainer may do
                * During the day a trainer may fight at the Kampfarena
                * During the night a trainer may heal its Code-a-mon
                
