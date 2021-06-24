@@ -21,10 +21,15 @@ public class Main {
         mediator = WildeLandMediator.getMediator();
 
         initializeTheWildeLand();
+
+        while(true) {
+            System.out.println(mediator.getEnvironment().getWeather());
+            System.out.println(mediator.getWildeLand().whatTimeIsIt(mediator.getDate()));
+
+            Thread.sleep(10000);
+        }
+
         // TODO: Set up registration
-
-
-        System.exit(0);
     }
 
     public static void initializeTheWildeLand()

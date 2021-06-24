@@ -14,5 +14,7 @@ import decorator.wildeland.Environment;
  * @since June 23, 2021
  */
 public abstract class WildeLand implements Environment {
+
+
     public abstract String whatTimeIsIt(String date);
 }

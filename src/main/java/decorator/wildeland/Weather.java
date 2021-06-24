@@ -5,6 +5,7 @@ import java.util.Random;
 public class Weather extends WildeLandDecorator {
     private Day day;
     private Night night;
+    private String weather;
 
     private enum Day {
         NEUTRAL,
@@ -24,14 +25,12 @@ public class Weather extends WildeLandDecorator {
         STRANGE
     }
 
-    public Weather(Environment environment, String date) {
-        super(environment);
-
+    public Weather(String date) {
         if(date.contains("Day")) {
-            determineTheDayWeatherForecast();
+            this.weather = determineTheDayWeatherForecast();
 
         } else if(date.contains("Night")) {
-            determineTheNightWeatherForecast();
+            this.weather = determineTheNightWeatherForecast();
 
         } else {
             System.out.println("Dark Hour");
@@ -39,7 +38,7 @@ public class Weather extends WildeLandDecorator {
     }
 
     @Override
-    public Weather determineTheDayWeatherForecast() {
+    public String determineTheDayWeatherForecast() {
         int forecast = new Random().nextInt(5) + 1;
 
         switch (forecast) {
@@ -63,11 +62,11 @@ public class Weather extends WildeLandDecorator {
                 break;
         }
 
-        return this;
+        return day.toString();
     }
 
     @Override
-    public Weather determineTheNightWeatherForecast() {
+    public String determineTheNightWeatherForecast() {
         int forecast = new Random().nextInt(5) + 1;
 
         switch (forecast) {
@@ -91,7 +90,7 @@ public class Weather extends WildeLandDecorator {
                 break;
         }
 
-        return this;
+        return night.toString();
     }
 
     @Override
@@ -131,5 +130,10 @@ public class Weather extends WildeLandDecorator {
         } else {
             return "and time stood still.";
         }
+    }
+
+    @Override
+    public String getWeather() {
+        return this.weather;
     }
 }

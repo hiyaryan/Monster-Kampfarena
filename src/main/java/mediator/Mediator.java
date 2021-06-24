@@ -17,11 +17,13 @@ public interface Mediator {
 
     Environment mediateWeather();
 
+    WildeLand getWildeLand();
+
+    Environment getEnvironment();
+
     String getDate();
 
     int getDay();
 
     int getTime();
-
-    WildeLand getWildeLand();
 }
