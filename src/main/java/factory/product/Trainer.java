@@ -39,10 +39,29 @@ public class Trainer extends AbstractTrainer {
 
             CodeAMon codeAMon = new Initial(monster);
 
-            codeAMon.init(this);
-            monster.isWild(false);
+            if(codeAMon.getMonster().isWild()) {
+                codeAMon.init(this);
+                monster.isWild(false);
 
-            setCodex(monster.getName(), codeAMon);
+                setCodex(monster.getName(), codeAMon);
+                System.out.println(codeAMon.listSkills());
+
+            } else {
+                // A trainer has tried to tame a monster already in their CODEX
+                if (getCodex().containsKey(codeAMon.getMonster().getName())) {
+                    System.out.println(name + " is already in your CODEX!");
+
+                } else {
+                    // A trainer has tried to tame a monster already bonded with another trainer
+                    System.out.println("Thieves shall not be tolerated at the Wilde Land.");
+                    System.out.println("   -HP x0.75");
+                    System.out.println("      -MP x0.75\n");
+                    setHp((int) (getHp() * 0.75));
+                    setMp((int) (getMp() * 0.75));
+                    System.out.println(statsToString());
+                }
+            }
+
             return codeAMon;
 
         } else {

@@ -1,4 +1,3 @@
-import decorator.monster.CodeAMon;
 import factory.product.Monster;
 import factory.product.Trainer;
 import mediator.Mediator;
@@ -137,9 +136,9 @@ public class Main {
         printWildeLandTime();
 
         // Form bonds
-        int lottery = 0;
+        int lottery;
         int counter = mediator.getCounter();
-        while((mediator.getCounter() - counter) != 1) {
+        while((mediator.getCounter() - counter) != 1 && (mediator.getCounter() - counter) != -15) {
             lottery = new Random().nextInt(12);
 
             try {
@@ -154,27 +153,29 @@ public class Main {
                     i++;
                 }
 
-                CodeAMon codeAMon = player
-                        .getTrainers().get("Dock")
-                        .formBond(player.getMonsters().get(name));
-                System.out.println(codeAMon.listSkills());
+                player.getTrainers().get("Dock").formBond(player.getMonsters().get(name));
 
-                Thread.sleep(lottery * 100);
+                if(lottery == 0) {
+                    lottery++;
+                }
+
+                // The more initial monsters a trainer tames the less chances of taming more
+                Thread.sleep(lottery * 12 * player.getTrainers().get("Dock").getCodex().size() * Trainer.MAX_CODEX_SIZE);
+
             } catch (NullPointerException npe) {
                 System.out.println(player
                         .getTrainers().get("Dock").getName() + "'s Codex is full.\n");
             }
         }
 
-        System.out.println(player
-                .getTrainers().get("Dock").listMonsters());
+        System.out.println(player.getTrainers().get("Dock").listMonsters());
 
         // Pause for narration
         Thread.sleep(10000);
         printWildeLandTime();
 
         counter = mediator.getCounter();
-        while((mediator.getCounter() - counter) != 1) {
+        while((mediator.getCounter() - counter) != 1 && (mediator.getCounter() - counter) != -15) {
             lottery = new Random().nextInt(12);
 
             try {
@@ -189,20 +190,21 @@ public class Main {
                     i++;
                 }
 
-                CodeAMon codeAMon = player
-                        .getTrainers().get("Tomm")
-                        .formBond(player.getMonsters().get(name));
-                System.out.println(codeAMon.listSkills());
+                player.getTrainers().get("Tomm").formBond(player.getMonsters().get(name));
 
-                Thread.sleep(lottery * 100);
+                if(lottery == 0) {
+                    lottery++;
+                }
+
+                // The more initial monsters a trainer tames the less chances of taming more
+                Thread.sleep(lottery * 12 * player.getTrainers().get("Tomm").getCodex().size() * Trainer.MAX_CODEX_SIZE);
+
             } catch (NullPointerException npe) {
-                System.out.println(player
-                        .getTrainers().get("Tomm").getName() + "'s Codex is full.\n");
+                System.out.println(player.getTrainers().get("Tomm").getName() + "'s Codex is full.\n");
             }
         }
 
-        System.out.println(player
-                .getTrainers().get("Tomm").listMonsters());
+        System.out.println(player.getTrainers().get("Tomm").listMonsters());
 
         // Pause for narration
         Thread.sleep(2000);

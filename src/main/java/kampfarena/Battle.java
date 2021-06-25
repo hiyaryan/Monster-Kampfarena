@@ -76,9 +76,8 @@ private Trainer trainer2;
      *
      * @param trainer
      * @return
-     * @throws InterruptedException
      */
-    public int attack(Trainer trainer) throws InterruptedException {
+    public int attack(Trainer trainer) {
         Object trainerSelection = player.getMenuSelection(trainer);
 
         if (trainerSelection instanceof String) {
