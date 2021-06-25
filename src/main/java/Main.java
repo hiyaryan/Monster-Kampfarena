@@ -7,7 +7,13 @@ import singleton.Player;
 import java.util.Random;
 
 /**
- * Main (Main.java) This runs the simulation.
+ * Main (Main.java)
+ *
+ * This runs the simulation. Main is simply a central location for the program to run. It's purpose is to
+ * initialize entities and the simulated world. The Player class is the class that performs the actions.
+ * All if it's actions are undetermined it uses randomized logic. The Mediator class, mediates the world.
+ * It keeps track of time, sets the weather, and mediates between day and night. Actions vary depending on
+ * the time, day or night, or by the game hour (t)--that occurs every 16 real-world seconds--and by the weather.
  *
  * @author Ryan Meneses
  * @version 1.0
@@ -18,7 +24,7 @@ public class Main {
     static Mediator mediator;
 
     public static void main(String[] args) throws InterruptedException {
-        player = Player.getController();
+        player = Player.getPlayer();
         mediator = WildeLandMediator.getMediator();
 
         initializeTheWildeLand();
@@ -27,19 +33,29 @@ public class Main {
         player.printTeamData(player.getTrainers().get("Dock"));
         player.printTeamData(player.getTrainers().get("Tomm"));
 
+        /*
+         * After the code above initializes the entities and starts the simulation the following code
+         * is where the world logic plays out. This is where the Player class tries to make decisions
+         * constrained to the time of day.
+         */
         while(!mediator.getDate().contains("7d")) {
 
-            // Register for battle then start
+            // The Kampfarena officially opens on 1d:1t:0c
             if (mediator.getDate().contains("0d")) {
                 Thread.sleep(new Random().nextInt(8000) + 4000);
                 player.registerTrainers();
 
+                // Day and night events occur here.
             } else {
                 Thread.sleep(new Random().nextInt(8000) + 4000);
+
+                // If it's between the hours of 3t-0t the Kampfarena will refuse to accept registrations
+                // The logic takes place inside the Kampfarena class
                 player.registerTrainers();
                 player.startBattle();
             }
 
+            // The simulation ends when only one Trainer is standing.
             if(player.getTrainers().size() == 1) {
                 break;
             }
@@ -67,7 +83,6 @@ public class Main {
         System.out.println("Initializing world.");
 
         System.out.println("   Building trainers...\n");
-
         // Build trainers
         Trainer dock = player.buildTrainer(player, "Dock");
         Trainer tomm = player.buildTrainer(player, "Tomm");
@@ -79,7 +94,6 @@ public class Main {
         System.out.println(tomm.statsToString());
 
         System.out.println("   Building monsters...\n");
-
         // Build monsters
         Monster wildWale = player.buildMonster(player, "Wale");
         Monster wildKaht = player.buildMonster(player, "Kaht");
@@ -135,76 +149,15 @@ public class Main {
         Thread.sleep(10000);
         printWildeLandTime();
 
-        // Form bonds
-        int lottery;
-        int counter = mediator.getCounter();
-        while((mediator.getCounter() - counter) != 1 && (mediator.getCounter() - counter) != -15) {
-            lottery = new Random().nextInt(12);
-
-            try {
-                // Trainer indexes who are Code-a-mon in their CODEX's
-                // Initial Code-a-mon a chosen using a lottery system
-                String name = "";
-                int i = 0;
-                for(String n : player.getMonsters().keySet()) {
-                    if(i == lottery) {
-                        name = n;
-                    }
-                    i++;
-                }
-
-                player.getTrainers().get("Dock").formBond(player.getMonsters().get(name));
-
-                if(lottery == 0) {
-                    lottery++;
-                }
-
-                // The more initial monsters a trainer tames the less chances of taming more
-                Thread.sleep(lottery * 12 * player.getTrainers().get("Dock").getCodex().size() * Trainer.MAX_CODEX_SIZE);
-
-            } catch (NullPointerException npe) {
-                System.out.println(player
-                        .getTrainers().get("Dock").getName() + "'s Codex is full.\n");
-            }
-        }
-
-        System.out.println(player.getTrainers().get("Dock").listMonsters());
+        // Explore the Wilde Land as Dock
+        player.exploreTheWildeLand("Dock");
 
         // Pause for narration
         Thread.sleep(10000);
         printWildeLandTime();
 
-        counter = mediator.getCounter();
-        while((mediator.getCounter() - counter) != 1 && (mediator.getCounter() - counter) != -15) {
-            lottery = new Random().nextInt(12);
-
-            try {
-                // Trainer indexes who are Code-a-mon in their CODEX's
-                // Initial Code-a-mon a chosen using a lottery system
-                String name = "";
-                int i = 0;
-                for(String n : player.getMonsters().keySet()) {
-                    if(i == lottery) {
-                        name = n;
-                    }
-                    i++;
-                }
-
-                player.getTrainers().get("Tomm").formBond(player.getMonsters().get(name));
-
-                if(lottery == 0) {
-                    lottery++;
-                }
-
-                // The more initial monsters a trainer tames the less chances of taming more
-                Thread.sleep(lottery * 12 * player.getTrainers().get("Tomm").getCodex().size() * Trainer.MAX_CODEX_SIZE);
-
-            } catch (NullPointerException npe) {
-                System.out.println(player.getTrainers().get("Tomm").getName() + "'s Codex is full.\n");
-            }
-        }
-
-        System.out.println(player.getTrainers().get("Tomm").listMonsters());
+        // Explore the Wilde Land as Tomm
+        player.exploreTheWildeLand("Tomm");
 
         // Pause for narration
         Thread.sleep(2000);
@@ -216,9 +169,9 @@ public class Main {
 
     /**
      * This method prints the game time in the Wilde Land
-     * Example: [Time: Day 0d:1t:9c]
+     * Example: Time: [Day 0d:1t:9c]
      */
     public static void printWildeLandTime() {
-        System.out.println("[Time: " + mediator.getWildeLand().whatTimeIsIt() + "]\n\n");
+        System.out.println("\nTime: [" + mediator.getWildeLand().whatTimeIsIt() + "]\n\n");
     }
 }

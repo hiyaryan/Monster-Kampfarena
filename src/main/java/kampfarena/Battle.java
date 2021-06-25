@@ -9,7 +9,7 @@ import java.util.Queue;
 import java.util.Random;
 
 public class Battle {
-Player player = Player.getController();
+Player player = Player.getPlayer();
 WildeLandMediator mediator = WildeLandMediator.getMediator();
 Kampfarena kampfarena = Kampfarena.getKampfarena();
 private Trainer trainer1;

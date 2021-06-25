@@ -8,6 +8,7 @@ import factory.product.Monster;
 import factory.product.Trainer;
 import kampfarena.BattleMenu;
 import kampfarena.Kampfarena;
+import mediator.WildeLandMediator;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -22,7 +23,8 @@ import java.util.Random;
  * @since June 19, 2021
  */
 public class Player {
-    private static Player controller = new Player();
+    private static Player player = new Player();
+    private static WildeLandMediator mediator = WildeLandMediator.getMediator();
     private Kampfarena kampfarena;
     private AbstractFactory factory;
     private HashMap<String, Trainer> trainers;
@@ -46,8 +48,8 @@ public class Player {
      *
      * @return Player
      */
-    public static Player getController() {
-        return controller;
+    public static Player getPlayer() {
+        return player;
     }
 
     /**
@@ -139,12 +141,55 @@ public class Player {
     }
 
     /**
+     * This method provides an opportunity for trainers to explore the Wilde Land and tame more
+     * monsters. It functions exactly like the block of code
+     *
+     * @throws InterruptedException Thread.sleep
+     */
+    public void exploreTheWildeLand(String trainerName) throws InterruptedException {
+        // Form bonds
+        int lottery;
+        int counter = mediator.getCounter();
+        while((mediator.getCounter() - counter) != 1 && (mediator.getCounter() - counter) != -15) {
+            lottery = new Random().nextInt(12);
+
+            try {
+                // Trainer indexes who are Code-a-mon in their CODEX's
+                // Initial Code-a-mon a chosen using a lottery system
+                String monsterName = "";
+                int i = 0;
+                for(String n : player.getMonsters().keySet()) {
+                    if(i == lottery) {
+                        monsterName = n;
+                    }
+                    i++;
+                }
+
+                player.getTrainers().get(trainerName).formBond(player.getMonsters().get(monsterName));
+
+                if(lottery == 0) {
+                    lottery++;
+                }
+
+                // The more initial monsters a trainer tames the less chances of taming more
+                Thread.sleep(lottery * 12 * player.getTrainers().get(trainerName).getCodex().size() * Trainer.MAX_CODEX_SIZE);
+
+            } catch (NullPointerException npe) {
+                System.out.println(player
+                        .getTrainers().get(trainerName).getName() + "'s Codex is full.\n");
+            }
+        }
+
+        System.out.println(player.getTrainers().get(trainerName).listMonsters());
+    }
+
+    /**
      * Register for battle
      *
      * @return
      */
     public void registerTrainers() {
-        kampfarena.registerForBattle(controller.getTrainers());
+        kampfarena.registerForBattle(player.getTrainers());
     }
 
     /**
@@ -160,7 +205,7 @@ public class Player {
     public Object getMenuSelection(Trainer trainer) {
         // Generate a Trainer Battle Menu
         BattleMenu<Trainer> battleMenu = new BattleMenu<>(null);
-        battleMenu = battleMenu.buildTrainerMenu(controller.getTrainers().get(trainer.getName()));
+        battleMenu = battleMenu.buildTrainerMenu(player.getTrainers().get(trainer.getName()));
         System.out.println(battleMenu.toString());
 
         /* The variable i is a pseudo index--as the keys in the HashMap are looped over, the random selection
