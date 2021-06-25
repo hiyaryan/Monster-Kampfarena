@@ -26,4 +26,6 @@ public interface Mediator {
     int getDay();
 
     int getTime();
+
+    int getCounter();
 }

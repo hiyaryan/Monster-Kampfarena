@@ -125,7 +125,7 @@ public class Main {
     /**
      * This method initializes trainers with their first Code-a-mon.
      *
-     * @throws InterruptedException
+     * @throws InterruptedException Thread.sleep
      */
     public static void startSimulation() throws InterruptedException {
         // Start the clock
@@ -137,16 +137,33 @@ public class Main {
         printWildeLandTime();
 
         // Form bonds
-        try {
-            // Trainer indexes who are Code-a-mon in their CODEX's
-            CodeAMon wale = player
-                    .getTrainers().get("Dock")
-                    .formBond(player.getMonsters().get("Wale"));
-            System.out.println(wale.listSkills());
+        int lottery = 0;
+        int counter = mediator.getCounter();
+        while((mediator.getCounter() - counter) != 1) {
+            lottery = new Random().nextInt(12);
 
-        } catch (NullPointerException npe) {
-            System.out.println(player
-                    .getTrainers().get("Dock").getName() + "'s Codex is full.\n");
+            try {
+                // Trainer indexes who are Code-a-mon in their CODEX's
+                // Initial Code-a-mon a chosen using a lottery system
+                String name = "";
+                int i = 0;
+                for(String n : player.getMonsters().keySet()) {
+                    if(i == lottery) {
+                        name = n;
+                    }
+                    i++;
+                }
+
+                CodeAMon codeAMon = player
+                        .getTrainers().get("Dock")
+                        .formBond(player.getMonsters().get(name));
+                System.out.println(codeAMon.listSkills());
+
+                Thread.sleep(lottery * 100);
+            } catch (NullPointerException npe) {
+                System.out.println(player
+                        .getTrainers().get("Dock").getName() + "'s Codex is full.\n");
+            }
         }
 
         System.out.println(player
@@ -156,15 +173,32 @@ public class Main {
         Thread.sleep(10000);
         printWildeLandTime();
 
-        try {
-            CodeAMon kaht = player
-                    .getTrainers().get("Tomm")
-                    .formBond(player.getMonsters().get("Kaht"));
-            System.out.println(kaht.listSkills());
+        counter = mediator.getCounter();
+        while((mediator.getCounter() - counter) != 1) {
+            lottery = new Random().nextInt(12);
 
-        } catch (NullPointerException npe) {
-            System.out.println(player
-                    .getTrainers().get("Tomm").getName() + "'s Codex is full.\n");
+            try {
+                // Trainer indexes who are Code-a-mon in their CODEX's
+                // Initial Code-a-mon a chosen using a lottery system
+                String name = "";
+                int i = 0;
+                for(String n : player.getMonsters().keySet()) {
+                    if(i == lottery) {
+                        name = n;
+                    }
+                    i++;
+                }
+
+                CodeAMon codeAMon = player
+                        .getTrainers().get("Tomm")
+                        .formBond(player.getMonsters().get(name));
+                System.out.println(codeAMon.listSkills());
+
+                Thread.sleep(lottery * 100);
+            } catch (NullPointerException npe) {
+                System.out.println(player
+                        .getTrainers().get("Tomm").getName() + "'s Codex is full.\n");
+            }
         }
 
         System.out.println(player

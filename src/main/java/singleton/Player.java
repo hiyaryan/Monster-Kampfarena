@@ -159,25 +159,36 @@ public class Player {
      * Randomly select an option from the menu.
      */
     public Object getMenuSelection(Trainer trainer) {
+        // Generate a Trainer Battle Menu
         BattleMenu<Trainer> battleMenu = new BattleMenu<>(null);
         battleMenu = battleMenu.buildTrainerMenu(controller.getTrainers().get(trainer.getName()));
 
+        /* The variable i is a pseudo index--as the keys in the HashMap are looped over, the random selection
+         * generated checks against the incremented index, if it matches, that option in the HashMap is selected.
+         */
         int i = 0;
         int selection = new Random().nextInt(battleMenu.getOptions().size());
         for(String str : battleMenu.getOptions().keySet()) {
             if(selection == i) {
+                // The trainer has chosen to attack.
                 if (battleMenu.getOptions().get(str).getSelection() instanceof String) {
+                    System.out.println("OPTION 0: " + str);
                     return battleMenu.getOptions().get(str).getSelection();
 
+                    // The trainer has chosen to use its CODEX.
                 } else if (battleMenu.getOptions().get(str).getSelection() instanceof HashMap) {
 
+                    // A Trainer chooses which Code-a-mon to use in the same way it it chooses an option from tht menu
                     i = 0;
                     selection = new Random().nextInt(((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).size());
                     for (Object mon : ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).keySet()) {
-                        CodeAMon codeAMon = (CodeAMon) ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).get(mon);
+//                        CodeAMon codeAMon = (CodeAMon) ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).get(mon);
 
                         if(selection == i) {
-                            return codeAMon;
+                            System.out.println("OPTION 1: " + str);
+                            System.out.println("Code-a-mon selected: " + mon.toString());
+                            return ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).get((CodeAMon) mon);
+//                            return codeAMon;
                         }
                     }
 

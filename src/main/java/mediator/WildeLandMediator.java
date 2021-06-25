@@ -27,6 +27,7 @@ public class WildeLandMediator implements Mediator, Runnable {
     private String date;
     private int time;
     private int day;
+    private int counter;
 
     private WildeLandMediator() {
         System.out.println("      The monsters of the Wilde Land are flocking.\n");
@@ -89,6 +90,11 @@ public class WildeLandMediator implements Mediator, Runnable {
         return this.time;
     }
 
+    @Override
+    public int getCounter() {
+        return this.counter;
+    }
+
     /**
      * This is the main method of this class. This method keeps track of the time in a separate thread.
      * It is invoked in the Main class that runs the simulation in parallel. Depending on the time of this
@@ -110,7 +116,7 @@ public class WildeLandMediator implements Mediator, Runnable {
 
         while(day != 8) {
             long start = System.currentTimeMillis() / 1000;
-            int counter = 0;
+            this.counter = 0;
 
             while (time != 4) {
                 this.wildeLand = mediateTime(this.time);

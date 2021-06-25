@@ -35,6 +35,9 @@ public class BattleMenu<T> {
             String op = "Attack";
             Option<String> attack = new Option<>(op);
             options.put(op, attack);
+
+        } else {
+            System.out.println("Accessing the battle menu...\n");
         }
     }
 
