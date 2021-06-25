@@ -28,8 +28,9 @@ public class Main {
         player.printTeamData(player.getTrainers().get("Dock"));
         player.printTeamData(player.getTrainers().get("Tomm"));
 
-        while(!mediator.getDate().contains("2d")) {
-            // Register for battle then start.
+        while(!mediator.getDate().contains("7d")) {
+
+            // Register for battle then start
             if (mediator.getDate().contains("0d")) {
                 Thread.sleep(new Random().nextInt(8000) + 4000);
                 player.registerTrainers();
@@ -44,8 +45,7 @@ public class Main {
         System.exit(0);
     }
 
-    public static void initializeTheWildeLand()
-            throws InterruptedException {
+    public static void initializeTheWildeLand() {
         System.out.println("Initializing world.");
 
         System.out.println("   Building trainers...\n");

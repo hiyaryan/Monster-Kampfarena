@@ -22,15 +22,25 @@ import java.util.Queue;
 public class Kampfarena {
     protected static Kampfarena kampfarena = new Kampfarena();
     protected static Mediator mediator = WildeLandMediator.getMediator();
-    Queue<Registration> registry;
+    private Queue<Registration> registry;
+    private boolean aBattleIsOngoing;
 
     private Kampfarena() {
         System.out.println("\n   An arena has been built off in the distance...");
-        registry = new LinkedList<>();
+        this.registry = new LinkedList<>();
+        this.aBattleIsOngoing = false;
     }
 
     public static Kampfarena getKampfarena() {
         return kampfarena;
+    }
+
+    public boolean isABattleOngoing() {
+        return aBattleIsOngoing;
+    }
+
+    public void aBattleIsOngoing(boolean aBattleIsOngoing) {
+        this.aBattleIsOngoing = aBattleIsOngoing;
     }
 
     public boolean isRegistrationOpen() {
@@ -57,7 +67,7 @@ public class Kampfarena {
             boolean alreadyRegistered = false;
             for(String name : trainers.keySet()) {
 
-                for(Registration r : registry) {
+                for(Registration r : this.registry) {
                     if (r.getTrainer().getName().contains(name)) {
                         alreadyRegistered = true;
                         break;
@@ -66,7 +76,7 @@ public class Kampfarena {
 
                 if(!alreadyRegistered) {
                     Registration registration = new Registration();
-                    registry.add(registration.register(trainers.get(name)));
+                    this.registry.add(registration.register(trainers.get(name)));
 
                 } else {
                     System.out.println(name + " is already registered for the next battle.");
@@ -80,15 +90,18 @@ public class Kampfarena {
      */
     public void initiateBattle() throws InterruptedException {
         if(mediator.getWildeLand().whatTimeIsIt().contains("1t") || mediator.getWildeLand().whatTimeIsIt().contains("2t")) {
-            if(registry.size() >= 2) {
-                new Battle(registry).battle();
+            if(this.registry.size() >= 2) {
+                this.aBattleIsOngoing = true;
+                new Battle(this.registry).battle();
 
             } else {
+                this.aBattleIsOngoing = false;
                 System.out.println("At least two trainers must be registered to commence a battle.");
-                System.out.println("   Currently there is " + registry.size() + " trainer registered.\n");
+                System.out.println("   Currently there is " + this.registry.size() + " trainer registered.\n");
             }
 
         } else {
+            this.aBattleIsOngoing = false;
             System.out.println("The arena is open from 1t-2t.");
             System.out.println("   Get some rest!\n");
         }
