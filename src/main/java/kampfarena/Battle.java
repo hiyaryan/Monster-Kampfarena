@@ -171,6 +171,7 @@ private Trainer trainer2;
 
             int hp = trainer.getHp() - damage;
             if(hp < 0) {
+                System.out.println("   OVERKILL!\n");
                 hp = 0;
             }
 
