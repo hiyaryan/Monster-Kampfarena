@@ -39,6 +39,7 @@ public class Main {
          * constrained to the time of day.
          */
         while(!mediator.getDate().contains("7d")) {
+            mediator.printWildeLandTime();
 
             // The Kampfarena officially opens on 1d:1t:0c
             if (mediator.getDate().contains("0d")) {
@@ -147,31 +148,23 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(10000);
-        printWildeLandTime();
+        mediator.printWildeLandTime();
 
         // Explore the Wilde Land as Dock
         player.exploreTheWildeLand("Dock");
 
         // Pause for narration
         Thread.sleep(10000);
-        printWildeLandTime();
+        mediator.printWildeLandTime();
 
         // Explore the Wilde Land as Tomm
         player.exploreTheWildeLand("Tomm");
 
         // Pause for narration
         Thread.sleep(2000);
-        printWildeLandTime();
+        mediator.printWildeLandTime();
 
         // Pause for narration
         Thread.sleep(8000);
-    }
-
-    /**
-     * This method prints the game time in the Wilde Land
-     * Example: Time: [Day 0d:1t:9c]
-     */
-    public static void printWildeLandTime() {
-        System.out.println("\nTime: [" + mediator.getWildeLand().whatTimeIsIt() + "]\n\n");
     }
 }

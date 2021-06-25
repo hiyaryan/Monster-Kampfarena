@@ -49,7 +49,7 @@ public class Trainer extends AbstractTrainer {
             } else {
                 // A trainer has tried to tame a monster already in their CODEX
                 if (getCodex().containsKey(codeAMon.getMonster().getName())) {
-                    System.out.println(name + " is already in your CODEX!");
+                    System.out.println(codeAMon.getMonster().getName() + " is already in your CODEX!");
 
                 } else {
                     // A trainer has tried to tame a monster already bonded with another trainer

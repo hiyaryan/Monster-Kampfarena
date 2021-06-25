@@ -78,15 +78,28 @@ private Trainer trainer2;
      * @return
      */
     public int attack(Trainer trainer) {
-        Object trainerSelection = player.getMenuSelection(trainer);
+        Object trainerSelection = player.getTrainerMenuSelection(trainer);
 
         if (trainerSelection instanceof String) {
             System.out.println("   " + trainer.getName() + " is going for an " + trainerSelection.toString() + "!\n");
             return trainer.getStrength();
 
         } else {
-            System.out.println("   Go " + ((CodeAMon) trainerSelection).getMonster().getName() + "!\n");
-            return 0;
+            CodeAMon codeAMon = ((CodeAMon) trainerSelection);
+            System.out.println("   Go " + codeAMon.getMonster().getName() + "!\n");
+
+            // TODO: Generate the Code-a-mon menu, then select
+            Object codeAMonSelection = player.getMonsterMenuSelection(codeAMon);
+
+            // FIXME: CodeAMon will only attack other CodeAMon until there are none left.
+            if (codeAMonSelection instanceof String) {
+                System.out.println("   " + codeAMon.getMonster().getName() + " is going for an " + codeAMonSelection.toString() + "!\n");
+                return codeAMon.getMonster().getStrength();
+
+            } else {
+                System.out.println("IMPLEMENT ME!");
+                return 0;
+            }
         }
     }
 

@@ -96,6 +96,21 @@ public class WildeLandMediator implements Mediator, Runnable {
     }
 
     /**
+     * This method prints the game time in the Wilde Land.
+     */
+    @Override
+    public void printWildeLandTime() {
+        if(this.time == 1 || this.time == 2) {
+            System.out.println("CLOCK");
+            System.out.println("   The current time is " + getWildeLand().whatTimeIsIt() + ".\n\n");
+
+        } else {
+            System.out.println("CLOCK");
+            System.out.println("   \"Tick. Tock.\" An impending battle awaits you.\n\n");
+        }
+    }
+
+    /**
      * This is the main method of this class. This method keeps track of the time in a separate thread.
      * It is invoked in the Main class that runs the simulation in parallel. Depending on the time of this
      * parallel thread determines what actions may occur on the Main thread.

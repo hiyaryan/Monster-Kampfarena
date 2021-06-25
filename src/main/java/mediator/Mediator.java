@@ -28,4 +28,6 @@ public interface Mediator {
     int getTime();
 
     int getCounter();
+
+    void printWildeLandTime();
 }

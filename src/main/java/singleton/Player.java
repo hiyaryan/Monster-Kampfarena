@@ -1,5 +1,6 @@
 package singleton;
 
+import decorator.monster.CodeAMon;
 import factory.AbstractFactory;
 import factory.Factory;
 import factory.product.AbstractMonster;
@@ -202,7 +203,7 @@ public class Player {
     /**
      * Randomly select an option from the menu.
      */
-    public Object getMenuSelection(Trainer trainer) {
+    public Object getTrainerMenuSelection(Trainer trainer) {
         // Generate a Trainer Battle Menu
         BattleMenu<Trainer> battleMenu = new BattleMenu<>(null);
         battleMenu = battleMenu.buildTrainerMenu(player.getTrainers().get(trainer.getName()));
@@ -241,5 +242,9 @@ public class Player {
         }
 
         return battleMenu.toString();
+    }
+
+    public Object getMonsterMenuSelection(CodeAMon codeAMon) {
+        return "Attack";
     }
 }
