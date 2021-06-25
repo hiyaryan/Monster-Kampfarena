@@ -120,7 +120,7 @@ public class InitialTest {
                 + "\n");
 
         Assert.assertEquals("Wale", codeAMon.getMonster().getName());
-        Assert.assertEquals("Water", initial.getType());
+        Assert.assertEquals("WATER", initial.getType());
         Assert.assertEquals(skill.getLevel(),
                 initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getLevel());
         Assert.assertEquals(skill.getName(),
@@ -155,7 +155,7 @@ public class InitialTest {
                 + "\n");
 
         Assert.assertEquals("Kaht", codeAMon.getMonster().getName());
-        Assert.assertEquals("Poison", initial.getType());
+        Assert.assertEquals("BIO", initial.getType());
         Assert.assertEquals(skill.getLevel(),
                 initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getLevel());
         Assert.assertEquals(skill.getName(),
@@ -193,8 +193,8 @@ public class InitialTest {
 
         StringBuilder sb = new StringBuilder("   >>> " + null + " <<<\n");
         sb.append("   Type: ").append("null").append("\n");
-        sb.append("   HP:   ").append("0").append("\n");
-        sb.append("   MP:   ").append("0");
+        sb.append("   HP:   ").append("0/0").append("\n");
+        sb.append("   MP:   ").append("0/0");
 
         System.out.println("\nExpected: " + sb.toString());
         System.out.println("Actual: " + initial.statsToString());

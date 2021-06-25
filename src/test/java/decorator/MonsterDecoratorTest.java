@@ -79,7 +79,7 @@ public class MonsterDecoratorTest {
         System.out.println("Actual:\n" + codeAMon.listSkills());
 
         Assert.assertEquals("--- " + codeAMon.getMonster().getName() +  " Skills ---\n"
-                        + "Splash [lvl. 1 Water]\n", codeAMon.listSkills());
+                        + "Splash [lvl. 1 WATER]\n", codeAMon.listSkills());
     }
 
     @Test
