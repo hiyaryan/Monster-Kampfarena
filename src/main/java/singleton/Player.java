@@ -151,7 +151,13 @@ public class Player {
         // Form bonds
         int lottery;
         int counter = mediator.getCounter();
-        while((mediator.getCounter() - counter) != 1 && (mediator.getCounter() - counter) != -15) {
+        /*
+         * Variable counter functions as a stopwatch, the following while loop uses this
+         * time and compares it to the current counter, when it detects one counter has passed
+         * it breaks out of the loop before the thread goes to sleep in the if statement.
+         * The difference can either be 1, e.g. 15-14, -15 e.g. 0-15.
+         */
+        while(true) {
             lottery = new Random().nextInt(12);
 
             try {
@@ -172,8 +178,13 @@ public class Player {
                     lottery++;
                 }
 
-                // The more initial monsters a trainer tames the less chances of taming more
-                Thread.sleep(lottery * 12 * player.getTrainers().get(trainerName).getCodex().size() * Trainer.MAX_CODEX_SIZE);
+                // Here is where it checks the stopwatch (counter) vs the actual counter (d:t:c)
+                if((mediator.getCounter() - counter) != 1 && (mediator.getCounter() - counter) != -15) {
+                    break;
+                }
+
+                // The more monsters a trainer tames the less chances of taming more
+                Thread.sleep(lottery * player.getTrainers().get(trainerName).getCodex().size());
 
             } catch (NullPointerException npe) {
                 System.out.println(player
