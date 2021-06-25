@@ -24,11 +24,14 @@ private Trainer trainer2;
 
     public void battle() throws InterruptedException {
         while (true) {
-
             System.out.println(trainer1.getName() + " is up!");
             System.out.println(getStats(trainer1));
             Thread.sleep(new Random().nextInt(2000) + 2000);
             damageTaken(attack(trainer1), trainer1, trainer2);
+
+            if(isTheBattleOver()) {
+                break;
+            }
 
             System.out.println(trainer2.getName() + " is up!");
             System.out.println(getStats(trainer2));
@@ -214,7 +217,7 @@ private Trainer trainer2;
      */
     public boolean isDead(Trainer trainer) {
         if (trainer.getHp() == 0) {
-            System.out.println(trainer.getName() + " is dead.");
+            System.out.println("\n\n" + trainer.getName() + " is dead.\n\n");
             player.getTrainers().remove(trainer.getName());
 
             return true;

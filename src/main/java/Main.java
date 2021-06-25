@@ -40,8 +40,27 @@ public class Main {
                 player.registerTrainers();
                 player.startBattle();
             }
+
+            if(player.getTrainers().size() == 1) {
+                break;
+            }
         }
 
+        if(player.getTrainers().size() == 1) {
+            System.out.println("\nWelcome to the Wilde Land our newest Champion!");
+            for(String champion : player.getTrainers().keySet()) {
+                System.out.println("   " + champion.toUpperCase() + "!\n");
+            }
+        }
+
+        Thread.sleep(6000);
+        System.out.println("Thank you very much for your attendance.");
+        System.out.println("   Everyone, please welcome our newest Trainer!\n");
+
+        Thread.sleep(6000);
+        System.out.println("\n\nYou.\n");
+
+        Thread.sleep(6000);
         System.exit(0);
     }
 
