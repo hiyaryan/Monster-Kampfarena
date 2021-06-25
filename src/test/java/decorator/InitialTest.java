@@ -193,8 +193,9 @@ public class InitialTest {
 
         StringBuilder sb = new StringBuilder("   >>> " + null + " <<<\n");
         sb.append("   Type: ").append("null").append("\n");
+        sb.append("   Lvl:  ").append("0").append("\n");
         sb.append("   HP:   ").append("0/0").append("\n");
-        sb.append("   MP:   ").append("0/0");
+        sb.append("   MP:   ").append("0/0\n");
 
         System.out.println("\nExpected: " + sb.toString());
         System.out.println("Actual: " + initial.statsToString());
