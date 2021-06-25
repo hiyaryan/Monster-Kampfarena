@@ -163,7 +163,7 @@ private Trainer trainer2;
             }
 
             trainer.setHp(hp);
-            System.out.println(trainer.getName() + " has taken " + damage + " damage!");
+            System.out.println(trainer.getName() + " has taken " + damage + " damage!\n");
 
         } else {
             Monster codeAMon = (Monster) ((CodeAMon) entity).getMonster();
@@ -174,7 +174,7 @@ private Trainer trainer2;
             }
 
             codeAMon.setHp(hp);
-            System.out.println(codeAMon.getName() + " has taken " + damage + " damage!");
+            System.out.println(codeAMon.getName() + " has taken " + damage + " damage!\n");
         }
     }
 
@@ -184,15 +184,15 @@ private Trainer trainer2;
             int tomorrow = mediator.getDay() + 1;
 
             if(isDead(trainer1)) {
-                System.out.println("CONGRATULATIONS " + trainer2.getName().toUpperCase() + "!!\n");
+                System.out.println("\nCONGRATULATIONS " + trainer2.getName().toUpperCase() + "!!\n");
                 System.out.println("   You shall live to see another day.\n");
 
             } else if(isDead(trainer2)) {
-                System.out.println("CONGRATULATIONS " + trainer1.getName().toUpperCase() + "!!\n");
+                System.out.println("\nCONGRATULATIONS " + trainer1.getName().toUpperCase() + "!!\n");
                 System.out.println("   You shall live to see another day.\n");
 
             } else {
-                System.out.println("The battle could not be resolved...");
+                System.out.println("\nThe battle could not be resolved...");
                 System.out.println("   Join us tomorrow at " + tomorrow + "d:1t:0c, the battle shall continue!\n");
             }
 
