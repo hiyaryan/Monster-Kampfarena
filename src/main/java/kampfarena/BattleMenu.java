@@ -24,22 +24,18 @@ public class BattleMenu<T> {
     private T entity;
     private HashMap<String, Option<?>> options;
 
-    public BattleMenu() {
-        System.out.println("\nUp!");
-    }
-
     /**
      * All entities are initialized with a basic attack option.
      */
     public BattleMenu(T entity) {
-        System.out.println("   " + entity.toString());
+        if(entity != null) {
+            this.entity = entity;
+            options = new HashMap<>();
 
-        this.entity = entity;
-        options = new HashMap<>();
-
-        String op = "Attack";
-        Option<String> attack = new Option<>(op);
-        options.put(op, attack);
+            String op = "Attack";
+            Option<String> attack = new Option<>(op);
+            options.put(op, attack);
+        }
     }
 
     public HashMap<String, Option<?>> getOptions() {

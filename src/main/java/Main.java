@@ -13,22 +13,29 @@ import singleton.Player;
  * @since June 19, 2021
  */
 public class Main {
-    static Player controller;
+    static Player player;
     static Mediator mediator;
 
     public static void main(String[] args) throws InterruptedException {
-        controller = Player.getController();
+        player = Player.getController();
         mediator = WildeLandMediator.getMediator();
 
         initializeTheWildeLand();
         startSimulation();
 
-        controller.printTeamData(controller.getTrainers().get("Dock"));
-        controller.printTeamData(controller.getTrainers().get("Tomm"));
+        player.printTeamData(player.getTrainers().get("Dock"));
+        player.printTeamData(player.getTrainers().get("Tomm"));
 
-        // Register for battle then start.
-        controller.registerTrainers();
-        controller.startBattle();
+        while(!mediator.getDate().contains("2d")) {
+            // Register for battle then start.
+            if (mediator.getDate().contains("0d")) {
+                player.registerTrainers();
+
+            } else {
+                player.registerTrainers();
+                player.startBattle();
+            }
+        }
 
         System.exit(0);
     }
@@ -40,11 +47,11 @@ public class Main {
         System.out.println("   Building trainers...\n");
 
         // Build trainers
-        Trainer dock = controller.buildTrainer(controller, "Dock");
-        Trainer tomm = controller.buildTrainer(controller, "Tomm");
+        Trainer dock = player.buildTrainer(player, "Dock");
+        Trainer tomm = player.buildTrainer(player, "Tomm");
 
-        controller.addTrainer(dock);
-        controller.addTrainer(tomm);
+        player.addTrainer(dock);
+        player.addTrainer(tomm);
 
         System.out.println(dock.statsToString());
         System.out.println(tomm.statsToString());
@@ -52,18 +59,18 @@ public class Main {
         System.out.println("   Building monsters...\n");
 
         // Build monsters
-        Monster wildWale = controller.buildMonster(controller, "Wale");
-        Monster wildKaht = controller.buildMonster(controller, "Kaht");
-        Monster wildPyth = controller.buildMonster(controller, "Pyth");
-        Monster wildJaxx = controller.buildMonster(controller, "Jaxx");
-        Monster wildCoco = controller.buildMonster(controller, "Coco");
-        Monster wildAntt = controller.buildMonster(controller, "Antt");
-        Monster wildGith = controller.buildMonster(controller, "Gith");
-        Monster wildServ = controller.buildMonster(controller, "Serv");
-        Monster wildClie = controller.buildMonster(controller, "Clie");
-        Monster wildDesi = controller.buildMonster(controller, "Desi");
-        Monster wildExml = controller.buildMonster(controller, "Exml");
-        Monster wildAdle = controller.buildMonster(controller, "Adle");
+        Monster wildWale = player.buildMonster(player, "Wale");
+        Monster wildKaht = player.buildMonster(player, "Kaht");
+        Monster wildPyth = player.buildMonster(player, "Pyth");
+        Monster wildJaxx = player.buildMonster(player, "Jaxx");
+        Monster wildCoco = player.buildMonster(player, "Coco");
+        Monster wildAntt = player.buildMonster(player, "Antt");
+        Monster wildGith = player.buildMonster(player, "Gith");
+        Monster wildServ = player.buildMonster(player, "Serv");
+        Monster wildClie = player.buildMonster(player, "Clie");
+        Monster wildDesi = player.buildMonster(player, "Desi");
+        Monster wildExml = player.buildMonster(player, "Exml");
+        Monster wildAdle = player.buildMonster(player, "Adle");
 
         System.out.println(wildWale.statsToString());
         System.out.println(wildKaht.statsToString());
@@ -78,18 +85,18 @@ public class Main {
         System.out.println(wildExml.statsToString());
         System.out.println(wildAdle.statsToString());
 
-        controller.addMonster(wildWale);
-        controller.addMonster(wildKaht);
-        controller.addMonster(wildPyth);
-        controller.addMonster(wildJaxx);
-        controller.addMonster(wildCoco);
-        controller.addMonster(wildAntt);
-        controller.addMonster(wildGith);
-        controller.addMonster(wildServ);
-        controller.addMonster(wildClie);
-        controller.addMonster(wildDesi);
-        controller.addMonster(wildExml);
-        controller.addMonster(wildAdle);
+        player.addMonster(wildWale);
+        player.addMonster(wildKaht);
+        player.addMonster(wildPyth);
+        player.addMonster(wildJaxx);
+        player.addMonster(wildCoco);
+        player.addMonster(wildAntt);
+        player.addMonster(wildGith);
+        player.addMonster(wildServ);
+        player.addMonster(wildClie);
+        player.addMonster(wildDesi);
+        player.addMonster(wildExml);
+        player.addMonster(wildAdle);
     }
 
     /**
@@ -103,49 +110,49 @@ public class Main {
         tick.start();
 
         // Pause for narration
-//        Thread.sleep(10000);
-//        printWildeLandTime();
+        Thread.sleep(10000);
+        printWildeLandTime();
 
         // Form bonds
         try {
             // Trainer indexes who are Code-a-mon in their CODEX's
-            CodeAMon wale = controller
+            CodeAMon wale = player
                     .getTrainers().get("Dock")
-                    .formBond(controller.getMonsters().get("Wale"));
+                    .formBond(player.getMonsters().get("Wale"));
             System.out.println(wale.listSkills());
 
         } catch (NullPointerException npe) {
-            System.out.println(controller
+            System.out.println(player
                     .getTrainers().get("Dock").getName() + "'s Codex is full.\n");
         }
 
-        System.out.println(controller
+        System.out.println(player
                 .getTrainers().get("Dock").listMonsters());
 
         // Pause for narration
-//        Thread.sleep(10000);
-//        printWildeLandTime();
+        Thread.sleep(10000);
+        printWildeLandTime();
 
         try {
-            CodeAMon kaht = controller
+            CodeAMon kaht = player
                     .getTrainers().get("Tomm")
-                    .formBond(controller.getMonsters().get("Kaht"));
+                    .formBond(player.getMonsters().get("Kaht"));
             System.out.println(kaht.listSkills());
 
         } catch (NullPointerException npe) {
-            System.out.println(controller
+            System.out.println(player
                     .getTrainers().get("Tomm").getName() + "'s Codex is full.\n");
         }
 
-        System.out.println(controller
+        System.out.println(player
                 .getTrainers().get("Tomm").listMonsters());
 
         // Pause for narration
-//        Thread.sleep(2000);
-//        printWildeLandTime();
+        Thread.sleep(2000);
+        printWildeLandTime();
 
         // Pause for narration
-//        Thread.sleep(8000);
+        Thread.sleep(8000);
     }
 
     /**

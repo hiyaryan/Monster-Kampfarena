@@ -53,9 +53,24 @@ public class Kampfarena {
      */
     public void registerForBattle(HashMap<String, Trainer> trainers) {
         if(isRegistrationOpen()) {
+
+            boolean alreadyRegistered = false;
             for(String name : trainers.keySet()) {
-                Registration registration = new Registration();
-                registry.add(registration.register(trainers.get(name)));
+
+                for(Registration r : registry) {
+                    if (r.getTrainer().getName().contains(name)) {
+                        alreadyRegistered = true;
+                        break;
+                    }
+                }
+
+                if(!alreadyRegistered) {
+                    Registration registration = new Registration();
+                    registry.add(registration.register(trainers.get(name)));
+
+                } else {
+                    System.out.println(name + " is already registered for the next battle.");
+                }
             }
         }
     }
@@ -63,7 +78,7 @@ public class Kampfarena {
     /**
      * Initiate a new battle.
      */
-    public void initiateBattle() {
+    public void initiateBattle() throws InterruptedException {
         if(mediator.getWildeLand().whatTimeIsIt().contains("1t") || mediator.getWildeLand().whatTimeIsIt().contains("2t")) {
             if(registry.size() >= 2) {
                 new Battle(registry).battle();

@@ -151,15 +151,15 @@ public class Player {
     /**
      * This method starts a battle at the Kampfarena.
      */
-    public void startBattle() {
+    public void startBattle() throws InterruptedException {
         kampfarena.initiateBattle();
     }
 
     /**
      * Randomly select an option from the menu.
      */
-    public <T> Object getMenuSelection(Trainer trainer) {
-        BattleMenu<Trainer> battleMenu = new BattleMenu<>();
+    public Object getMenuSelection(Trainer trainer) {
+        BattleMenu<Trainer> battleMenu = new BattleMenu<>(null);
         battleMenu = battleMenu.buildTrainerMenu(controller.getTrainers().get(trainer.getName()));
 
         int i = 0;
