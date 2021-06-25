@@ -212,12 +212,23 @@ public class Player {
     }
 
     /**
-     * Randomly select an option from the menu.
+     * Randomly select an option from the menu for both the trainer and their Code-a-mon.
+     *
+     * @param entity A Trainer or Code-a-mon
+     * @return BattleMenu selection
      */
-    public Object getTrainerMenuSelection(Trainer trainer) {
-        // Generate a Trainer Battle Menu
-        BattleMenu<Trainer> battleMenu = new BattleMenu<>(null);
-        battleMenu = battleMenu.buildTrainerMenu(player.getTrainers().get(trainer.getName()));
+    public Object getMenuSelection(Object entity) {
+        BattleMenu<?> battleMenu = new BattleMenu<>(null);
+
+        if(entity instanceof Trainer) {
+            // Generate a Trainer Battle Menu
+            battleMenu = battleMenu.buildTrainerMenu(player.getTrainers().get(((Trainer) entity).getName()));
+
+        } else {
+            // Generate a Code-a-mon Battle Menu
+            battleMenu = battleMenu.buildCodeAMonMenu((CodeAMon) entity);
+        }
+
         System.out.println(battleMenu.toString());
 
         /* The variable i is a pseudo index--as the keys in the HashMap are looped over, the random selection
@@ -227,23 +238,30 @@ public class Player {
         int selection = new Random().nextInt(battleMenu.getOptions().size());
         for(String str : battleMenu.getOptions().keySet()) {
             if(selection == i) {
-                // The trainer has chosen to attack.
+                // The entity has chosen to attack.
                 if (battleMenu.getOptions().get(str).getSelection() instanceof String) {
                     System.out.println("  -> " + str + "\n");
                     return battleMenu.getOptions().get(str).getSelection();
 
-                    // The trainer has chosen to use its CODEX.
+                    // The entity has chosen to use its special skills.
                 } else if (battleMenu.getOptions().get(str).getSelection() instanceof HashMap) {
 
-                    // A Trainer chooses which Code-a-mon to use in the same way it it chooses an option from tht menu
+                    // An entity chooses which special to use in the same way it it chooses an option from the menu
                     i = 0;
                     selection = new Random().nextInt(((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).size());
 
-                    for (Object mon : ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).keySet()) {
+                    for (Object obj : ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).keySet()) {
                         if(selection == i) {
+
                             System.out.println("  -> " + str + "\n");
-                            System.out.println("Code-a-mon selected: " + mon.toString());
-                            return ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).get(mon);
+
+                            if(entity instanceof Trainer) {
+                                System.out.println("Code-a-mon selected: " + obj.toString());
+                            } else {
+                                System.out.println("Skill selected: " + obj.toString());
+                            }
+
+                            return ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).get(obj);
                         }
                     }
                     i++;
@@ -253,9 +271,5 @@ public class Player {
         }
 
         return battleMenu.toString();
-    }
-
-    public Object getMonsterMenuSelection(CodeAMon codeAMon) {
-        return "Attack";
     }
 }

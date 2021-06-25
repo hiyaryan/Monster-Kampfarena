@@ -100,12 +100,19 @@ public class WildeLandMediator implements Mediator, Runnable {
      */
     @Override
     public void printWildeLandTime() {
-        if(this.time == 1 || this.time == 2) {
-            System.out.println("CLOCK");
-            System.out.println("   The current time is " + getWildeLand().whatTimeIsIt() + ".\n\n");
+//        if(this.time == 1 || this.time == 2) {
+//            System.out.println("CLOCK");
+//            System.out.println("   The current time is " + getWildeLand().whatTimeIsIt() + ".\n\n");
+//
+//        } else {
+//            System.out.println("CLOCK");
+//            System.out.println("   \"Tick. Tock.\" An impending battle awaits you.\n\n");
+//        }
 
-        } else {
-            System.out.println("CLOCK");
+        System.out.println("CLOCK");
+        System.out.println("   The current time is " + getWildeLand().whatTimeIsIt() + ".\n\n");
+
+        if(this.time == 3 || this.time == 0) {
             System.out.println("   \"Tick. Tock.\" An impending battle awaits you.\n\n");
         }
     }
