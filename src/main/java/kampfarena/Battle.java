@@ -55,16 +55,16 @@ private Trainer trainer2;
         if(entity instanceof Trainer) {
             Trainer trainer = (Trainer) entity;
 
-            sb.append("<<< ").append(trainer.getName()).append(" >>>\n");
-            sb.append("HP: ").append(trainer.getHp()).append("/").append(trainer.getMaxHp()).append("\n");
-            sb.append("MP: ").append(trainer.getMp()).append("/").append(trainer.getMaxMp()).append("\n");
+            sb.append("\n<<< ").append(trainer.getName()).append(" >>>\n");
+            sb.append("  HP: ").append(trainer.getHp()).append("/").append(trainer.getMaxHp()).append("\n");
+            sb.append("  MP: ").append(trainer.getMp()).append("/").append(trainer.getMaxMp()).append("\n");
 
         } else if (entity instanceof CodeAMon) {
             Monster codeAMon = (Monster) (((CodeAMon) entity).getMonster());
 
             sb.append("<<< ").append(codeAMon.getName()).append(" >>>\n");
-            sb.append("HP: ").append(codeAMon.getHp()).append("/").append(codeAMon.getMaxHp()).append("\n");
-            sb.append("MP: ").append(codeAMon.getMp()).append("/").append(codeAMon.getMaxMp()).append("\n");
+            sb.append("  HP: ").append(codeAMon.getHp()).append("/").append(codeAMon.getMaxHp()).append("\n");
+            sb.append("  MP: ").append(codeAMon.getMp()).append("/").append(codeAMon.getMaxMp()).append("\n");
         }
 
         return sb.toString();
@@ -81,7 +81,7 @@ private Trainer trainer2;
         Object trainerSelection = player.getMenuSelection(trainer);
 
         if (trainerSelection instanceof String) {
-            System.out.println("   " + trainer.getName() + " is going for an " + ((String) trainerSelection) + "!\n");
+            System.out.println("   " + trainer.getName() + " is going for an " + trainerSelection.toString() + "!\n");
             return trainer.getStrength();
 
         } else {
