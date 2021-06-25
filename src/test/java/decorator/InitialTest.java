@@ -53,14 +53,16 @@ public class InitialTest {
         Initial initial = new Initial(codeAMon);
         initial.init((Trainer) trainer);
 
-        MonsterDecorator.Skill skill = initial.initSkill("Splash", "Water");
+        MonsterDecorator.Skill skill = initial.initSkill("Splash", "Water", 4);
 
-        System.out.println("Expected: Splash Water 1");
+        System.out.println("Expected: Splash Water 4");
         System.out.println("Actual: " + skill.getName()
-                + " " + skill.getType() + "\n");
+                + " " + skill.getType()
+                + " " + skill.getCost() + "\n");
 
         Assert.assertEquals("Splash", skill.getName());
         Assert.assertEquals("Water", skill.getType());
+        Assert.assertEquals(4, skill.getCost());
     }
 
     /**
@@ -78,14 +80,17 @@ public class InitialTest {
         Initial initial = new Initial(codeAMon);
         initial.init((Trainer) trainer);
 
-        MonsterDecorator.Skill skill = initial.initSkill("Scratch", "Poison");
+        MonsterDecorator.Skill skill = initial.initSkill("Scratch", "Poison", 4);
 
-        System.out.println("Expected: Scratch Poison 1");
+        System.out.println("Expected: Scratch Poison 4");
         System.out.println("Actual: " + skill.getName()
-                + " " + skill.getType() + "\n");
+                + " " + skill.getType()
+                + " " + skill.getCost()
+                + "\n");
 
         Assert.assertEquals("Scratch", skill.getName());
         Assert.assertEquals("Poison", skill.getType());
+        Assert.assertEquals(4, skill.getCost());
     }
 
     /**
@@ -105,19 +110,20 @@ public class InitialTest {
         initial.init((Trainer) trainer);
 
         Initial temp = new Initial(null);
-        MonsterDecorator.Skill skill = temp.initSkill("Splash", "Water");
+        MonsterDecorator.Skill skill = temp.initSkill("Splash", "Water", 4);
 
-        System.out.println("Expected: Wale Water 1 Splash");
+        System.out.println("Expected: Wale WATER 4 Splash");
         System.out.println("Actual: "
                 + codeAMon.getMonster().getName()
                 + " " + initial.getType()
-                + initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getName()
+                + " " + initial.getSkills().get("Splash").getCost()
+                + " " +initial.getSkills().get(initial.initSkill("Splash", "Water", 4).getName()).getName()
                 + "\n");
 
         Assert.assertEquals("Wale", codeAMon.getMonster().getName());
         Assert.assertEquals("WATER", initial.getType());
         Assert.assertEquals(skill.getName(),
-                initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getName());
+                initial.getSkills().get(initial.initSkill("Splash", "Water", 4).getName()).getName());
     }
 
     /**
@@ -137,19 +143,20 @@ public class InitialTest {
         initial.init((Trainer) trainer);
 
         Initial temp = new Initial(null);
-        MonsterDecorator.Skill skill = temp.initSkill("Scratch", "Poison");
+        MonsterDecorator.Skill skill = temp.initSkill("Scratch", "Poison", 4);
 
-        System.out.println("Expected: Kaht Poison 1 Scratch");
+        System.out.println("Expected: Kaht BIO 4 Scratch");
         System.out.println("Actual: "
                 + codeAMon.getMonster().getName()
                 + " " + initial.getType() + " "
-                + initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getName()
+                + " " + initial.getSkills().get("Scratch").getCost()
+                + " " +initial.getSkills().get(initial.initSkill("Scratch", "Poison", 4).getName()).getName()
                 + "\n");
 
         Assert.assertEquals("Kaht", codeAMon.getMonster().getName());
         Assert.assertEquals("BIO", initial.getType());
         Assert.assertEquals(skill.getName(),
-                initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getName());
+                initial.getSkills().get(initial.initSkill("Scratch", "Poison", 4).getName()).getName());
     }
 
     /**
