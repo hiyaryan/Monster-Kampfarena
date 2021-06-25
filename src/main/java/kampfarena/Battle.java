@@ -5,6 +5,7 @@ import factory.product.Trainer;
 import mediator.WildeLandMediator;
 import singleton.Player;
 import java.util.Queue;
+import java.util.Random;
 
 public class Battle {
 Player player = Player.getController();
@@ -16,34 +17,38 @@ private Trainer trainer2;
         this.trainer1 = registry.remove().getTrainer();
         this.trainer2 = registry.remove().getTrainer();
 
-        System.out.println("   " + trainer1.getName().toUpperCase() + " vs " + trainer2.getName().toUpperCase());
+        System.out.println("   " + trainer1.getName().toUpperCase() + " vs " + trainer2.getName().toUpperCase() + "\n");
     }
 
     public void battle() throws InterruptedException {
         while (!mediator.getDate().contains("3t")) {
-            Object trainer1Selection = player.getMenuSelection(trainer1);
-            System.out.println(trainer1.getName() + " is up!\n");
 
-            Thread.sleep(2000);
-            if (trainer1Selection instanceof String) {
-                System.out.println("   " + trainer1.getName() + " is going for an " + ((String) trainer1Selection) + "!\n");
+            System.out.println(trainer1.getName() + " is up!");
+            Thread.sleep(new Random().nextInt(2000) + 2000);
+            attack(trainer1);
 
-            } else {
-                System.out.println("   Go " + ((CodeAMon) trainer1Selection).getMonster().getName() + "!\n");
-            }
-
-
-            Object trainer2Selection = player.getMenuSelection(trainer2);
             System.out.println(trainer2.getName() + " is up!");
+            Thread.sleep(new Random().nextInt(2000) + 2000);
+            attack(trainer2);
+        }
 
-            Thread.sleep(2000);
-            if (trainer2Selection instanceof String) {
-                System.out.println("   " + trainer2.getName() + " is going for an " + ((String) trainer2Selection) + "!\n");
+        // If the battle ends due to it being late
+        if (mediator.getDate().contains("3t")) {
+            System.out.println("The battle could not be resolved...");
 
-            } else {
-                System.out.println("   Go " + ((CodeAMon) trainer2Selection).getMonster().getName() + "!\n");
+            int tomorrow = mediator.getDay() + 1;
+            System.out.println("   Join us tomorrow at " + tomorrow + "d:1t:0c, the battle shall continue!\n");
+        }
+    }
 
-            }
+    public void attack(Trainer trainer) throws InterruptedException {
+        Object trainerSelection = player.getMenuSelection(trainer);
+
+        if (trainerSelection instanceof String) {
+            System.out.println("   " + trainer.getName() + " is going for an " + ((String) trainerSelection) + "!\n");
+
+        } else {
+            System.out.println("   Go " + ((CodeAMon) trainerSelection).getMonster().getName() + "!\n");
         }
     }
 }

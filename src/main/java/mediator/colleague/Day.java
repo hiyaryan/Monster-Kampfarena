@@ -22,6 +22,6 @@ public class Day extends WildeLand {
 
     @Override
     public void howIsTheWeather(String date) {
-        System.out.println("Today's forecast: \n   [" + whatTimeIsIt() + "] " + super.getWeather() + "\n");
+        System.out.println("\nToday's forecast: \n   [" + whatTimeIsIt() + "] " + super.getWeather() + "\n");
     }
 }

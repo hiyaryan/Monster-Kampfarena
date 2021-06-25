@@ -22,6 +22,6 @@ public class Night extends WildeLand {
 
     @Override
     public void howIsTheWeather(String date) {
-        System.out.println("Tonight's forecast: \n   [" + whatTimeIsIt() + "] " + super.getWeather() + "\n");
+        System.out.println("\nTonight's forecast: \n   [" + whatTimeIsIt() + "] " + super.getWeather() + "\n");
     }
 }

@@ -33,6 +33,6 @@ public abstract class WildeLand implements Environment {
 
     @Override
     public String getWeather() {
-        return mediator.getEnvironment().getWeather().toLowerCase();
+        return mediator.getEnvironment().getWeather();
     }
 }

@@ -5,6 +5,8 @@ import mediator.Mediator;
 import mediator.WildeLandMediator;
 import singleton.Player;
 
+import java.util.Random;
+
 /**
  * Main (Main.java) This runs the simulation.
  *
@@ -29,9 +31,11 @@ public class Main {
         while(!mediator.getDate().contains("2d")) {
             // Register for battle then start.
             if (mediator.getDate().contains("0d")) {
+                Thread.sleep(new Random().nextInt(8000) + 4000);
                 player.registerTrainers();
 
             } else {
+                Thread.sleep(new Random().nextInt(8000) + 4000);
                 player.registerTrainers();
                 player.startBattle();
             }
