@@ -1,6 +1,7 @@
 package kampfarena;
 
 import decorator.monster.CodeAMon;
+import decorator.monster.MonsterDecorator;
 import factory.product.Monster;
 import factory.product.Trainer;
 import mediator.WildeLandMediator;
@@ -74,31 +75,42 @@ private Trainer trainer2;
      * This method performs an attack, and returns a value based on the attackers
      * strength and various environmental effects.
      *
-     * @param trainer
-     * @return
+     * @param trainer A trainer is the only entity that issues an attack
+     * @return attack damage
      */
     public int attack(Trainer trainer) {
         Object trainerSelection = player.getMenuSelection(trainer);
 
+        // A trainer may choose to make an attack
         if (trainerSelection instanceof String) {
             System.out.println("   " + trainer.getName() + " is going for an " + trainerSelection.toString() + "!\n");
             return trainer.getStrength();
 
+            // A trainer may choose to select a Code-a-mon
         } else {
             CodeAMon codeAMon = ((CodeAMon) trainerSelection);
-            System.out.println("   Go " + codeAMon.getMonster().getName() + "!\n");
+            System.out.println("\n   Go " + codeAMon.getMonster().getName() + "!\n");
 
-            // TODO: Generate the Code-a-mon menu, then select
+            // If a trainer chooses to use a Code-a-mon, this builds the Code-a-mon's battle menu
             Object codeAMonSelection = player.getMenuSelection(codeAMon);
 
-            // FIXME: CodeAMon will only attack other CodeAMon until there are none left.
+            // A Code-a-mon may attack based on the simulation
             if (codeAMonSelection instanceof String) {
                 System.out.println("   " + codeAMon.getMonster().getName() + " is going for an " + codeAMonSelection.toString() + "!\n");
                 return codeAMon.getMonster().getStrength();
 
+                // A Code-a-mon may use a skill based on the simulation
             } else {
-                System.out.println("\nIMPLEMENT ME!\n");
-                return 0;
+                if(codeAMon.getType().equals(((MonsterDecorator.Skill) codeAMonSelection).getType())) {
+                    System.out.println("   " + codeAMon.getMonster().getName() + " is using a skill that matches its type!\n");
+                    // TODO: Add a 2x bonus, subtract MP
+
+                    return 50;
+                } else {
+                    // TODO: Add 1.5x bonus, subtract MP
+
+                    return 25;
+                }
             }
         }
     }

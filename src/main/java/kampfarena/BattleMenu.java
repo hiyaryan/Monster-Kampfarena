@@ -37,7 +37,7 @@ public class BattleMenu<T> {
             options.put(op, attack);
 
         } else {
-            System.out.println("Accessing the battle menu...\n");
+            System.out.println("Accessing the battle menu for ");
         }
     }
 

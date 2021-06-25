@@ -58,7 +58,17 @@ public class Monster extends AbstractMonster implements CodeAMon {
     }
 
     @Override
+    public String getType() {
+        return null;
+    }
+
+    @Override
     public String listSkills() {
+        return getName() + " has no skills.";
+    }
+
+    @Override
+    public String listSkillsCompact() {
         return getName() + " has no skills.";
     }
 

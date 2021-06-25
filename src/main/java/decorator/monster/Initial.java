@@ -119,40 +119,40 @@ public class Initial extends MonsterDecorator {
 
         switch (name) {
             case "Wale":
-                skill = initSkill("Splash", this.type);
+                skill = initSkill("Splash", this.type, 4);
                 break;
             case "Kaht":
-                skill = initSkill("Scratch", this.type);
+                skill = initSkill("Scratch", this.type, 4);
                 break;
             case "Pyth":
-                skill = initSkill("Stare", Type.NONE.toString());
+                skill = initSkill("Stare", Type.NONE.toString(), 2);
                 break;
             case "Jaxx":
-                skill = initSkill("Strike", Type.NONE.toString());
+                skill = initSkill("Strike", Type.NONE.toString(), 2);
                 break;
             case "Coco":
-                skill = initSkill("Bounce", Type.NONE.toString());
+                skill = initSkill("Bounce", Type.NONE.toString(), 2);
                 break;
             case "Antt":
-                skill = initSkill("Bite", this.type);
+                skill = initSkill("Bite", this.type, 4);
                 break;
             case "Gith":
-                skill = initSkill("Ignite", this.type);
+                skill = initSkill("Ignite", this.type, 8);
                 break;
             case "Serv":
-                skill = initSkill("Shock", this.type);
+                skill = initSkill("Shock", this.type, 8);
                 break;
             case "Clie":
-                skill = initSkill("Flurry", this.type);
+                skill = initSkill("Flurry", this.type, 8);
                 break;
             case "Desi":
-                skill = initSkill("Expel", this.type);
+                skill = initSkill("Expel", this.type, 16);
                 break;
             case "Exml":
-                skill = initSkill("Repel", this.type);
+                skill = initSkill("Repel", this.type, 16);
                 break;
             case "Adle":
-                skill = initSkill("Mist", this.type);
+                skill = initSkill("Mist", this.type, 8);
                 break;
             default:
                 System.out.println("Unidentified code-a-mon.");
@@ -174,8 +174,8 @@ public class Initial extends MonsterDecorator {
      * @param type Skill type
      * @return New Skill object
      */
-    public Skill initSkill(String name, String type) {
-        return new Skill(name, type);
+    public Skill initSkill(String name, String type, int cost) {
+        return new Skill(name, type, cost);
     }
 
     /**
@@ -188,9 +188,25 @@ public class Initial extends MonsterDecorator {
         StringBuilder sb = new StringBuilder("--- " + getMonster().getName() +  " Skills ---\n");
 
         for(Map.Entry<String, Skill> skill : skills.entrySet()) {
-            sb.append(skill.getValue().getName()).append(" ")
-                    .append("[lvl. " + skill.getValue().getLevel()).append(" ")
-                    .append(skill.getValue().getType()).append("]\n");
+            sb.append(skill.getValue().getName())
+                    .append(" [Type: ").append(skill.getValue().getType()).append("]\n");
+        }
+
+        return sb.toString();
+    }
+
+    /**
+     * List the new code-a-mons-skills.
+     * -4 MP Scratch
+     * @return String Skill list
+     */
+    @Override
+    public String listSkillsCompact() {
+        StringBuilder sb = new StringBuilder("   === Skills ===\n");
+
+        for(Map.Entry<String, Skill> skill : skills.entrySet()) {
+            sb.append("   -").append(skill.getValue().getCost()).append(" MP ")
+                    .append(skill.getValue().getName()).append("\n");
         }
 
         return sb.toString();

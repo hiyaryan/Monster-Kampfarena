@@ -59,12 +59,12 @@ public abstract class MonsterDecorator implements CodeAMon {
     public static class Skill {
         private final String NAME;
         private final String TYPE;
-        private int level;
+        private final int COST;
 
-        public Skill(String name, String type) {
+        public Skill(String name, String type, int cost) {
             this.NAME = name;
             this.TYPE = type;
-            this.level = 1;
+            this.COST = cost;
         }
 
         public String getName() {
@@ -75,12 +75,8 @@ public abstract class MonsterDecorator implements CodeAMon {
             return TYPE;
         }
 
-        public int getLevel() {
-            return level;
-        }
-
-        public void setLevel(int level) {
-            this.level = level;
+        public int getCost() {
+            return COST;
         }
     }
 

@@ -222,10 +222,12 @@ public class Player {
 
         if(entity instanceof Trainer) {
             // Generate a Trainer Battle Menu
+            System.out.println("   " + ((Trainer) entity).getName() + "\n");
             battleMenu = battleMenu.buildTrainerMenu(player.getTrainers().get(((Trainer) entity).getName()));
 
         } else {
             // Generate a Code-a-mon Battle Menu
+            System.out.println("   " + ((CodeAMon) entity).getMonster().getName() + "\n");
             battleMenu = battleMenu.buildCodeAMonMenu((CodeAMon) entity);
         }
 
@@ -235,7 +237,13 @@ public class Player {
          * generated checks against the incremented index, if it matches, that option in the HashMap is selected.
          */
         int i = 0;
-        int selection = new Random().nextInt(battleMenu.getOptions().size());
+        int selection;
+        try {
+            selection = new Random().nextInt(battleMenu.getOptions().size());
+        } catch (IllegalArgumentException iae) {
+            selection = 0;
+        }
+
         for(String str : battleMenu.getOptions().keySet()) {
             if(selection == i) {
                 // The entity has chosen to attack.
@@ -248,7 +256,11 @@ public class Player {
 
                     // An entity chooses which special to use in the same way it it chooses an option from the menu
                     i = 0;
-                    selection = new Random().nextInt(((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).size());
+                    try {
+                        selection = new Random().nextInt(((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).size());
+                    } catch (IllegalArgumentException iae) {
+                        selection = 0;
+                    }
 
                     for (Object obj : ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).keySet()) {
                         if(selection == i) {
@@ -256,11 +268,14 @@ public class Player {
                             System.out.println("  -> " + str + "\n");
 
                             if(entity instanceof Trainer) {
-                                System.out.println("Code-a-mon selected: " + obj.toString());
+                                System.out.println(((Trainer) entity).listMonstersCompact());
                             } else {
-                                System.out.println("Skill selected: " + obj.toString());
+                                System.out.println(((CodeAMon) entity).listSkillsCompact());
                             }
 
+                            System.out.println("  -> " + obj.toString());
+
+                            // This returns a CODEX or Skills HashMap depending on the entity
                             return ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).get(obj);
                         }
                     }

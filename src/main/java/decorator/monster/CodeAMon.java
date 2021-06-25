@@ -23,5 +23,9 @@ public interface CodeAMon {
 
     HashMap<String, MonsterDecorator.Skill> getSkills();
 
+    String getType();
+
     String listSkills();
+
+    String listSkillsCompact();
 }

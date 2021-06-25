@@ -74,12 +74,12 @@ public class MonsterDecoratorTest {
         System.out.println("Expected:\n"
                 + "--- " + codeAMon.getMonster().getName()
                 +  " Skills ---\n"
-                + "Splash [lvl. 1 Water]\n");
+                + "Splash [Type: Water]\n");
 
         System.out.println("Actual:\n" + codeAMon.listSkills());
 
         Assert.assertEquals("--- " + codeAMon.getMonster().getName() +  " Skills ---\n"
-                        + "Splash [lvl. 1 WATER]\n", codeAMon.listSkills());
+                        + "Splash [Type: WATER]\n", codeAMon.listSkills());
     }
 
     @Test

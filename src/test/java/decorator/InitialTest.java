@@ -57,12 +57,10 @@ public class InitialTest {
 
         System.out.println("Expected: Splash Water 1");
         System.out.println("Actual: " + skill.getName()
-                + " " + skill.getType()
-                + " " + skill.getLevel() + "\n");
+                + " " + skill.getType() + "\n");
 
         Assert.assertEquals("Splash", skill.getName());
         Assert.assertEquals("Water", skill.getType());
-        Assert.assertEquals(1, skill.getLevel());
     }
 
     /**
@@ -84,12 +82,10 @@ public class InitialTest {
 
         System.out.println("Expected: Scratch Poison 1");
         System.out.println("Actual: " + skill.getName()
-                + " " + skill.getType()
-                + " " + skill.getLevel() + "\n");
+                + " " + skill.getType() + "\n");
 
         Assert.assertEquals("Scratch", skill.getName());
         Assert.assertEquals("Poison", skill.getType());
-        Assert.assertEquals(1, skill.getLevel());
     }
 
     /**
@@ -115,14 +111,11 @@ public class InitialTest {
         System.out.println("Actual: "
                 + codeAMon.getMonster().getName()
                 + " " + initial.getType()
-                + initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getLevel() + " "
                 + initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getName()
                 + "\n");
 
         Assert.assertEquals("Wale", codeAMon.getMonster().getName());
         Assert.assertEquals("WATER", initial.getType());
-        Assert.assertEquals(skill.getLevel(),
-                initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getLevel());
         Assert.assertEquals(skill.getName(),
                 initial.getSkills().get(initial.initSkill("Splash", "Water").getName()).getName());
     }
@@ -150,14 +143,11 @@ public class InitialTest {
         System.out.println("Actual: "
                 + codeAMon.getMonster().getName()
                 + " " + initial.getType() + " "
-                + initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getLevel() + " "
                 + initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getName()
                 + "\n");
 
         Assert.assertEquals("Kaht", codeAMon.getMonster().getName());
         Assert.assertEquals("BIO", initial.getType());
-        Assert.assertEquals(skill.getLevel(),
-                initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getLevel());
         Assert.assertEquals(skill.getName(),
                 initial.getSkills().get(initial.initSkill("Scratch", "Poison").getName()).getName());
     }

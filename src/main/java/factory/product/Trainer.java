@@ -81,6 +81,18 @@ public class Trainer extends AbstractTrainer {
     }
 
     @Override
+    public String listMonstersCompact() {
+        StringBuilder sb = new StringBuilder("   === CODEX ===\n");
+
+        for(String name : getCodex().keySet()) {
+            sb.append("   + ").append(name).append("\n");
+        }
+
+        return sb.toString();
+    }
+
+
+    @Override
     public String statsToString() {
         StringBuilder sb = new StringBuilder(">>> " + getName() + " <<<\n");
         sb.append("Type: ").append("Trainer").append("\n");
