@@ -22,10 +22,10 @@ import java.util.Map;
  */
 public class BattleMenu<T> {
     private T entity;
-    private HashMap<String, Option> options;
+    private HashMap<String, Option<?>> options;
 
     public BattleMenu() {
-        System.out.println("\nNext up!\n");
+        System.out.println("\nUp!");
     }
 
     /**
@@ -42,7 +42,7 @@ public class BattleMenu<T> {
         options.put(op, attack);
     }
 
-    public HashMap<String, Option> getOptions() {
+    public HashMap<String, Option<?>> getOptions() {
         return options;
     }
 
@@ -53,7 +53,7 @@ public class BattleMenu<T> {
      * @param trainer Trainer up in battle
      * @return Trainer menu
      */
-    public BattleMenu<Trainer> builtTrainerMenu(Trainer trainer) {
+    public BattleMenu<Trainer> buildTrainerMenu(Trainer trainer) {
         BattleMenu<Trainer> menu = new BattleMenu<>(trainer);
 
         String op = "CODEX";
@@ -104,10 +104,6 @@ public class BattleMenu<T> {
      */
     public static class Option<T> {
         T selection;
-
-        public Option() {
-
-        }
 
         public Option(T selection) {
             this.selection = selection;

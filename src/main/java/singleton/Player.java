@@ -1,5 +1,6 @@
 package singleton;
 
+import decorator.monster.CodeAMon;
 import factory.AbstractFactory;
 import factory.Factory;
 import factory.product.AbstractMonster;
@@ -10,6 +11,7 @@ import kampfarena.BattleMenu;
 import kampfarena.Kampfarena;
 
 import java.util.HashMap;
+import java.util.Random;
 
 /**
  * Player (Player.java)
@@ -156,10 +158,36 @@ public class Player {
     /**
      * Randomly select an option from the menu.
      */
-    public String getMenuSelection(Trainer trainer) {
-        // TODO: Make this random ALSO include the Code-a-mon menu
+    public <T> Object getMenuSelection(Trainer trainer) {
         BattleMenu<Trainer> battleMenu = new BattleMenu<>();
-        battleMenu = battleMenu.builtTrainerMenu(controller.getTrainers().get(trainer.getName()));
+        battleMenu = battleMenu.buildTrainerMenu(controller.getTrainers().get(trainer.getName()));
+
+        int i = 0;
+        int selection = new Random().nextInt(battleMenu.getOptions().size());
+        for(String str : battleMenu.getOptions().keySet()) {
+            if(selection == i) {
+                if (battleMenu.getOptions().get(str).getSelection() instanceof String) {
+                    return battleMenu.getOptions().get(str).getSelection();
+
+                } else if (battleMenu.getOptions().get(str).getSelection() instanceof HashMap) {
+
+                    i = 0;
+                    selection = new Random().nextInt(((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).size());
+                    for (Object mon : ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).keySet()) {
+                        CodeAMon codeAMon = (CodeAMon) ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).get(mon);
+
+                        if(selection == i) {
+                            return codeAMon;
+                        }
+                    }
+
+                    i++;
+                }
+            }
+
+            i++;
+        }
+
         return battleMenu.toString();
     }
 }

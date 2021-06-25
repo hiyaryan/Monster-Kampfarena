@@ -1,5 +1,6 @@
 package kampfarena;
 
+import decorator.monster.CodeAMon;
 import factory.product.Trainer;
 import singleton.Player;
 
@@ -18,8 +19,28 @@ private Trainer trainer2;
     }
 
     public void battle() {
-        // TODO: This is where the fight occurs, it uses the Player controller to randomly select a menu option
-        System.out.println(controller.getMenuSelection(trainer1));
-        System.out.println(controller.getMenuSelection(trainer2));
+        int i = 0;
+        while (i < 10) {
+            Object trainer1Selection = controller.getMenuSelection(trainer1);
+
+            if (trainer1Selection instanceof String) {
+                System.out.println((String) trainer1Selection);
+
+            } else {
+                System.out.println(((CodeAMon) trainer1Selection).getMonster().getName());
+            }
+
+
+            Object trainer2Selection = controller.getMenuSelection(trainer2);
+
+            if (trainer2Selection instanceof String) {
+                System.out.println((String) trainer2Selection);
+
+            } else {
+                System.out.println(((CodeAMon) trainer2Selection).getMonster().getName());
+            }
+
+            i++;
+        }
     }
 }

@@ -103,8 +103,8 @@ public class Main {
         tick.start();
 
         // Pause for narration
-        Thread.sleep(10000);
-        printWildeLandTime();
+//        Thread.sleep(10000);
+//        printWildeLandTime();
 
         // Form bonds
         try {
@@ -113,37 +113,6 @@ public class Main {
                     .getTrainers().get("Dock")
                     .formBond(controller.getMonsters().get("Wale"));
             System.out.println(wale.listSkills());
-
-            // Tame maximum monsters
-//            CodeAMon pyth = controller
-//                    .getTrainers().get("Dock")
-//                    .formBond(controller.getMonsters().get("Pyth"));
-//            System.out.println(pyth.listSkills());
-//
-//            CodeAMon coco = controller
-//                    .getTrainers().get("Dock")
-//                    .formBond(controller.getMonsters().get("Coco"));
-//            System.out.println(coco.listSkills());
-//
-//            CodeAMon clie = controller
-//                    .getTrainers().get("Dock")
-//                    .formBond(controller.getMonsters().get("Clie"));
-//            System.out.println(clie.listSkills());
-//
-//            CodeAMon exml = controller
-//                    .getTrainers().get("Dock")
-//                    .formBond(controller.getMonsters().get("Exml"));
-//            System.out.println(exml.listSkills());
-//
-//            CodeAMon desi = controller
-//                    .getTrainers().get("Dock")
-//                    .formBond(controller.getMonsters().get("Desi"));
-//            System.out.println(desi.listSkills());
-//
-//            CodeAMon kaht = controller
-//                    .getTrainers().get("Dock")
-//                    .formBond(controller.getMonsters().get("Kaht"));
-//            System.out.println(kaht.listSkills());
 
         } catch (NullPointerException npe) {
             System.out.println(controller
@@ -154,40 +123,14 @@ public class Main {
                 .getTrainers().get("Dock").listMonsters());
 
         // Pause for narration
-        Thread.sleep(10000);
-        printWildeLandTime();
+//        Thread.sleep(10000);
+//        printWildeLandTime();
 
         try {
             CodeAMon kaht = controller
                     .getTrainers().get("Tomm")
                     .formBond(controller.getMonsters().get("Kaht"));
             System.out.println(kaht.listSkills());
-
-            // Tame maximum monsters
-//            CodeAMon jaxx = controller
-//                    .getTrainers().get("Tomm")
-//                    .formBond(controller.getMonsters().get("Jaxx"));
-//            System.out.println(jaxx.listSkills());
-//
-//            CodeAMon antt = controller
-//                    .getTrainers().get("Tomm")
-//                    .formBond(controller.getMonsters().get("Antt"));
-//            System.out.println(antt.listSkills());
-//
-//            CodeAMon gith = controller
-//                    .getTrainers().get("Tomm")
-//                    .formBond(controller.getMonsters().get("Gith"));
-//            System.out.println(gith.listSkills());
-//
-//            CodeAMon adle = controller
-//                    .getTrainers().get("Tomm")
-//                    .formBond(controller.getMonsters().get("Adle"));
-//            System.out.println(adle.listSkills());
-//
-//            CodeAMon serv = controller
-//                    .getTrainers().get("Tomm")
-//                    .formBond(controller.getMonsters().get("Serv"));
-//            System.out.println(serv.listSkills());
 
         } catch (NullPointerException npe) {
             System.out.println(controller
@@ -198,11 +141,11 @@ public class Main {
                 .getTrainers().get("Tomm").listMonsters());
 
         // Pause for narration
-        Thread.sleep(2000);
-        printWildeLandTime();
+//        Thread.sleep(2000);
+//        printWildeLandTime();
 
         // Pause for narration
-        Thread.sleep(8000);
+//        Thread.sleep(8000);
     }
 
     /**
