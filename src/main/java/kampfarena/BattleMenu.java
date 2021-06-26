@@ -41,6 +41,10 @@ public class BattleMenu<T> {
         }
     }
 
+    public T getEntity() {
+        return entity;
+    }
+
     public HashMap<String, Option<?>> getOptions() {
         return options;
     }
