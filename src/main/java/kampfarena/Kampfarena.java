@@ -35,6 +35,10 @@ public class Kampfarena {
         return kampfarena;
     }
 
+    public Queue<Registration> getRegistry() {
+        return registry;
+    }
+
     public boolean isABattleOngoing() {
         return aBattleIsOngoing;
     }
@@ -61,20 +65,22 @@ public class Kampfarena {
      *
      * @param trainers HashMap
      */
-    public void registerForBattle(HashMap<String, Trainer> trainers) {
-        if(isRegistrationOpen()) {
+    public HashMap<String, Boolean> registerForBattle(HashMap<String, Trainer> trainers) {
+        HashMap<String, Boolean> alreadyRegistered = new HashMap<>();
 
-            boolean alreadyRegistered = false;
+        if(isRegistrationOpen()) {
             for(String name : trainers.keySet()) {
+                boolean isAlreadyRegistered = false;
 
                 for(Registration r : this.registry) {
                     if (r.getTrainer().getName().contains(name)) {
-                        alreadyRegistered = true;
+                        isAlreadyRegistered = true;
+                        alreadyRegistered.put(r.getTrainer().getName(), true);
                         break;
                     }
                 }
 
-                if(!alreadyRegistered) {
+                if(!isAlreadyRegistered) {
                     Registration registration = new Registration();
                     this.registry.add(registration.register(trainers.get(name)));
 
@@ -82,7 +88,11 @@ public class Kampfarena {
                     System.out.println(name + " is already registered for the next battle.");
                 }
             }
+
+            return alreadyRegistered;
         }
+
+        return null;
     }
 
     /**

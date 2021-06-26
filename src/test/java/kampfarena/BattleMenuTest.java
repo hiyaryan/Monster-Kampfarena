@@ -73,6 +73,7 @@ public class BattleMenuTest {
 
         System.out.println("\nExpected: Trainer");
         System.out.println("Actual: " + battleMenu.getEntity() + "\n");
+
         System.out.println("Expected: Attack");
         System.out.println("Actual: " + battleMenu.getOptions().get("Attack").getSelection() + "\n");
 

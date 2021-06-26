@@ -31,6 +31,7 @@ private Trainer trainer2;
             damageTaken(attack(trainer1), trainer1, trainer2);
 
             if(isTheBattleOver()) {
+                kampfarena.aBattleIsOngoing(false);
                 break;
             }
 
@@ -40,6 +41,7 @@ private Trainer trainer2;
             damageTaken(attack(trainer2), trainer2, trainer1);
 
             if(isTheBattleOver()) {
+                kampfarena.aBattleIsOngoing(false);
                 break;
             }
         }
@@ -221,7 +223,6 @@ private Trainer trainer2;
                 System.out.println("   Join us tomorrow at " + tomorrow + "d:1t:0c, the battle shall continue!\n");
             }
 
-            kampfarena.aBattleIsOngoing(false);
             return true;
         }
 
