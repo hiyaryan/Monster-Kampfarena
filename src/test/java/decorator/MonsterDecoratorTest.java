@@ -47,15 +47,15 @@ public class MonsterDecoratorTest {
         System.out.println("+TEST: testMonsterDecoratorWithAWildMonster\n");
 
         Initial initial = new Initial((Monster) monster);
-        initial.getCodeAMon().setName("Wale");
+        initial.getMonster().setName("Wale");
 
         System.out.println("Expected: "
-                + "--- " + initial.getCodeAMon().getName()
+                + "--- " + initial.getMonster().getName()
                 +  " Skills ---");
 
         System.out.println("Actual: " + initial.listSkills());
 
-        Assert.assertEquals("--- " + initial.getCodeAMon().getName() +  " Skills ---\n",
+        Assert.assertEquals("--- " + initial.getMonster().getName() +  " Skills ---\n",
                 initial.listSkills());
     }
 
@@ -72,13 +72,13 @@ public class MonsterDecoratorTest {
         CodeAMon codeAMon = trainer.formBond((Monster) monster);
 
         System.out.println("Expected:\n"
-                + "--- " + codeAMon.getCodeAMon().getName()
+                + "--- " + codeAMon.getMonster().getName()
                 +  " Skills ---\n"
                 + "Splash [Type: Water]\n");
 
         System.out.println("Actual:\n" + codeAMon.listSkills());
 
-        Assert.assertEquals("--- " + codeAMon.getCodeAMon().getName() +  " Skills ---\n"
+        Assert.assertEquals("--- " + codeAMon.getMonster().getName() +  " Skills ---\n"
                         + "Splash [Type: WATER]\n", codeAMon.listSkills());
     }
 

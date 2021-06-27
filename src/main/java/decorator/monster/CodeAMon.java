@@ -16,7 +16,7 @@ import java.util.HashMap;
 // http://www.blackwasp.co.uk/Decorator.aspx
 public interface CodeAMon {
 
-    AbstractMonster getCodeAMon();
+    AbstractMonster getMonster();
 
     void init(Trainer trainer);
 
@@ -39,10 +39,6 @@ public interface CodeAMon {
     int getExp();
 
     void setExp(int exp);
-
-    double getTypeBonus();
-
-    void setTypeBonus(double typeBonus);
 
     double getWeatherBonus();
 

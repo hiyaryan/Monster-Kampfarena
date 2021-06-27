@@ -41,7 +41,7 @@ public abstract class MonsterDecorator implements CodeAMon {
     }
 
     @Override
-    public AbstractMonster getCodeAMon() {
+    public AbstractMonster getMonster() {
         return (Monster) codeAMon;
     }
 
@@ -50,19 +50,19 @@ public abstract class MonsterDecorator implements CodeAMon {
         codeAMon.init(trainer); // Invokes the init method in factory.Monster
 
         System.out.println("   " + trainer.getName() + " is trying to form a bond with "
-                + codeAMon.getCodeAMon().getName() + ".\n");
+                + codeAMon.getMonster().getName() + ".\n");
 
-        if (codeAMon.getCodeAMon().isWild()) {
+        if (codeAMon.getMonster().isWild()) {
 
-            System.out.println(codeAMon.getCodeAMon().getName()
+            System.out.println(codeAMon.getMonster().getName()
                     + " is forming a bond with "
                     + trainer.getName()
                     + "...");
 
         } else {
-            System.out.println(codeAMon.getCodeAMon().getName()
+            System.out.println(codeAMon.getMonster().getName()
                     + " is already bonded with "
-                    + codeAMon.getCodeAMon().getTrainer().getName() + ".\n");
+                    + codeAMon.getMonster().getTrainer().getName() + ".\n");
         }
     }
 
@@ -94,16 +94,6 @@ public abstract class MonsterDecorator implements CodeAMon {
     @Override
     public double getWeatherBonus() {
         return this.weatherBonus;
-    }
-
-    @Override
-    public double getTypeBonus() {
-        return typeBonus;
-    }
-
-    @Override
-    public void setTypeBonus(double typeBonus) {
-        this.typeBonus = typeBonus;
     }
 
     /**

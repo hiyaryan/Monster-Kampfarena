@@ -42,11 +42,11 @@ public class Initial extends MonsterDecorator {
     public void init(Trainer trainer) {
         super.init(trainer);
 
-        if (getCodeAMon().isWild()) {
-            getCodeAMon().setTrainer(trainer);
+        if (getMonster().isWild()) {
+            getMonster().setTrainer(trainer);
 
             System.out.println("    "
-                    + getCodeAMon().getName()
+                    + getMonster().getName()
                     + " has become a Code-a-mon!\n");
 
             boostStats();
@@ -94,14 +94,14 @@ public class Initial extends MonsterDecorator {
 
     @Override
     protected void boostStats() {
-        System.out.println(getCodeAMon().getName()
+        System.out.println(getMonster().getName()
                 + " has discovered its inner strength!");
 
         System.out.println("   +HP 1.2x");
         System.out.println("      +MP 1.2x\n");
 
-        getCodeAMon().setMaxHp((int) (1.2 * getCodeAMon().getMaxHp()));
-        getCodeAMon().setMaxMp((int) (1.2 * getCodeAMon().getMaxMp()));
+        getMonster().setMaxHp((int) (1.2 * getMonster().getMaxHp()));
+        getMonster().setMaxMp((int) (1.2 * getMonster().getMaxMp()));
     }
 
     /**
@@ -110,7 +110,7 @@ public class Initial extends MonsterDecorator {
      */
     @Override
     protected void giveType() {
-        String name = getCodeAMon().getName();
+        String name = getMonster().getName();
 
         switch (name) {
             case "Wale":
@@ -175,7 +175,7 @@ public class Initial extends MonsterDecorator {
      */
     @Override
     protected void declareSkill() {
-        String name = getCodeAMon().getName();
+        String name = getMonster().getName();
         Skill skill = null;
 
         switch (name) {
@@ -246,7 +246,7 @@ public class Initial extends MonsterDecorator {
      */
     @Override
     public String listSkills() {
-        StringBuilder sb = new StringBuilder("--- " + getCodeAMon().getName() + " Skills ---\n");
+        StringBuilder sb = new StringBuilder("--- " + getMonster().getName() + " Skills ---\n");
 
         for (Map.Entry<String, Skill> skill : skills.entrySet()) {
             sb.append(skill.getValue().getName())
@@ -280,11 +280,11 @@ public class Initial extends MonsterDecorator {
      */
     @Override
     public String statsToString() {
-        StringBuilder sb = new StringBuilder("   >>> " + getCodeAMon().getName() + " <<<\n");
+        StringBuilder sb = new StringBuilder("   >>> " + getMonster().getName() + " <<<\n");
         sb.append("   Type: ").append(getType()).append("\n");
-        sb.append("   Lvl:  ").append(getCodeAMon().getLvl()).append("\n");
-        sb.append("   HP:   ").append(getCodeAMon().getHp()).append("/").append(getCodeAMon().getMaxHp()).append("\n");
-        sb.append("   MP:   ").append(getCodeAMon().getMp()).append("/").append(getCodeAMon().getMaxMp()).append("\n");
+        sb.append("   Lvl:  ").append(getMonster().getLvl()).append("\n");
+        sb.append("   HP:   ").append(getMonster().getHp()).append("/").append(getMonster().getMaxHp()).append("\n");
+        sb.append("   MP:   ").append(getMonster().getMp()).append("/").append(getMonster().getMaxMp()).append("\n");
 
         return sb.toString();
     }

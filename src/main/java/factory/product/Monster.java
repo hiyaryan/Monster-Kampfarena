@@ -43,7 +43,7 @@ public class Monster extends AbstractMonster implements CodeAMon {
     }
 
     @Override
-    public Monster getCodeAMon() {
+    public Monster getMonster() {
         return this;
     }
 
@@ -115,16 +115,6 @@ public class Monster extends AbstractMonster implements CodeAMon {
     @Override
     public double getWeatherBonus() {
         return 1;
-    }
-
-    @Override
-    public double getTypeBonus() {
-        return 1;
-    }
-
-    @Override
-    public void setTypeBonus(double typeBonus) {
-        System.out.println(getName() + " has no type bonuses.");
     }
 
     @Override

@@ -162,15 +162,15 @@ public class Player {
         for (Map.Entry<String, CodeAMon> codeAMon : trainer.getCodex().entrySet()) {
 
             hp = new Random()
-                    .nextInt((int) (Math.ceil(codeAMon.getValue().getCodeAMon().getMaxHp() * 0.75)));
+                    .nextInt((int) (Math.ceil(codeAMon.getValue().getMonster().getMaxHp() * 0.75)));
 
-            codeAMon.getValue().getCodeAMon()
-                    .setHp(codeAMon.getValue().getCodeAMon().getHp() + hp);
+            codeAMon.getValue().getMonster()
+                    .setHp(codeAMon.getValue().getMonster().getHp() + hp);
             System.out.println("      +" + hp + " HP\n");
 
             // Ensure healing does not surpass max hp
-            if (codeAMon.getValue().getCodeAMon().getHp() > codeAMon.getValue().getCodeAMon().getMaxHp()) {
-                codeAMon.getValue().getCodeAMon().setHp(codeAMon.getValue().getCodeAMon().getMaxHp());
+            if (codeAMon.getValue().getMonster().getHp() > codeAMon.getValue().getMonster().getMaxHp()) {
+                codeAMon.getValue().getMonster().setHp(codeAMon.getValue().getMonster().getMaxHp());
             }
         }
     }
@@ -195,15 +195,15 @@ public class Player {
         for (Map.Entry<String, CodeAMon> codeAMon : trainer.getCodex().entrySet()) {
 
             mp = new Random()
-                    .nextInt((int) (Math.ceil(codeAMon.getValue().getCodeAMon().getMaxMp() * 0.50)));
+                    .nextInt((int) (Math.ceil(codeAMon.getValue().getMonster().getMaxMp() * 0.50)));
 
-            codeAMon.getValue().getCodeAMon()
-                    .setMp(codeAMon.getValue().getCodeAMon().getMp() + mp);
+            codeAMon.getValue().getMonster()
+                    .setMp(codeAMon.getValue().getMonster().getMp() + mp);
             System.out.println("      +" + mp + " MP\n");
 
             // Ensure healing does not surpass max mp
-            if (codeAMon.getValue().getCodeAMon().getMp() > codeAMon.getValue().getCodeAMon().getMaxMp()) {
-                codeAMon.getValue().getCodeAMon().setMp(codeAMon.getValue().getCodeAMon().getMaxMp());
+            if (codeAMon.getValue().getMonster().getMp() > codeAMon.getValue().getMonster().getMaxMp()) {
+                codeAMon.getValue().getMonster().setMp(codeAMon.getValue().getMonster().getMaxMp());
             }
         }
     }
@@ -292,7 +292,7 @@ public class Player {
 
         } else {
             // Generate a Code-a-mon Battle Menu
-            System.out.println("   " + ((CodeAMon) entity).getCodeAMon().getName() + "\n");
+            System.out.println("   " + ((CodeAMon) entity).getMonster().getName() + "\n");
             battleMenu = battleMenu.buildCodeAMonMenu((CodeAMon) entity);
         }
 
