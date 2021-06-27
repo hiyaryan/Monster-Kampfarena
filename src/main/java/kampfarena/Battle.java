@@ -7,6 +7,7 @@ import factory.product.Trainer;
 import mediator.WildeLandMediator;
 import singleton.Player;
 
+import java.util.Map;
 import java.util.Queue;
 import java.util.Random;
 
@@ -134,14 +135,15 @@ public class Battle {
                 }
 
                 if (codeAMon.getType().equals(((MonsterDecorator.Skill) codeAMonSelection).getType())) {
-                    System.out.println("\n   " + codeAMon.getMonster().getName()
-                            + " is using a skill that matches its type!");
+                    System.out.println("   " + codeAMon.getMonster().getName()
+                            + " is using a skill that matches its type!\n");
 
-                    // Adjust MP, then return the damage with bonuses applied
+                    // Adjust MP, then return the damage with weather and type bonuses applied
                     adjustMp(((MonsterDecorator.Skill) move.getAttackType()).getCost(), codeAMon);
                     return (int) (2 * codeAMon.getMonster().getMagic() * codeAMon.getWeatherBonus());
 
                 } else {
+                    // Adjust MP, then return the damage with weather bonus
                     adjustMp(((MonsterDecorator.Skill) move.getAttackType()).getCost(), codeAMon);
                     return (int) (codeAMon.getMonster().getMagic() * codeAMon.getWeatherBonus());
                 }
@@ -188,6 +190,24 @@ public class Battle {
             damage = 1;
         }
 
+        // The trainer selects the next Code-a-mon with enough HP to take the damage
+        // If all code-a-mon are dead, the trainer will take the hit
+        for (Map.Entry<String, CodeAMon> codeAMon : defender.getCodex().entrySet()) {
+            if (codeAMon.getValue().getMonster().getHp() != 0) {
+                System.out.println("\n" + codeAMon.getValue().getMonster().getName()
+                        + " is taking the damage for " + defender.getName() + "\n");
+
+                adjustHp(damage, codeAMon);
+
+                if (codeAMon.getValue().getMonster().getHp() == 0) {
+                    System.out.println("   " + codeAMon.getValue().getMonster().getName() + " has fainted.\n");
+                }
+
+                return;
+            }
+        }
+
+        // Trainer takes the hit if there are no Code-a-mon to take it for them.
         adjustHp(damage, defender);
     }
 
@@ -308,7 +328,7 @@ public class Battle {
 
     private boolean isTheBattleOver() {
         // If the battle ends due to it being late
-        if (mediator.getDate().contains("3t")) {
+        if (mediator.getDate().contains("0t")) {
             int tomorrow = mediator.getDay() + 1;
 
             if (isDead(trainer1)) {

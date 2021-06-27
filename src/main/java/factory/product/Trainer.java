@@ -99,11 +99,11 @@ public class Trainer extends AbstractTrainer {
         StringBuilder sb = new StringBuilder("=== CODEX ===\n");
 
         for (String name : getCodex().keySet()) {
-            sb.append("+ >>> ").append(name).append(" <<<\n");
-            sb.append("  HP: ").append(getCodex().get(name).getMonster().getHp())
+            sb.append(">>> ").append(name).append(" <<<\n");
+            sb.append("HP: ").append(getCodex().get(name).getMonster().getHp())
                     .append("/").append(getCodex().get(name).getMonster().getMaxHp()).append("\n");
-            sb.append("  MP: ").append(getCodex().get(name).getMonster().getMp())
-                    .append("/").append(getCodex().get(name).getMonster().getMaxMp()).append("\n");
+            sb.append("MP: ").append(getCodex().get(name).getMonster().getMp())
+                    .append("/").append(getCodex().get(name).getMonster().getMaxMp()).append("\n\n");
         }
 
         return sb.toString();
