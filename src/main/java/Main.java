@@ -55,10 +55,13 @@ public class Main {
                 i++;
             }
 
+            System.out.println("\n" + trainer.getName() + " is deciding what to do...");
+            Thread.sleep(new Random().nextInt(8000) + 4000);
+
             int op = new Random().nextInt(4) + 1;
             switch (op) {
                 case 1:
-                    tryToRegisterAtTheKampfarena();
+                    tryToRegisterAtTheKampfarena(trainer);
                     break;
                 case 2:
                     tameMonsters(trainer);
@@ -66,12 +69,9 @@ public class Main {
                 case 3:
                     sleep(trainer);
                 default:
-                    assert trainer != null;
-                    System.out.println("\n" + trainer.getName() + " is not sure what to do.\n");
+                    System.out.println("\n   " + trainer.getName() + " is not sure what to do.\n");
                     break;
             }
-
-            Thread.sleep(new Random().nextInt(8000) + 4000);
 
             // The simulation ends when only one Trainer is standing.
             if (player.getTrainers().size() == 1) {
@@ -191,7 +191,9 @@ public class Main {
     /**
      * Option 1 of the switch statement in main. The trainers try to register at the Kampfarena.
      */
-    private static void tryToRegisterAtTheKampfarena() throws InterruptedException {
+    private static void tryToRegisterAtTheKampfarena(Trainer trainer) throws InterruptedException {
+        System.out.println("   " + trainer.getName() + " is attempting registration at the Kampfarena.\n");
+
         // The Kampfarena officially opens on 1d:1t:0c
         if (mediator.getDate().contains("0d")) {
             player.registerTrainers();
@@ -213,10 +215,11 @@ public class Main {
         if(mediator.getDate().contains("1t") || mediator.getDate().contains("2t")
                 || mediator.getDate().contains("3t")) {
 
+            System.out.println("\n   ADVENTURE TIME   \n");
             player.exploreTheWildeLand(trainer.getName());
 
         } else {
-            System.out.println("\nIt is too dangerous to go out at this time.\n");
+            System.out.println("   It is too dangerous to go out at this time.\n");
         }
     }
 
@@ -228,7 +231,7 @@ public class Main {
         // The Kampfarena officially opens on 1d:1t:0c
         if (mediator.getDate().contains("3d") || mediator.getDate().contains("0d")) {
 
-            System.out.println("\n" + trainer.getName() + " is going to sleep.\n");
+            System.out.println("   " + trainer.getName() + " is going to sleep.\n");
 
             for(int i = 0; i < 2; i++) {
                 player.healHp(trainer);
@@ -237,13 +240,13 @@ public class Main {
                 Thread.sleep(1000);
             }
 
-            System.out.println("\n" + trainer.getName() + " feels refreshed!\n");
+            System.out.println("\n   " + trainer.getName() + " feels refreshed!\n");
 
             System.out.println(trainer.statsToStringCompact());
             System.out.println(trainer.listMonstersCompact());
 
         } else {
-            System.out.println("\nNow is not the time to be lounging around.\n");
+            System.out.println("   Now is not the time to be lounging around.\n");
         }
     }
 }

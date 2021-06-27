@@ -166,7 +166,7 @@ public class Player {
 
             codeAMon.getValue().getMonster()
                     .setHp(codeAMon.getValue().getMonster().getHp() + hp);
-            System.out.println("      +" + hp + " HP");
+            System.out.println("      +" + hp + " HP\n");
 
             // Ensure healing does not surpass max hp
             if(codeAMon.getValue().getMonster().getHp() > codeAMon.getValue().getMonster().getMaxHp()) {
@@ -199,7 +199,7 @@ public class Player {
 
             codeAMon.getValue().getMonster()
                     .setMp(codeAMon.getValue().getMonster().getMp() + mp);
-            System.out.println("      +" + mp + " MP");
+            System.out.println("      +" + mp + " MP\n");
 
             // Ensure healing does not surpass max mp
             if(codeAMon.getValue().getMonster().getMp() > codeAMon.getValue().getMonster().getMaxMp()) {

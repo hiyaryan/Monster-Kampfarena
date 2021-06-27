@@ -106,7 +106,8 @@ public class Battle {
 
         // A trainer may choose to make an attack
         if (trainerSelection instanceof String) {
-            System.out.println("   " + trainer.getName() + " is going for an " + trainerSelection.toString() + "!\n");
+        // System.out.println("   " + trainer.getName() + " is going for an " + trainerSelection.toString() + "!\n");
+            System.out.println("   " + trainer.getName() + " is going for an attack!\n");
             return trainer.getStrength();
 
             // A trainer may choose to select a Code-a-mon
@@ -119,8 +120,10 @@ public class Battle {
 
             // A Code-a-mon may attack based on the simulation
             if (codeAMonSelection instanceof String) {
-                System.out.println("   " + codeAMon.getMonster().getName() + " is going for an "
-                                + codeAMonSelection.toString() + "!\n");
+            // System.out.println("   " + codeAMon.getMonster().getName() + " is going for an "
+            //       + codeAMonSelection.toString() + "!\n");
+
+                System.out.println("   " + codeAMon.getMonster().getName() + " is going for an attack!\n");
                 return codeAMon.getMonster().getStrength();
 
                 // A Code-a-mon may use a skill based on the simulation
