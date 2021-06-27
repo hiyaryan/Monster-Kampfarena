@@ -72,6 +72,7 @@ public class DayZero  {
             case 15:
                 System.out.println("\n   Join us tomorrow, 1t:1t:0c,...");
                 System.out.println("        at the Monster Kampfarena for the fight of their lives.\n\n");
+                break;
             default:
                 break;
         }

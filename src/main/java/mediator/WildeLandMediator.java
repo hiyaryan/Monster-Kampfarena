@@ -50,7 +50,7 @@ public class WildeLandMediator implements Mediator, Runnable {
      * @return return Night or Day
      */
     @Override
-    public synchronized WildeLand mediateTime(int time) {
+    public WildeLand mediateTime(int time) {
         if(time > 0 && time < 3) {
             return new Day(this.date);
 
@@ -76,7 +76,7 @@ public class WildeLandMediator implements Mediator, Runnable {
     }
 
     @Override
-    public synchronized String getDate() {
+    public String getDate() {
         return this.date;
     }
 

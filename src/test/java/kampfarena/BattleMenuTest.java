@@ -10,14 +10,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
-
 public class BattleMenuTest {
     AbstractMonster monster;
     AbstractTrainer trainer;
     CodeAMon codeAMon;
     BattleMenu<?> battleMenu;
-    HashMap<String, BattleMenu.Option<?>> options;
 
     /**
      * Setup a new monster and trainer for every unit test.
@@ -34,7 +31,6 @@ public class BattleMenuTest {
         codeAMon = trainer.formBond((Monster) monster);
 
         battleMenu = new BattleMenu<>(null);
-        options = new HashMap<>();
     }
 
     /**
@@ -45,7 +41,6 @@ public class BattleMenuTest {
         monster = null;
         trainer = null;
         battleMenu = null;
-        options = null;
     }
 
     /**

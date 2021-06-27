@@ -6,6 +6,7 @@ import mediator.WildeLandMediator;
 
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 /**
@@ -20,8 +21,8 @@ import java.util.Queue;
  * @since June 24, 2021
  */
 public class Kampfarena {
-    protected static Kampfarena kampfarena = new Kampfarena();
-    protected static Mediator mediator = WildeLandMediator.getMediator();
+    protected static final Kampfarena kampfarena = new Kampfarena();
+    protected static final Mediator mediator = WildeLandMediator.getMediator();
     private Queue<Registration> registry;
     private boolean aBattleIsOngoing;
 
@@ -69,11 +70,11 @@ public class Kampfarena {
         HashMap<String, Boolean> alreadyRegistered = new HashMap<>();
 
         if(isRegistrationOpen()) {
-            for(String name : trainers.keySet()) {
+            for(Map.Entry<String, Trainer> trainer : trainers.entrySet()) {
                 boolean isAlreadyRegistered = false;
 
                 for(Registration r : this.registry) {
-                    if (r.getTrainer().getName().contains(name)) {
+                    if (r.getTrainer().getName().contains(trainer.getValue().getName())) {
                         isAlreadyRegistered = true;
                         alreadyRegistered.put(r.getTrainer().getName(), true);
                         break;
@@ -82,10 +83,10 @@ public class Kampfarena {
 
                 if(!isAlreadyRegistered) {
                     Registration registration = new Registration();
-                    this.registry.add(registration.register(trainers.get(name)));
+                    this.registry.add(registration.register(trainers.get(trainer.getValue().getName())));
 
                 } else {
-                    System.out.println(name + " is already registered for the next battle.");
+                    System.out.println(trainer.getValue().getName() + " is already registered for the next battle.");
                 }
             }
 
