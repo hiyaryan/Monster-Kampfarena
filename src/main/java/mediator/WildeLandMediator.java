@@ -117,7 +117,7 @@ public class WildeLandMediator implements Mediator, Runnable {
     }
 
     @Override
-    public String getDate() {
+    public synchronized String getDate() {
         return this.date;
     }
 
@@ -132,7 +132,7 @@ public class WildeLandMediator implements Mediator, Runnable {
     }
 
     @Override
-    public int getCounter() {
+    public synchronized int getCounter() {
         return this.counter;
     }
 

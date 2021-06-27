@@ -195,13 +195,15 @@ public class Battle {
         for (Map.Entry<String, CodeAMon> codeAMon : defender.getCodex().entrySet()) {
             if (codeAMon.getValue().getMonster().getHp() != 0) {
                 System.out.println("\n" + codeAMon.getValue().getMonster().getName()
-                        + " is taking the damage for " + defender.getName() + "\n");
+                        + " is taking the damage for " + defender.getName() + ".\n");
 
-                adjustHp(damage, codeAMon);
+                adjustHp(damage, codeAMon.getValue());
 
                 if (codeAMon.getValue().getMonster().getHp() == 0) {
                     System.out.println("   " + codeAMon.getValue().getMonster().getName() + " has fainted.\n");
                 }
+
+                System.out.println(defender.listMonstersCompact());
 
                 return;
             }
@@ -282,16 +284,16 @@ public class Battle {
             System.out.println(trainer.getName() + " has taken " + damage + " damage!\n");
 
         } else {
-            Monster codeAMon = (Monster) ((CodeAMon) entity).getMonster();
+            CodeAMon codeAMon = (CodeAMon) entity;
 
-            int hp = codeAMon.getHp() - damage;
+            int hp = codeAMon.getMonster().getHp() - damage;
             if (hp < 0) {
                 System.out.println("\n   OVERKILL!\n");
                 hp = 0;
             }
 
-            codeAMon.setHp(hp);
-            System.out.println(codeAMon.getName() + " has taken " + damage + " damage!\n");
+            codeAMon.getMonster().setHp(hp);
+            System.out.println(codeAMon.getMonster().getName() + " has taken " + damage + " damage!\n");
         }
     }
 

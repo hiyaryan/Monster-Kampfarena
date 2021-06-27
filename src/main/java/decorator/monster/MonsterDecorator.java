@@ -20,7 +20,6 @@ public abstract class MonsterDecorator implements CodeAMon {
     private CodeAMon codeAMon;
     protected HashMap<String, Skill> skills; // Initialized in child class Initial
     protected double weatherBonus; // A multiplier for weather bonuses: 0.5, 1, or 1.5
-    protected double typeBonus; // A multiplier for weather bonuses: 0.25, 1, or 2.0
     protected int exp;
 
     protected abstract void boostStats();
@@ -37,7 +36,6 @@ public abstract class MonsterDecorator implements CodeAMon {
     public MonsterDecorator(CodeAMon codeAMon) {
         this.codeAMon = codeAMon;
         this.weatherBonus = 1;
-        this.typeBonus = 1;
     }
 
     @Override
@@ -73,7 +71,6 @@ public abstract class MonsterDecorator implements CodeAMon {
 
     public void setSkills(Skill skill) {
         skills.put(skill.getName(), skill);
-        ;
     }
 
     @Override

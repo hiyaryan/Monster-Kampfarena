@@ -55,8 +55,9 @@ public class Main {
                 i++;
             }
 
+            assert trainer != null;
             System.out.println("\n" + trainer.getName() + " is deciding what to do...");
-            Thread.sleep(new Random().nextInt(8000) + 4000);
+            Thread.sleep(new Random().nextInt(4000) + 2000);
 
             int op = new Random().nextInt(4) + 1;
             switch (op) {
