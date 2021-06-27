@@ -5,7 +5,22 @@ import decorator.monster.Initial;
 
 import java.util.Random;
 
+/**
+ * Trainer (Trainer.java)
+ *
+ * This class is a ConcreteProduct created from the AbstractFactory class and stores a trainer which
+ * is a special type of monster.
+ *
+ * @author Ryan Meneses
+ * @version 1.0
+ * @since June 19, 2021
+ */
 public class Trainer extends AbstractTrainer {
+    /**
+     * Trainer constructor builds a trainer type monster.
+     *
+     * @param name String
+     */
     public Trainer(String name) {
         if (name != null) {
             setName(name);
@@ -26,20 +41,19 @@ public class Trainer extends AbstractTrainer {
     }
 
     /**
-     * This method forms a contract between the trainer and the monster. Once
-     * the contract has been formed, the monster becomes a code-a-mon and is
-     * initialized with a type and set of skills.
+     * This method forms a contract between the trainer and the monster. Once the contract has been formed, the monster
+     * becomes a code-a-mon and is initialized with a type and set of skills.
      *
-     * @param monster
-     * @return
+     * @param monster Monster
+     * @return CodeAMon
      */
     @Override
     public CodeAMon formBond(Monster monster) {
-        if(getCodex().size() != MAX_CODEX_SIZE) {
+        if (getCodex().size() != MAX_CODEX_SIZE) {
 
             CodeAMon codeAMon = new Initial(monster);
 
-            if(codeAMon.getMonster().isWild()) {
+            if (codeAMon.getMonster().isWild()) {
                 codeAMon.init(this);
                 monster.isWild(false);
 
@@ -73,7 +87,7 @@ public class Trainer extends AbstractTrainer {
     public String listMonsters() {
         StringBuilder sb = new StringBuilder("--- " + getName() + " CODEX ---\n");
 
-        for(String name : getCodex().keySet()) {
+        for (String name : getCodex().keySet()) {
             sb.append(super.getCodex().get(name).statsToString()).append("\n");
         }
 
@@ -84,7 +98,7 @@ public class Trainer extends AbstractTrainer {
     public String listMonstersCompact() {
         StringBuilder sb = new StringBuilder("   === CODEX ===\n");
 
-        for(String name : getCodex().keySet()) {
+        for (String name : getCodex().keySet()) {
             sb.append("   + ").append(name).append("\n");
         }
 

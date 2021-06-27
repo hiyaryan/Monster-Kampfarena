@@ -3,15 +3,14 @@ package narrator.narrative;
 /**
  * DayZero (DayZero.java)
  *
- * This narrative class depends on time:counter time telling attributes. The narrative
- * is the Kampfarena announcer guiding the player through the world as the trainers and
- * monsters form bonds and get ready for battle.
+ * This narrative class depends on time:counter time telling attributes. The narrative is the Kampfarena announcer
+ * guiding the player through the world as the trainers and monsters form bonds and get ready for battle.
  *
  * @author Ryan Meneses
  * @version 1.0
  * @since June 23, 2021
  */
-public class DayZero  {
+public class DayZero {
     private int time;
     private int counter;
 

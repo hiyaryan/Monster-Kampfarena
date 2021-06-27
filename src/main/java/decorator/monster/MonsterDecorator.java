@@ -11,7 +11,9 @@ public abstract class MonsterDecorator implements CodeAMon {
     protected HashMap<String, Skill> skills; // initialized in Initial
 
     protected abstract void boostStats();
+
     protected abstract void giveType();
+
     protected abstract void declareSkill();
 
     public MonsterDecorator(CodeAMon monster) {
@@ -30,7 +32,7 @@ public abstract class MonsterDecorator implements CodeAMon {
         System.out.println("   " + trainer.getName() + " is trying to form a bond with "
                 + monster.getMonster().getName() + ".\n");
 
-        if(monster.getMonster().isWild()) {
+        if (monster.getMonster().isWild()) {
 
             System.out.println(monster.getMonster().getName()
                     + " is forming a bond with "
@@ -50,33 +52,41 @@ public abstract class MonsterDecorator implements CodeAMon {
     }
 
     public void setSkills(Skill skill) {
-        skills.put(skill.getName(), skill);;
+        skills.put(skill.getName(), skill);
+        ;
     }
 
     /**
-     * This inner class provides the data structure for a skill
+     * This inner class provides the data structure for a skill.
      */
     public static class Skill {
-        private final String NAME;
-        private final String TYPE;
-        private final int COST;
+        private final String name;
+        private final String type;
+        private final int cost;
 
+        /**
+         * Skill constructor.
+         *
+         * @param name String
+         * @param type String
+         * @param cost int
+         */
         public Skill(String name, String type, int cost) {
-            this.NAME = name;
-            this.TYPE = type;
-            this.COST = cost;
+            this.name = name;
+            this.type = type;
+            this.cost = cost;
         }
 
         public String getName() {
-            return NAME;
+            return name;
         }
 
         public String getType() {
-            return TYPE;
+            return type;
         }
 
         public int getCost() {
-            return COST;
+            return cost;
         }
     }
 

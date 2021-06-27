@@ -40,7 +40,7 @@ public class Player {
         this.kampfarena = Kampfarena.getKampfarena();
 
         this.factory = new Factory();
-        this.trainers= new HashMap<>();
+        this.trainers = new HashMap<>();
         this.monsters = new HashMap<>();
     }
 
@@ -84,7 +84,7 @@ public class Player {
      * This class builds a new trainer and returns an instance of it.
      *
      * @param controller Player: Instance of this player
-     * @param name String: Name of trainer
+     * @param name       String: Name of trainer
      * @return ConcreteProductTrainer
      */
     public Trainer buildTrainer(Player controller, String name) {
@@ -96,7 +96,7 @@ public class Player {
      * This class build a new monster and returns an instance of it.
      *
      * @param controller Player: Instance of this player
-     * @param name String: Name of monster
+     * @param name       String: Name of monster
      * @return ConcreteProductMonster
      */
     public Monster buildMonster(Player controller, String name) {
@@ -105,7 +105,7 @@ public class Player {
     }
 
     /**
-     * Add a trainer to the Wilde Land
+     * Add a trainer to the Wilde Land.
      *
      * @param trainer Trainer
      */
@@ -142,8 +142,8 @@ public class Player {
     }
 
     /**
-     * This method provides an opportunity for trainers to explore the Wilde Land and tame more
-     * monsters. It functions exactly like the block of code
+     * This method provides an opportunity for trainers to explore the Wilde Land and tame more monsters. It functions
+     * exactly like the block of code.
      *
      * @throws InterruptedException Thread.sleep
      */
@@ -157,7 +157,7 @@ public class Player {
          * it breaks out of the loop before the thread goes to sleep in the if statement.
          * The difference can either be 1, e.g. 15-14, -15 e.g. 0-15.
          */
-        while(true) {
+        while (true) {
             lottery = new Random().nextInt(12);
 
             try {
@@ -165,8 +165,8 @@ public class Player {
                 // Initial Code-a-mon a chosen using a lottery system
                 String monsterName = "";
                 int i = 0;
-                for(String n : player.getMonsters().keySet()) {
-                    if(i == lottery) {
+                for (String n : player.getMonsters().keySet()) {
+                    if (i == lottery) {
                         monsterName = n;
                     }
                     i++;
@@ -174,12 +174,12 @@ public class Player {
 
                 player.getTrainers().get(trainerName).formBond(player.getMonsters().get(monsterName));
 
-                if(lottery == 0) {
+                if (lottery == 0) {
                     lottery++;
                 }
 
                 // Here is where it checks the stopwatch (counter) vs the actual counter (d:t:c)
-                if((mediator.getCounter() - counter) != 1 && (mediator.getCounter() - counter) != -15) {
+                if ((mediator.getCounter() - counter) != 1 && (mediator.getCounter() - counter) != -15) {
                     break;
                 }
 
@@ -196,7 +196,7 @@ public class Player {
     }
 
     /**
-     * Register for battle
+     * Register for battle.
      *
      * @return
      */
@@ -220,7 +220,7 @@ public class Player {
     public Object getMenuSelection(Object entity) {
         BattleMenu<?> battleMenu = new BattleMenu<>(null);
 
-        if(entity instanceof Trainer) {
+        if (entity instanceof Trainer) {
             // Generate a Trainer Battle Menu
             System.out.println("   " + ((Trainer) entity).getName() + "\n");
             battleMenu = battleMenu.buildTrainerMenu(player.getTrainers().get(((Trainer) entity).getName()));
@@ -244,8 +244,8 @@ public class Player {
             selection = 0;
         }
 
-        for(String str : battleMenu.getOptions().keySet()) {
-            if(selection == i) {
+        for (String str : battleMenu.getOptions().keySet()) {
+            if (selection == i) {
                 // The entity has chosen to attack.
                 if (battleMenu.getOptions().get(str).getSelection() instanceof String) {
                     System.out.println("  -> " + str + "\n");
@@ -257,17 +257,18 @@ public class Player {
                     // An entity chooses which special to use in the same way it it chooses an option from the menu
                     i = 0;
                     try {
-                        selection = new Random().nextInt(((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).size());
+                        selection = new Random()
+                                .nextInt(((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).size());
                     } catch (IllegalArgumentException iae) {
                         selection = 0;
                     }
 
                     for (Object obj : ((HashMap<?, ?>) battleMenu.getOptions().get(str).getSelection()).keySet()) {
-                        if(selection == i) {
+                        if (selection == i) {
 
                             System.out.println("  -> " + str + "\n");
 
-                            if(entity instanceof Trainer) {
+                            if (entity instanceof Trainer) {
                                 System.out.println(((Trainer) entity).listMonstersCompact());
                             } else {
                                 System.out.println(((CodeAMon) entity).listSkillsCompact());

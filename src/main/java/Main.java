@@ -9,11 +9,11 @@ import java.util.Random;
 /**
  * Main (Main.java)
  *
- * This runs the simulation. Main is simply a central location for the program to run. It's purpose is to
- * initialize entities and the simulated world. The Player class is the class that performs the actions.
- * All if it's actions are undetermined it uses randomized logic. The Mediator class, mediates the world.
- * It keeps track of time, sets the weather, and mediates between day and night. Actions vary depending on
- * the time, day or night, or by the game hour (t)--that occurs every 16 real-world seconds--and by the weather.
+ * This runs the simulation. Main is simply a central location for the program to run. It's purpose is to initialize
+ * entities and the simulated world. The Player class is the class that performs the actions. All if it's actions are
+ * undetermined it uses randomized logic. The Mediator class, mediates the world. It keeps track of time, sets the
+ * weather, and mediates between day and night. Actions vary depending on the time, day or night, or by the game hour
+ * (t)--that occurs every 16 real-world seconds--and by the weather.
  *
  * @author Ryan Meneses
  * @version 1.0
@@ -23,6 +23,12 @@ public class Main {
     static Player player;
     static Mediator mediator;
 
+    /**
+     * Entry to program.
+     *
+     * @param args String
+     * @throws InterruptedException Thread.sleep
+     */
     public static void main(String[] args) throws InterruptedException {
         player = Player.getPlayer();
         mediator = WildeLandMediator.getMediator();
@@ -33,12 +39,9 @@ public class Main {
         player.printTeamData(player.getTrainers().get("Dock"));
         player.printTeamData(player.getTrainers().get("Tomm"));
 
-        /*
-         * After the code above initializes the entities and starts the simulation the following code
-         * is where the world logic plays out. This is where the Player class tries to make decisions
-         * constrained to the time of day.
-         */
-        while(!mediator.getDate().contains("7d")) {
+        // After the code above initializes the entities and starts the simulation the following code is where the
+        // world logic plays out. This is where the Player class tries to make decisions constrained to the time of day.
+        while (!mediator.getDate().contains("7d")) {
             mediator.printWildeLandTime();
 
             // The Kampfarena officially opens on 1d:1t:0c
@@ -50,21 +53,21 @@ public class Main {
             } else {
                 Thread.sleep(new Random().nextInt(8000) + 4000);
 
-                // If it's between the hours of 3t-0t the Kampfarena will refuse to accept registrations
-                // The logic takes place inside the Kampfarena class
+                // If it's between the hours of 3t-0t the Kampfarena will refuse to accept registrations. The logic
+                // takes place inside the Kampfarena class.
                 player.registerTrainers();
                 player.startBattle();
             }
 
             // The simulation ends when only one Trainer is standing.
-            if(player.getTrainers().size() == 1) {
+            if (player.getTrainers().size() == 1) {
                 break;
             }
         }
 
-        if(player.getTrainers().size() == 1) {
+        if (player.getTrainers().size() == 1) {
             System.out.println("\nWelcome to the Wilde Land our newest Champion!");
-            for(String champion : player.getTrainers().keySet()) {
+            for (String champion : player.getTrainers().keySet()) {
                 System.out.println("   " + champion.toUpperCase() + "!\n");
             }
         }
@@ -80,6 +83,9 @@ public class Main {
         System.exit(0);
     }
 
+    /**
+     * This method builds the trainers and monsters using the Abstract Factory design pattern in the factory package.
+     */
     public static void initializeTheWildeLand() {
         System.out.println("Initializing world.");
 

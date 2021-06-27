@@ -9,12 +9,21 @@ import java.util.Random;
 /**
  * Monster (Monster.java)
  *
- * This class is a ConcreteProduct created from the AbstractFactory class
- * and is
+ * This class is a ConcreteProduct created from the AbstractFactory class and stores an initial monster
+ * which is the core of a Code-a-mon.
+ *
+ * @author Ryan Meneses
+ * @version 1.0
+ * @since June 19, 2021
  */
 public class Monster extends AbstractMonster implements CodeAMon {
+    /**
+     * Monster constructor accepts a name and builds a wild monster.
+     *
+     * @param name String
+     */
     public Monster(String name) {
-        if(name != null) {
+        if (name != null) {
             setName(name);
             setLvl(1);
 
@@ -74,7 +83,7 @@ public class Monster extends AbstractMonster implements CodeAMon {
 
     @Override
     public void init(Trainer trainer) {
-        if(!isWild()) {
+        if (!isWild()) {
             System.out.println(getName() + " is looking at " + trainer.getName()
                     + " suspiciously.\n");
 

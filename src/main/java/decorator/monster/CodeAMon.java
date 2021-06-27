@@ -6,7 +6,7 @@ import factory.product.Trainer;
 import java.util.HashMap;
 
 /**
- * This interface represents a Code-a-mon
+ * This interface represents a Code-a-mon.
  *
  * @author Ryan Meneses
  * @version 1.0

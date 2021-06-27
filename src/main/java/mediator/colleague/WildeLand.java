@@ -8,9 +8,9 @@ import mediator.WildeLandMediator;
 /**
  * WildeLand (WildeLand.java)
  *
- * This abstract class represents the world of the Wilde Land. It's abstract methods are implemented
- * in its children classes Day and Night which is mediated by WildeLandMediator class. This class
- * only implements the narration of the simulation based on the time.
+ * This abstract class represents the world of the Wilde Land. It's abstract methods are implemented in its children
+ * classes Day and Night which is mediated by WildeLandMediator class. This class only implements the narration of the
+ * simulation based on the time.
  *
  * @author Ryan Meneses
  * @version 1.0

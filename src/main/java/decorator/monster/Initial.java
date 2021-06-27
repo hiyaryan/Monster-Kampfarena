@@ -23,16 +23,16 @@ public class Initial extends MonsterDecorator {
     }
 
     /**
-     * The init method is the main method of this class. This method establishes a connection
-     * between trainer and monster which awakens the monster to their code-a-mon potential.
+     * The init method is the main method of this class. This method establishes a connection between trainer and
+     * monster which awakens the monster to their code-a-mon potential.
      *
-     * @param trainer
+     * @param trainer Trainer
      */
     @Override
     public void init(Trainer trainer) {
         super.init(trainer);
 
-        if(getMonster().isWild()) {
+        if (getMonster().isWild()) {
             getMonster().setTrainer(trainer);
 
             System.out.println("    "
@@ -43,6 +43,7 @@ public class Initial extends MonsterDecorator {
             giveType();
             declareSkill();
         }
+
     }
 
     public String getType() {
@@ -66,7 +67,7 @@ public class Initial extends MonsterDecorator {
     }
 
     /**
-     * This method gives a newly awakened code-e-mon a type based on their original monster name
+     * This method gives a newly awakened code-e-mon a type based on their original monster name.
      */
     @Override
     protected void giveType() {
@@ -159,7 +160,7 @@ public class Initial extends MonsterDecorator {
                 break;
         }
 
-        if(skill != null) {
+        if (skill != null) {
             setSkills(skill);
 
         } else {
@@ -185,9 +186,9 @@ public class Initial extends MonsterDecorator {
      */
     @Override
     public String listSkills() {
-        StringBuilder sb = new StringBuilder("--- " + getMonster().getName() +  " Skills ---\n");
+        StringBuilder sb = new StringBuilder("--- " + getMonster().getName() + " Skills ---\n");
 
-        for(Map.Entry<String, Skill> skill : skills.entrySet()) {
+        for (Map.Entry<String, Skill> skill : skills.entrySet()) {
             sb.append(skill.getValue().getName())
                     .append(" [Type: ").append(skill.getValue().getType()).append("]\n");
         }
@@ -196,15 +197,15 @@ public class Initial extends MonsterDecorator {
     }
 
     /**
-     * List the new code-a-mons-skills.
-     * -4 MP Scratch
+     * List the new code-a-mons-skills. -4 MP Scratch
+     *
      * @return String Skill list
      */
     @Override
     public String listSkillsCompact() {
         StringBuilder sb = new StringBuilder("   === Skills ===\n");
 
-        for(Map.Entry<String, Skill> skill : skills.entrySet()) {
+        for (Map.Entry<String, Skill> skill : skills.entrySet()) {
             sb.append("   -").append(skill.getValue().getCost()).append(" MP ")
                     .append(skill.getValue().getName()).append("\n");
         }

@@ -13,5 +13,6 @@ import narrator.narrative.DayZero;
  */
 public interface Narrator {
     void narrateDay();
+
     DayZero getDayZero();
 }

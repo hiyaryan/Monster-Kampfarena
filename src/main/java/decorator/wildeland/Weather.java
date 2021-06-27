@@ -23,11 +23,16 @@ public class Weather extends WildeLandDecorator {
         STRANGE
     }
 
+    /**
+     * Weather constructor accepts a date and sets the weather for that time.
+     *
+     * @param date String
+     */
     public Weather(String date) {
-        if(date.contains("Day")) {
+        if (date.contains("Day")) {
             this.weather = determineTheDayWeatherForecast();
 
-        } else if(date.contains("Night")) {
+        } else if (date.contains("Night")) {
             this.weather = determineTheNightWeatherForecast();
 
         } else {
@@ -35,6 +40,11 @@ public class Weather extends WildeLandDecorator {
         }
     }
 
+    /**
+     * Determine the day weather.
+     *
+     * @return String enum to string
+     */
     @Override
     public String determineTheDayWeatherForecast() {
         int forecast = new Random().nextInt(5) + 1;
@@ -64,6 +74,11 @@ public class Weather extends WildeLandDecorator {
         return day.toString();
     }
 
+    /**
+     * Determine the night weather.
+     *
+     * @return String enum to string
+     */
     @Override
     public String determineTheNightWeatherForecast() {
         int forecast = new Random().nextInt(5) + 1;
@@ -93,6 +108,11 @@ public class Weather extends WildeLandDecorator {
         return night.toString();
     }
 
+    /**
+     * The weather for the day or night.
+     *
+     * @return String
+     */
     @Override
     public String getWeather() {
         return this.weather;

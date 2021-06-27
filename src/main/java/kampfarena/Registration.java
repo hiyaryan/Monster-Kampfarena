@@ -29,7 +29,8 @@ public class Registration {
      * Register sets the trainer in this registration.
      */
     public Registration register(Trainer trainer) {
-        if(mediator.getWildeLand().whatTimeIsIt().contains("1t") || mediator.getWildeLand().whatTimeIsIt().contains("2t")) {
+        if (mediator.getWildeLand().whatTimeIsIt().contains("1t")
+                || mediator.getWildeLand().whatTimeIsIt().contains("2t")) {
             this.trainer = trainer;
             return this;
 
