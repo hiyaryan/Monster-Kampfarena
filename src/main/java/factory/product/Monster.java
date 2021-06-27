@@ -99,12 +99,22 @@ public class Monster extends AbstractMonster implements CodeAMon {
 
     @Override
     public void setWeatherBonus(int bonus) {
-        return 1;
+        System.out.println(getName() + " has no weather bonuses.");
     }
 
     @Override
     public double getWeatherBonus() {
         return 1;
+    }
+
+    @Override
+    public double getTypeBonus() {
+        return 1;
+    }
+
+    @Override
+    public void setTypeBonus(double typeBonus) {
+        System.out.println(getName() + " has no type bonuses.");
     }
 
     @Override
