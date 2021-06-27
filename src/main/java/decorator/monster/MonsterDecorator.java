@@ -8,7 +8,9 @@ import java.util.HashMap;
 
 public abstract class MonsterDecorator implements CodeAMon {
     private CodeAMon monster;
-    protected HashMap<String, Skill> skills; // initialized in Initial
+    protected HashMap<String, Skill> skills; // Initialized in child class Initial
+    protected int weatherBonus; // A multiplier for weather bonuses
+    protected int exp;
 
     protected abstract void boostStats();
 
@@ -18,6 +20,7 @@ public abstract class MonsterDecorator implements CodeAMon {
 
     public MonsterDecorator(CodeAMon monster) {
         this.monster = monster;
+        this.weatherBonus = 1;
     }
 
     @Override
@@ -56,12 +59,22 @@ public abstract class MonsterDecorator implements CodeAMon {
         ;
     }
 
+    @Override
+    public int setWeatherBonus(int bonus) {
+        return bonus;
+    }
+
+    @Override
+    public int getWeatherBonus() {
+        return 0;
+    }
+
     /**
      * This inner class provides the data structure for a skill.
      */
     public static class Skill {
         private final String name;
-        private final String type;
+        private final Type type;
         private final int cost;
 
         /**
@@ -71,7 +84,7 @@ public abstract class MonsterDecorator implements CodeAMon {
          * @param type String
          * @param cost int
          */
-        public Skill(String name, String type, int cost) {
+        public Skill(String name, Type type, int cost) {
             this.name = name;
             this.type = type;
             this.cost = cost;
@@ -81,7 +94,7 @@ public abstract class MonsterDecorator implements CodeAMon {
             return name;
         }
 
-        public String getType() {
+        public Type getType() {
             return type;
         }
 

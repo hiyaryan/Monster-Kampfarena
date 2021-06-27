@@ -1,5 +1,6 @@
 package decorator.monster;
 
+import decorator.wildeland.Weather;
 import factory.product.Trainer;
 
 import java.util.HashMap;
@@ -15,11 +16,15 @@ import java.util.Map;
  * @since June 21, 2021
  */
 public class Initial extends MonsterDecorator {
-    private String type;
+    private Type type;
+    private Type typeWeakness;
+    private Weather.Type weatherStrength;
+    private Weather.Type weatherWeakness;
 
     public Initial(CodeAMon codeAMon) {
         super(codeAMon);
         super.skills = new HashMap<>();
+        super.exp = 100;
     }
 
     /**
@@ -46,12 +51,40 @@ public class Initial extends MonsterDecorator {
 
     }
 
-    public String getType() {
+    @Override
+    public Type getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Type type) {
         this.type = type;
+    }
+
+    @Override
+    public Weather.Type getWeatherStrength() {
+        return weatherStrength;
+    }
+
+    @Override
+    public Type getTypeWeakness() {
+        return typeWeakness;
+    }
+
+    public void setTypeWeakness(Type typeWeakness) {
+        this.typeWeakness = typeWeakness;
+    }
+
+    public void setWeatherStrength(Weather.Type weatherStrength) {
+        this.weatherStrength = weatherStrength;
+    }
+
+    @Override
+    public Weather.Type getWeatherWeakness() {
+        return weatherWeakness;
+    }
+
+    public void setWeatherWeakness(Weather.Type weatherWeakness) {
+        this.weatherWeakness = weatherWeakness;
     }
 
     @Override
@@ -67,7 +100,8 @@ public class Initial extends MonsterDecorator {
     }
 
     /**
-     * This method gives a newly awakened code-e-mon a type based on their original monster name.
+     * This method gives a newly awakened code-e-mon a type based on their original monster name. It also sets their
+     * type and weather strengths and weaknesses. Note that NEUTRAL weather and NONE type do not buff or debuff.
      */
     @Override
     protected void giveType() {
@@ -76,29 +110,50 @@ public class Initial extends MonsterDecorator {
         switch (name) {
             case "Wale":
             case "Adle":
-                setType(Type.WATER.toString());
+                setType(Type.WATER);
+                setTypeWeakness(Type.LIGHTNING);
+                setWeatherStrength(Weather.Type.RAINY);
+                setWeatherWeakness(Weather.Type.STORMY);
                 break;
             case "Kaht":
             case "Antt":
-                setType(Type.BIO.toString());
+                setType(Type.BIO);
+                setTypeWeakness(Type.NONE);
+                setWeatherStrength(Weather.Type.STRANGE);
+                setWeatherWeakness(Weather.Type.NEUTRAL);
                 break;
             case "Pyth":
             case "Clie":
-                setType(Type.BLIZZARD.toString());
+                setType(Type.BLIZZARD);
+                setTypeWeakness(Type.FIRE);
+                setWeatherStrength(Weather.Type.SNOWY);
+                setWeatherWeakness(Weather.Type.SUNNY);
                 break;
             case "Jaxx":
             case "Serv":
-                setType(Type.LIGHTNING.toString());
+                setType(Type.LIGHTNING);
+                setTypeWeakness(Type.WATER);
+                setWeatherStrength(Weather.Type.STORMY);
+                setWeatherWeakness(Weather.Type.RAINY);
                 break;
             case "Coco":
             case "Gith":
-                setType(Type.FIRE.toString());
+                setType(Type.FIRE);
+                setTypeWeakness(Type.BLIZZARD);
+                setWeatherStrength(Weather.Type.SUNNY);
+                setWeatherWeakness(Weather.Type.SNOWY);
                 break;
             case "Desi":
-                setType(Type.DARK.toString());
+                setType(Type.DARK);
+                setTypeWeakness(Type.LIGHT);
+                setWeatherStrength(Weather.Type.TWILIGHT);
+                setWeatherWeakness(Weather.Type.BRIGHT);
                 break;
             case "Exml":
-                setType(Type.LIGHT.toString());
+                setType(Type.LIGHT);
+                setTypeWeakness(Type.DARK);
+                setWeatherStrength(Weather.Type.BRIGHT);
+                setWeatherWeakness(Weather.Type.TWILIGHT);
                 break;
             default:
                 System.out.println("Unidentified code-a-mon.");
@@ -126,13 +181,13 @@ public class Initial extends MonsterDecorator {
                 skill = initSkill("Scratch", this.type, 4);
                 break;
             case "Pyth":
-                skill = initSkill("Stare", Type.NONE.toString(), 2);
+                skill = initSkill("Stare", Type.NONE, 2);
                 break;
             case "Jaxx":
-                skill = initSkill("Strike", Type.NONE.toString(), 2);
+                skill = initSkill("Strike", Type.NONE, 2);
                 break;
             case "Coco":
-                skill = initSkill("Bounce", Type.NONE.toString(), 2);
+                skill = initSkill("Bounce", Type.NONE, 2);
                 break;
             case "Antt":
                 skill = initSkill("Bite", this.type, 4);
@@ -175,7 +230,7 @@ public class Initial extends MonsterDecorator {
      * @param type Skill type
      * @return New Skill object
      */
-    public Skill initSkill(String name, String type, int cost) {
+    public Skill initSkill(String name, Type type, int cost) {
         return new Skill(name, type, cost);
     }
 

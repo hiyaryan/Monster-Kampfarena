@@ -2,6 +2,7 @@ package factory.product;
 
 import decorator.monster.CodeAMon;
 import decorator.monster.MonsterDecorator;
+import decorator.wildeland.Weather;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -67,7 +68,22 @@ public class Monster extends AbstractMonster implements CodeAMon {
     }
 
     @Override
-    public String getType() {
+    public MonsterDecorator.Type getType() {
+        return null;
+    }
+
+    @Override
+    public MonsterDecorator.Type getTypeWeakness() {
+        return null;
+    }
+
+    @Override
+    public Weather.Type getWeatherStrength() {
+        return null;
+    }
+
+    @Override
+    public Weather.Type getWeatherWeakness() {
         return null;
     }
 
@@ -79,6 +95,16 @@ public class Monster extends AbstractMonster implements CodeAMon {
     @Override
     public String listSkillsCompact() {
         return getName() + " has no skills.";
+    }
+
+    @Override
+    public int setWeatherBonus(int bonus) {
+        return 1;
+    }
+
+    @Override
+    public int getWeatherBonus() {
+        return 1;
     }
 
     @Override

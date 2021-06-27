@@ -1,5 +1,6 @@
 package decorator.monster;
 
+import decorator.wildeland.Weather;
 import factory.product.AbstractMonster;
 import factory.product.Trainer;
 
@@ -21,11 +22,21 @@ public interface CodeAMon {
 
     String statsToString();
 
-    HashMap<String, MonsterDecorator.Skill> getSkills();
+    MonsterDecorator.Type getType();
 
-    String getType();
+    MonsterDecorator.Type getTypeWeakness();
+
+    Weather.Type getWeatherStrength();
+
+    Weather.Type getWeatherWeakness();
+
+    HashMap<String, MonsterDecorator.Skill> getSkills();
 
     String listSkills();
 
     String listSkillsCompact();
+
+    int setWeatherBonus(int bonus);
+
+    int getWeatherBonus();
 }

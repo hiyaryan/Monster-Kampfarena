@@ -62,7 +62,6 @@ public class WildeLandMediator implements Mediator, Runnable {
         return new Weather(this.wildeLand.whatTimeIsIt());
     }
 
-
     @Override
     public synchronized WildeLand getWildeLand() {
         return this.wildeLand;

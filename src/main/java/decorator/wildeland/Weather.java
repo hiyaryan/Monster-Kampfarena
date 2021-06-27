@@ -8,8 +8,10 @@ public class Weather extends WildeLandDecorator {
     private enum Day {
         NEUTRAL,
         SUNNY,
+        BRIGHT,
         WINDY,
         RAINY,
+        STORMY,
         SNOWY,
         STRANGE
     }
@@ -19,8 +21,21 @@ public class Weather extends WildeLandDecorator {
         TWILIGHT,
         WINDY,
         RAINY,
+        STORMY,
         SNOWY,
         STRANGE
+    }
+
+    public enum Type {
+        NEUTRAL,
+        SUNNY,
+        TWILIGHT,
+        BRIGHT,
+        WINDY,
+        RAINY,
+        STORMY,
+        SNOWY,
+        STRANGE,
     }
 
     /**
@@ -47,7 +62,7 @@ public class Weather extends WildeLandDecorator {
      */
     @Override
     public String determineTheDayWeatherForecast() {
-        int forecast = new Random().nextInt(5) + 1;
+        int forecast = new Random().nextInt(8) + 1;
 
         Day day;
         switch (forecast) {
@@ -58,12 +73,18 @@ public class Weather extends WildeLandDecorator {
                 day = Day.SUNNY;
                 break;
             case 3:
-                day = Day.WINDY;
+                day = Day.BRIGHT;
                 break;
             case 4:
-                day = Day.RAINY;
+                day = Day.WINDY;
                 break;
             case 5:
+                day = Day.RAINY;
+                break;
+            case 6:
+                day = Day.STORMY;
+                break;
+            case 7:
                 day = Day.SNOWY;
                 break;
             default:
@@ -81,7 +102,7 @@ public class Weather extends WildeLandDecorator {
      */
     @Override
     public String determineTheNightWeatherForecast() {
-        int forecast = new Random().nextInt(5) + 1;
+        int forecast = new Random().nextInt(7) + 1;
 
         Night night;
         switch (forecast) {
@@ -98,6 +119,9 @@ public class Weather extends WildeLandDecorator {
                 night = Night.RAINY;
                 break;
             case 5:
+                night = Night.STORMY;
+                break;
+            case 6:
                 night = Night.SNOWY;
                 break;
             default:
