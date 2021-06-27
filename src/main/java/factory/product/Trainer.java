@@ -53,7 +53,7 @@ public class Trainer extends AbstractTrainer {
 
             CodeAMon codeAMon = new Initial(monster);
 
-            if (codeAMon.getMonster().isWild()) {
+            if (codeAMon.getCodeAMon().isWild()) {
                 codeAMon.init(this);
                 monster.isWild(false);
 
@@ -62,8 +62,8 @@ public class Trainer extends AbstractTrainer {
 
             } else {
                 // A trainer has tried to tame a monster already in their CODEX
-                if (getCodex().containsKey(codeAMon.getMonster().getName())) {
-                    System.out.println(codeAMon.getMonster().getName() + " is already in your CODEX!");
+                if (getCodex().containsKey(codeAMon.getCodeAMon().getName())) {
+                    System.out.println(codeAMon.getCodeAMon().getName() + " is already in your CODEX!");
 
                 } else {
                     // A trainer has tried to tame a monster already bonded with another trainer
@@ -100,10 +100,10 @@ public class Trainer extends AbstractTrainer {
 
         for (String name : getCodex().keySet()) {
             sb.append("+ >>> ").append(name).append(" <<<\n");
-            sb.append("  HP: ").append(getCodex().get(name).getMonster().getHp())
-                    .append("/").append(getCodex().get(name).getMonster().getMaxHp()).append("\n");
-            sb.append("  MP: ").append(getCodex().get(name).getMonster().getMp())
-                    .append("/").append(getCodex().get(name).getMonster().getMaxMp()).append("\n");
+            sb.append("  HP: ").append(getCodex().get(name).getCodeAMon().getHp())
+                    .append("/").append(getCodex().get(name).getCodeAMon().getMaxHp()).append("\n");
+            sb.append("  MP: ").append(getCodex().get(name).getCodeAMon().getMp())
+                    .append("/").append(getCodex().get(name).getCodeAMon().getMaxMp()).append("\n");
         }
 
         return sb.toString();

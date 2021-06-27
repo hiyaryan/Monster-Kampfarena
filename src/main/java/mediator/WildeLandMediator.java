@@ -88,14 +88,14 @@ public class WildeLandMediator implements Mediator, Runnable {
                 if (codeAMon.getValue().getWeatherStrength().toString().equals(weather)) {
                     codeAMon.getValue().setWeatherBonus(1.5);
 
-                    System.out.println(codeAMon.getValue().getMonster().getName()
+                    System.out.println(codeAMon.getValue().getCodeAMon().getName()
                             + " has gained a weather buff!");
                     System.out.println("   x1.5\n");
 
                 } else if (codeAMon.getValue().getWeatherWeakness().toString().equals(weather)) {
                     codeAMon.getValue().setWeatherBonus(0.5);
 
-                    System.out.println(codeAMon.getValue().getMonster().getName()
+                    System.out.println(codeAMon.getValue().getCodeAMon().getName()
                             + " has been debuffed by the weather!");
                     System.out.println("   x0.5\n");
 

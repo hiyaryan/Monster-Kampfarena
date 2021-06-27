@@ -48,7 +48,7 @@ public class InitialTest {
         System.out.println("+TEST: testInitSkillMethodWithWale\n");
 
         CodeAMon codeAMon = (Monster) monster;
-        codeAMon.getMonster().setName("Wale");
+        codeAMon.getCodeAMon().setName("Wale");
 
         Initial initial = new Initial(codeAMon);
         initial.init((Trainer) trainer);
@@ -75,7 +75,7 @@ public class InitialTest {
         System.out.println("+TEST: testInitSkillMethodWithKaht\n");
 
         CodeAMon codeAMon = (Monster) monster;
-        codeAMon.getMonster().setName("Kaht");
+        codeAMon.getCodeAMon().setName("Kaht");
 
         Initial initial = new Initial(codeAMon);
         initial.init((Trainer) trainer);
@@ -104,7 +104,7 @@ public class InitialTest {
         System.out.println("+TEST: testInitMethodWithWale\n");
 
         CodeAMon codeAMon = (Monster) monster;
-        codeAMon.getMonster().setName("Wale");
+        codeAMon.getCodeAMon().setName("Wale");
 
         Initial initial = new Initial(codeAMon);
         initial.init((Trainer) trainer);
@@ -114,13 +114,13 @@ public class InitialTest {
 
         System.out.println("Expected: Wale WATER 4 Splash");
         System.out.println("Actual: "
-                + codeAMon.getMonster().getName()
+                + codeAMon.getCodeAMon().getName()
                 + " " + initial.getType()
                 + " " + initial.getSkills().get("Splash").getCost()
                 + " " +initial.getSkills().get(initial.initSkill("Splash", MonsterDecorator.Type.WATER, 4).getName()).getName()
                 + "\n");
 
-        Assert.assertEquals("Wale", codeAMon.getMonster().getName());
+        Assert.assertEquals("Wale", codeAMon.getCodeAMon().getName());
         Assert.assertEquals(MonsterDecorator.Type.WATER, initial.getType());
         Assert.assertEquals(skill.getName(),
                 initial.getSkills().get(initial.initSkill("Splash", MonsterDecorator.Type.WATER, 4).getName()).getName());
@@ -137,7 +137,7 @@ public class InitialTest {
         System.out.println("+TEST: testInitMethodWithKaht\n");
 
         CodeAMon codeAMon = (Monster) monster;
-        codeAMon.getMonster().setName("Kaht");
+        codeAMon.getCodeAMon().setName("Kaht");
 
         Initial initial = new Initial(codeAMon);
         initial.init((Trainer) trainer);
@@ -147,13 +147,13 @@ public class InitialTest {
 
         System.out.println("Expected: Kaht BIO 4 Scratch");
         System.out.println("Actual: "
-                + codeAMon.getMonster().getName()
+                + codeAMon.getCodeAMon().getName()
                 + " " + initial.getType() + " "
                 + " " + initial.getSkills().get("Scratch").getCost()
                 + " " +initial.getSkills().get(initial.initSkill("Scratch", MonsterDecorator.Type.BIO, 4).getName()).getName()
                 + "\n");
 
-        Assert.assertEquals("Kaht", codeAMon.getMonster().getName());
+        Assert.assertEquals("Kaht", codeAMon.getCodeAMon().getName());
         Assert.assertEquals(MonsterDecorator.Type.BIO, initial.getType());
         Assert.assertEquals(skill.getName(),
                 initial.getSkills().get(initial.initSkill("Scratch", MonsterDecorator.Type.BIO, 4).getName()).getName());
@@ -168,7 +168,7 @@ public class InitialTest {
         System.out.println("+TEST: testInitMethodWithUnknownMonster\n");
 
         CodeAMon codeAMon = (Monster) monster;
-        codeAMon.getMonster().setName("Unknown");
+        codeAMon.getCodeAMon().setName("Unknown");
 
         MonsterDecorator initial = new Initial(codeAMon);
         initial.init((Trainer) trainer);

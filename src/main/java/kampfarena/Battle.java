@@ -84,7 +84,7 @@ public class Battle {
             sb.append("  MP: ").append(trainer.getMp()).append("/").append(trainer.getMaxMp()).append("\n");
 
         } else if (entity instanceof CodeAMon) {
-            Monster codeAMon = (Monster) (((CodeAMon) entity).getMonster());
+            Monster codeAMon = (Monster) (((CodeAMon) entity).getCodeAMon());
 
             sb.append("<<< ").append(codeAMon.getName()).append(" >>>\n");
             sb.append("  HP: ").append(codeAMon.getHp()).append("/").append(codeAMon.getMaxHp()).append("\n");
@@ -106,30 +106,30 @@ public class Battle {
 
         // A trainer may choose to make an attack
         if (trainerSelection instanceof String) {
-        // System.out.println("   " + trainer.getName() + " is going for an " + trainerSelection.toString() + "!\n");
+            // System.out.println("   " + trainer.getName() + " is going for an " + trainerSelection.toString() + "!\n");
             System.out.println("   " + trainer.getName() + " is going for an attack!\n");
             return trainer.getStrength();
 
             // A trainer may choose to select a Code-a-mon
         } else {
             CodeAMon codeAMon = ((CodeAMon) trainerSelection);
-            System.out.println("\n   Go " + codeAMon.getMonster().getName() + "!\n");
+            System.out.println("\n   Go " + codeAMon.getCodeAMon().getName() + "!\n");
 
             // If a trainer chooses to use a Code-a-mon, this builds the Code-a-mon's battle menu
             Object codeAMonSelection = player.getMenuSelection(codeAMon);
 
             // A Code-a-mon may attack based on the simulation
             if (codeAMonSelection instanceof String) {
-            // System.out.println("   " + codeAMon.getMonster().getName() + " is going for an "
-            //       + codeAMonSelection.toString() + "!\n");
+                // System.out.println("   " + codeAMon.getMonster().getName() + " is going for an "
+                //       + codeAMonSelection.toString() + "!\n");
 
-                System.out.println("   " + codeAMon.getMonster().getName() + " is going for an attack!\n");
-                return codeAMon.getMonster().getStrength();
+                System.out.println("   " + codeAMon.getCodeAMon().getName() + " is going for an attack!\n");
+                return codeAMon.getCodeAMon().getStrength();
 
                 // A Code-a-mon may use a skill based on the simulation
             } else {
                 if (codeAMon.getType().equals(((MonsterDecorator.Skill) codeAMonSelection).getType())) {
-                    System.out.println("\n   " + codeAMon.getMonster().getName()
+                    System.out.println("\n   " + codeAMon.getCodeAMon().getName()
                             + " is using a skill that matches its type!\n");
                     // TODO: Add a 2x bonus, subtract MP
 
@@ -218,7 +218,7 @@ public class Battle {
             System.out.println(trainer.getName() + " has taken " + damage + " damage!\n");
 
         } else {
-            Monster codeAMon = (Monster) ((CodeAMon) entity).getMonster();
+            Monster codeAMon = (Monster) ((CodeAMon) entity).getCodeAMon();
 
             int hp = codeAMon.getHp() - damage;
             if (hp < 0) {

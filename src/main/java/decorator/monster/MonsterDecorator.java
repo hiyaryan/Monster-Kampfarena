@@ -17,7 +17,7 @@ import java.util.HashMap;
  * @since June 21, 2021
  */
 public abstract class MonsterDecorator implements CodeAMon {
-    private CodeAMon monster;
+    private CodeAMon codeAMon;
     protected HashMap<String, Skill> skills; // Initialized in child class Initial
     protected double weatherBonus; // A multiplier for weather bonuses: 0.5, 1, or 1.5
     protected double typeBonus; // A multiplier for weather bonuses: 0.25, 1, or 2.0
@@ -29,35 +29,40 @@ public abstract class MonsterDecorator implements CodeAMon {
 
     protected abstract void declareSkill();
 
-    public MonsterDecorator(CodeAMon monster) {
-        this.monster = monster;
+    /**
+     * Constructor builds the shared attributes between all evolutions.
+     *
+     * @param codeAMon Code-a-mon
+     */
+    public MonsterDecorator(CodeAMon codeAMon) {
+        this.codeAMon = codeAMon;
         this.weatherBonus = 1;
         this.typeBonus = 1;
     }
 
     @Override
-    public AbstractMonster getMonster() {
-        return (Monster) monster;
+    public AbstractMonster getCodeAMon() {
+        return (Monster) codeAMon;
     }
 
     @Override
     public void init(Trainer trainer) {
-        monster.init(trainer); // Invokes the init method in factory.Monster
+        codeAMon.init(trainer); // Invokes the init method in factory.Monster
 
         System.out.println("   " + trainer.getName() + " is trying to form a bond with "
-                + monster.getMonster().getName() + ".\n");
+                + codeAMon.getCodeAMon().getName() + ".\n");
 
-        if (monster.getMonster().isWild()) {
+        if (codeAMon.getCodeAMon().isWild()) {
 
-            System.out.println(monster.getMonster().getName()
+            System.out.println(codeAMon.getCodeAMon().getName()
                     + " is forming a bond with "
                     + trainer.getName()
                     + "...");
 
         } else {
-            System.out.println(monster.getMonster().getName()
+            System.out.println(codeAMon.getCodeAMon().getName()
                     + " is already bonded with "
-                    + monster.getMonster().getTrainer().getName() + ".\n");
+                    + codeAMon.getCodeAMon().getTrainer().getName() + ".\n");
         }
     }
 

@@ -43,7 +43,7 @@ public class Monster extends AbstractMonster implements CodeAMon {
     }
 
     @Override
-    public Monster getMonster() {
+    public Monster getCodeAMon() {
         return this;
     }
 

@@ -31,6 +31,7 @@ public class Player {
     private AbstractFactory factory;
     private HashMap<String, Trainer> trainers;
     private HashMap<String, Monster> monsters;
+
     /**
      * Instantiate a ConcreteFactory.
      */
@@ -142,9 +143,8 @@ public class Player {
     }
 
     /**
-     * This method is selected when the trainer chooses to go to sleep. This is currently the only way a trainer
-     * and its Code-a-mon may heal their hp from battle. Healing hp is based on the trainers max hp and is randomized.
-     * a
+     * This method is selected when the trainer chooses to go to sleep. This is currently the only way a trainer and its
+     * Code-a-mon may heal their hp from battle. Healing hp is based on the trainers max hp and is randomized. a
      */
     public void healHp(Trainer trainer) {
         int hp = new Random().nextInt((int) (Math.ceil(trainer.getMaxHp() * 0.5)));
@@ -154,30 +154,30 @@ public class Player {
         System.out.println("   +" + hp + " HP");
 
         // Ensure healing does not surpass max hp
-        if(trainer.getHp() > trainer.getMaxHp()) {
+        if (trainer.getHp() > trainer.getMaxHp()) {
             trainer.setHp(trainer.getMaxHp());
         }
 
         // More for Code-a-mon
-        for(Map.Entry<String, CodeAMon> codeAMon : trainer.getCodex().entrySet()) {
+        for (Map.Entry<String, CodeAMon> codeAMon : trainer.getCodex().entrySet()) {
 
             hp = new Random()
-                    .nextInt((int) (Math.ceil(codeAMon.getValue().getMonster().getMaxHp() * 0.75)));
+                    .nextInt((int) (Math.ceil(codeAMon.getValue().getCodeAMon().getMaxHp() * 0.75)));
 
-            codeAMon.getValue().getMonster()
-                    .setHp(codeAMon.getValue().getMonster().getHp() + hp);
+            codeAMon.getValue().getCodeAMon()
+                    .setHp(codeAMon.getValue().getCodeAMon().getHp() + hp);
             System.out.println("      +" + hp + " HP\n");
 
             // Ensure healing does not surpass max hp
-            if(codeAMon.getValue().getMonster().getHp() > codeAMon.getValue().getMonster().getMaxHp()) {
-                codeAMon.getValue().getMonster().setHp(codeAMon.getValue().getMonster().getMaxHp());
+            if (codeAMon.getValue().getCodeAMon().getHp() > codeAMon.getValue().getCodeAMon().getMaxHp()) {
+                codeAMon.getValue().getCodeAMon().setHp(codeAMon.getValue().getCodeAMon().getMaxHp());
             }
         }
     }
 
     /**
-     * This method is selected when the trainer chooses to go to sleep. This is currently the only way a trainer
-     * and its Code-a-mon may heal their mp from battle. Healing mp is based on the trainers max mp and is randomized.
+     * This method is selected when the trainer chooses to go to sleep. This is currently the only way a trainer and its
+     * Code-a-mon may heal their mp from battle. Healing mp is based on the trainers max mp and is randomized.
      */
     public void healMp(Trainer trainer) {
         int mp = new Random().nextInt((int) (Math.ceil(trainer.getMaxMp() * 0.25)));
@@ -187,23 +187,23 @@ public class Player {
         System.out.println("   +" + mp + " MP");
 
         // Ensure healing does not surpass max mp
-        if(trainer.getMp() > trainer.getMaxMp()) {
+        if (trainer.getMp() > trainer.getMaxMp()) {
             trainer.setMp(trainer.getMaxMp());
         }
 
         // More for Code-a-mon
-        for(Map.Entry<String, CodeAMon> codeAMon : trainer.getCodex().entrySet()) {
+        for (Map.Entry<String, CodeAMon> codeAMon : trainer.getCodex().entrySet()) {
 
             mp = new Random()
-                    .nextInt((int) (Math.ceil(codeAMon.getValue().getMonster().getMaxMp() * 0.50)));
+                    .nextInt((int) (Math.ceil(codeAMon.getValue().getCodeAMon().getMaxMp() * 0.50)));
 
-            codeAMon.getValue().getMonster()
-                    .setMp(codeAMon.getValue().getMonster().getMp() + mp);
+            codeAMon.getValue().getCodeAMon()
+                    .setMp(codeAMon.getValue().getCodeAMon().getMp() + mp);
             System.out.println("      +" + mp + " MP\n");
 
             // Ensure healing does not surpass max mp
-            if(codeAMon.getValue().getMonster().getMp() > codeAMon.getValue().getMonster().getMaxMp()) {
-                codeAMon.getValue().getMonster().setMp(codeAMon.getValue().getMonster().getMaxMp());
+            if (codeAMon.getValue().getCodeAMon().getMp() > codeAMon.getValue().getCodeAMon().getMaxMp()) {
+                codeAMon.getValue().getCodeAMon().setMp(codeAMon.getValue().getCodeAMon().getMaxMp());
             }
         }
     }
@@ -292,7 +292,7 @@ public class Player {
 
         } else {
             // Generate a Code-a-mon Battle Menu
-            System.out.println("   " + ((CodeAMon) entity).getMonster().getName() + "\n");
+            System.out.println("   " + ((CodeAMon) entity).getCodeAMon().getName() + "\n");
             battleMenu = battleMenu.buildCodeAMonMenu((CodeAMon) entity);
         }
 

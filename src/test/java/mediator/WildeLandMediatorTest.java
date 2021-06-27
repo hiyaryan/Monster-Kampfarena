@@ -52,7 +52,7 @@ public class WildeLandMediatorTest {
 
         CodeAMon wale = dock.formBond(wildWale);
 
-        if(mediator.getEnvironment().getWeather().equals(wale.getWeatherStrength().toString())) {
+        if (mediator.getEnvironment().getWeather().equals(wale.getWeatherStrength().toString())) {
             System.out.println("\nExpected: 1.50");
             System.out.println("Actual: " + wale.getWeatherBonus() + "\n");
 

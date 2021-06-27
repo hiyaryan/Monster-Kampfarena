@@ -16,7 +16,7 @@ import java.util.HashMap;
 // http://www.blackwasp.co.uk/Decorator.aspx
 public interface CodeAMon {
 
-    AbstractMonster getMonster();
+    AbstractMonster getCodeAMon();
 
     void init(Trainer trainer);
 

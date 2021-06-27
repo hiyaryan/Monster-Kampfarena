@@ -48,8 +48,8 @@ public class Main {
             Trainer trainer = null;
             int compare = new Random().nextInt(player.getTrainers().size());
             int i = 0;
-            for(String name : player.getTrainers().keySet()) {
-                if(i == compare) {
+            for (String name : player.getTrainers().keySet()) {
+                if (i == compare) {
                     trainer = player.getTrainers().get(name);
                 }
                 i++;
@@ -68,6 +68,7 @@ public class Main {
                     break;
                 case 3:
                     sleep(trainer);
+                    break;
                 default:
                     System.out.println("\n   " + trainer.getName() + " is not sure what to do.\n");
                     break;
@@ -208,11 +209,11 @@ public class Main {
     }
 
     /**
-     * Option 2 of the switch statement in main. The trainers try to tame new monsters. The only times
-     * available to tame monsters is from 1t-3t. If they try to tame at 0t they will be blocked.
+     * Option 2 of the switch statement in main. The trainers try to tame new monsters. The only times available to tame
+     * monsters is from 1t-3t. If they try to tame at 0t they will be blocked.
      */
     private static void tameMonsters(Trainer trainer) throws InterruptedException {
-        if(mediator.getDate().contains("1t") || mediator.getDate().contains("2t")
+        if (mediator.getDate().contains("1t") || mediator.getDate().contains("2t")
                 || mediator.getDate().contains("3t")) {
 
             System.out.println("\n   ADVENTURE TIME   \n");
@@ -224,8 +225,8 @@ public class Main {
     }
 
     /**
-     * Option 3 of the switch statement in main. The trainers sleep and recover hp and mp. The time
-     * trainers may sleep is from 3t-0t. The duration of a sleeping session is 2 cycles.
+     * Option 3 of the switch statement in main. The trainers sleep and recover hp and mp. The time trainers may sleep
+     * is from 3t-0t. The duration of a sleeping session is 2 cycles.
      */
     private static void sleep(Trainer trainer) throws InterruptedException {
         // The Kampfarena officially opens on 1d:1t:0c
@@ -233,7 +234,7 @@ public class Main {
 
             System.out.println("   " + trainer.getName() + " is going to sleep.\n");
 
-            for(int i = 0; i < 2; i++) {
+            for (int i = 0; i < 2; i++) {
                 player.healHp(trainer);
                 player.healMp(trainer);
 
