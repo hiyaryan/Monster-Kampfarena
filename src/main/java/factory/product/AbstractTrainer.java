@@ -29,4 +29,6 @@ public abstract class AbstractTrainer extends Factory {
     public void setCodex(String name, CodeAMon codeAMon) {
         codex.put(name, codeAMon);
     }
+
+    public abstract String statsToStringCompact();
 }

@@ -122,6 +122,16 @@ public class Trainer extends AbstractTrainer {
     }
 
     @Override
+    public String statsToStringCompact() {
+        StringBuilder sb = new StringBuilder(">>> " + getName() + " <<<\n");
+        sb.append("Type: ").append("Trainer").append("\n");
+        sb.append("HP:   ").append(getHp()).append("/").append(getHp()).append("\n");
+        sb.append("MP:   ").append(getMp()).append("/").append(getMp()).append("\n");
+
+        return sb.toString();
+    }
+
+    @Override
     public String toString() {
         return getName();
     }

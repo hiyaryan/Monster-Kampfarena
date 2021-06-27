@@ -4,6 +4,7 @@ import mediator.Mediator;
 import mediator.WildeLandMediator;
 import singleton.Player;
 
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -44,20 +45,32 @@ public class Main {
         while (!mediator.getDate().contains("7d")) {
             mediator.printWildeLandTime();
 
-            // The Kampfarena officially opens on 1d:1t:0c
-            if (mediator.getDate().contains("0d")) {
-                Thread.sleep(new Random().nextInt(8000) + 4000);
-                player.registerTrainers();
-
-                // Day and night events occur here.
-            } else {
-                Thread.sleep(new Random().nextInt(8000) + 4000);
-
-                // If it's between the hours of 3t-0t the Kampfarena will refuse to accept registrations. The logic
-                // takes place inside the Kampfarena class.
-                player.registerTrainers();
-                player.startBattle();
+            // Randomly select a trainer to perform an action
+            Trainer trainer = null;
+            int compare = new Random().nextInt(player.getTrainers().size()) + 1;
+            int i = 0;
+            for(Map.Entry<String, Trainer> t : player.getTrainers().entrySet()) {
+                if(i == compare) {
+                    trainer = (Trainer) t;
+                }
+                i++;
             }
+
+            int op = new Random().nextInt(2) + 1;
+            switch (op) {
+                case 1:
+                    tryToRegisterAtTheKampfarena();
+                    break;
+                case 2:
+                    tameMonsters(trainer);
+                    break;
+                case 3:
+                    sleep(trainer);
+                default:
+                    break;
+            }
+
+            Thread.sleep(new Random().nextInt(8000) + 4000);
 
             // The simulation ends when only one Trainer is standing.
             if (player.getTrainers().size() == 1) {
@@ -172,5 +185,64 @@ public class Main {
 
         // Pause for narration
         Thread.sleep(8000);
+    }
+
+    /**
+     * Option 1 of the switch statement in main. The trainers try to register at the Kampfarena.
+     */
+    private static void tryToRegisterAtTheKampfarena() throws InterruptedException {
+        // The Kampfarena officially opens on 1d:1t:0c
+        if (mediator.getDate().contains("0d")) {
+            player.registerTrainers();
+
+            // Day and night events occur here.
+        } else {
+            // If it's between the hours of 3t-0t the Kampfarena will refuse to accept registrations. The logic
+            // takes place inside the Kampfarena class.
+            player.registerTrainers();
+            player.startBattle();
+        }
+    }
+
+    /**
+     * Option 2 of the switch statement in main. The trainers try to tame new monsters. The only times
+     * available to tame monsters is from 1t-3t. If they try to tame at 0t they will be blocked.
+     */
+    private static void tameMonsters(Trainer trainer) throws InterruptedException {
+        if(mediator.getDate().contains("1t") || mediator.getDate().contains("2t")
+                || mediator.getDate().contains("3t")) {
+
+            player.exploreTheWildeLand(trainer.getName());
+
+        } else {
+            System.out.println("\nIt is too dangerous to go out at this time.\n");
+        }
+    }
+
+    /**
+     * Option 3 of the switch statement in main. The trainers sleep and recover hp and mp. The time
+     * trainers may sleep is from 3t-0t. The duration of a sleeping session is 4 cycles.
+     */
+    private static void sleep(Trainer trainer) throws InterruptedException {
+        // The Kampfarena officially opens on 1d:1t:0c
+        if (mediator.getDate().contains("3d") || mediator.getDate().contains("0d")) {
+
+            System.out.println("\n" + trainer.getName() + " is going to sleep.\n");
+
+            for(int i = 0; i < 4; i++) {
+                player.healHp(trainer);
+                player.healMp(trainer);
+
+                Thread.sleep(500);
+            }
+
+            System.out.println("\n" + trainer.getName() + " feels refreshed!\n");
+
+            System.out.println(trainer.statsToStringCompact());
+            System.out.println(trainer.listMonstersCompact());
+
+        } else {
+            System.out.println("\nNow is not the time to be lounging around.\n");
+        }
     }
 }
