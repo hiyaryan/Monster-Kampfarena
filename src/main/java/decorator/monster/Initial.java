@@ -261,7 +261,7 @@ public class Initial extends MonsterDecorator {
         StringBuilder sb = new StringBuilder("   === Skills ===\n");
 
         for (Map.Entry<String, Skill> skill : skills.entrySet()) {
-            sb.append("   -").append(skill.getValue().getCost()).append(" MP ")
+            sb.append("   - ").append(skill.getValue().getCost()).append("MP ")
                     .append(skill.getValue().getName()).append("\n");
         }
 
