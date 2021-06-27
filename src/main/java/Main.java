@@ -4,7 +4,6 @@ import mediator.Mediator;
 import mediator.WildeLandMediator;
 import singleton.Player;
 
-import java.util.Map;
 import java.util.Random;
 
 /**
@@ -47,16 +46,16 @@ public class Main {
 
             // Randomly select a trainer to perform an action
             Trainer trainer = null;
-            int compare = new Random().nextInt(player.getTrainers().size()) + 1;
+            int compare = new Random().nextInt(player.getTrainers().size());
             int i = 0;
-            for(Map.Entry<String, Trainer> t : player.getTrainers().entrySet()) {
+            for(String name : player.getTrainers().keySet()) {
                 if(i == compare) {
-                    trainer = (Trainer) t;
+                    trainer = player.getTrainers().get(name);
                 }
                 i++;
             }
 
-            int op = new Random().nextInt(2) + 1;
+            int op = new Random().nextInt(4) + 1;
             switch (op) {
                 case 1:
                     tryToRegisterAtTheKampfarena();
@@ -67,6 +66,8 @@ public class Main {
                 case 3:
                     sleep(trainer);
                 default:
+                    assert trainer != null;
+                    System.out.println("\n" + trainer.getName() + " is not sure what to do.\n");
                     break;
             }
 
@@ -221,7 +222,7 @@ public class Main {
 
     /**
      * Option 3 of the switch statement in main. The trainers sleep and recover hp and mp. The time
-     * trainers may sleep is from 3t-0t. The duration of a sleeping session is 4 cycles.
+     * trainers may sleep is from 3t-0t. The duration of a sleeping session is 2 cycles.
      */
     private static void sleep(Trainer trainer) throws InterruptedException {
         // The Kampfarena officially opens on 1d:1t:0c
@@ -229,11 +230,11 @@ public class Main {
 
             System.out.println("\n" + trainer.getName() + " is going to sleep.\n");
 
-            for(int i = 0; i < 4; i++) {
+            for(int i = 0; i < 2; i++) {
                 player.healHp(trainer);
                 player.healMp(trainer);
 
-                Thread.sleep(500);
+                Thread.sleep(1000);
             }
 
             System.out.println("\n" + trainer.getName() + " feels refreshed!\n");
