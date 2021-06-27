@@ -83,6 +83,53 @@ public abstract class MonsterDecorator implements CodeAMon {
         this.exp = exp;
     }
 
+    /**
+     * This method is called after every battle. It checks how much EXP is stored in the exp attribute and levels up
+     * the Code-a-mon based on the following logic.
+     *
+     * lvl++ if exp == 100 * lvl
+     */
+    @Override
+    public void levelUp() {
+        while(this.exp == 100 * codeAMon.getMonster().getLvl()) {
+            this.exp = this.exp - 100 * codeAMon.getMonster().getLvl();
+
+            codeAMon.getMonster().setLvl(codeAMon.getMonster().getLvl() + 1);
+            System.out.println("\n" + codeAMon.getMonster().getName() + " has leveled up!\n");
+
+            improveStats();
+            System.out.println(codeAMon.getMonster().statsToString());
+        }
+    }
+
+    /**
+     * This method works with levelUp method improving the stats of the code-a-mon based on the formula.
+     *
+     * For each stat: (Stat) + (Stat / lvl)
+     */
+    private void improveStats() {
+        codeAMon.getMonster().setMaxHp(codeAMon.getMonster().getMaxHp()
+                + (codeAMon.getMonster().getMaxHp() / codeAMon.getMonster().getLvl()));
+
+        codeAMon.getMonster().setMaxMp(codeAMon.getMonster().getMaxMp()
+                + (codeAMon.getMonster().getMaxMp() / codeAMon.getMonster().getLvl()));
+
+        codeAMon.getMonster().setStrength(codeAMon.getMonster().getStrength()
+                + (codeAMon.getMonster().getStrength() / codeAMon.getMonster().getLvl()));
+
+        codeAMon.getMonster().setMagic(codeAMon.getMonster().getMagic()
+                + (codeAMon.getMonster().getMagic() / codeAMon.getMonster().getLvl()));
+
+        codeAMon.getMonster().setDefense(codeAMon.getMonster().getDefense()
+                + (codeAMon.getMonster().getDefense() / codeAMon.getMonster().getLvl()));
+
+        codeAMon.getMonster().setHit(codeAMon.getMonster().getHit()
+                + (codeAMon.getMonster().getHit() / codeAMon.getMonster().getLvl()));
+
+        codeAMon.getMonster().setEvasion(codeAMon.getMonster().getEvasion()
+                + (codeAMon.getMonster().getEvasion() / codeAMon.getMonster().getLvl()));
+    }
+
     @Override
     public void setWeatherBonus(double weatherBonus) {
         this.weatherBonus = weatherBonus;

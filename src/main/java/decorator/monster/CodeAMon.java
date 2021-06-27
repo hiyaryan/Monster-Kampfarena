@@ -40,6 +40,8 @@ public interface CodeAMon {
 
     void setExp(int exp);
 
+    void levelUp();
+
     double getWeatherBonus();
 
     void setWeatherBonus(double bonus);

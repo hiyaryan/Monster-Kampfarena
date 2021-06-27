@@ -86,6 +86,18 @@ public class Battle {
                 break;
             }
         }
+
+        // When the battle is over, Code-a-mon that are alive may level up while those that died loose their exp
+        for(Map.Entry<String, Trainer> trainer : player.getTrainers().entrySet()) {
+            for(Map.Entry<String, CodeAMon> codeAMon : trainer.getValue().getCodex().entrySet()) {
+                if(codeAMon.getValue().getMonster().getHp() != 0) {
+                    codeAMon.getValue().levelUp();
+
+                } else {
+                    codeAMon.getValue().setExp(0);
+                }
+            }
+        }
     }
 
     /**
@@ -190,6 +202,7 @@ public class Battle {
             damage = 1;
         }
 
+        boolean isOverkill;
         // The trainer selects the next Code-a-mon with enough HP to take the damage
         // If all code-a-mon are dead, the trainer will take the hit
         for (Map.Entry<String, CodeAMon> codeAMon : defender.getCodex().entrySet()) {
@@ -224,7 +237,7 @@ public class Battle {
                     }
                 }
 
-                adjustHp(damage, codeAMon.getValue());
+                isOverkill = adjustHp(damage, codeAMon.getValue());
 
                 if (codeAMon.getValue().getMonster().getHp() == 0) {
                     System.out.println("   " + codeAMon.getValue().getMonster().getName() + " has fainted.\n");
@@ -235,12 +248,14 @@ public class Battle {
 
                 System.out.println(defender.listMonstersCompact());
 
+                earnExp(damage, move, isOverkill);
                 return;
             }
         }
 
         // Trainer takes the hit if there are no Code-a-mon to take it for them.
-        adjustHp(damage, defender);
+        isOverkill = adjustHp(damage, defender);
+        earnExp(damage, move, isOverkill);
     }
 
 
@@ -299,14 +314,17 @@ public class Battle {
      *
      * @param damage int
      * @param entity Trainer or CodeAMon
+     * @return If the entity dies, was it an overkill?
      */
-    private void adjustHp(int damage, Object entity) {
+    private boolean adjustHp(int damage, Object entity) {
+        boolean isOverkill = false;
         if (entity instanceof Trainer) {
             Trainer trainer = (Trainer) entity;
 
             int hp = trainer.getHp() - damage;
             if (hp < 0) {
                 System.out.println("\n   OVERKILL!\n");
+                isOverkill = true;
                 hp = 0;
             }
 
@@ -319,12 +337,15 @@ public class Battle {
             int hp = codeAMon.getMonster().getHp() - damage;
             if (hp < 0) {
                 System.out.println("\n   OVERKILL!\n");
+                isOverkill = true;
                 hp = 0;
             }
 
             codeAMon.getMonster().setHp(hp);
             System.out.println("   " + codeAMon.getMonster().getName() + " has taken " + damage + " damage!\n");
         }
+
+        return isOverkill;
     }
 
     /**
@@ -353,6 +374,30 @@ public class Battle {
             }
 
             codeAMon.setMp(mp);
+        }
+    }
+
+    /**
+     * This method earns a Code-a-mon EXP. EXP is based off the total amount of damage inflicted on the
+     * defender. Overkills earn more EXP. Note that Trainers do not earn EXP.
+     *
+     * @param damage damage inflicted
+     * @param move the move performed by the entity that inflicted damage
+     * @param isOverkill was it an overkill?
+     */
+    public void earnExp(int damage, Move<?, ?> move, boolean isOverkill) {
+        int exp = 0;
+        if(move.getAttacker() instanceof CodeAMon) {
+            // If the Code-a-mon did an overkill, they earn 0.5 times additional EXP
+            if (isOverkill) {
+                exp = (int) (damage + (damage * 0.5));
+
+                // For any other attack the EXP earned is equal to the damage inflicted
+            } else {
+                exp = damage;
+            }
+
+            ((CodeAMon) move.getAttacker()).setExp(((CodeAMon) move.getAttacker()).getExp() + exp);
         }
     }
 
@@ -415,9 +460,9 @@ public class Battle {
         if (entity instanceof Trainer) {
             Trainer trainer = (Trainer) entity;
 
-            sb.append("\n   <<< ").append(trainer.getName()).append(" >>>\n");
-            sb.append("     HP: ").append(trainer.getHp()).append("/").append(trainer.getMaxHp()).append("\n");
-            sb.append("     MP: ").append(trainer.getMp()).append("/").append(trainer.getMaxMp()).append("\n");
+            sb.append("\n<<< ").append(trainer.getName()).append(" >>>\n");
+            sb.append("  HP: ").append(trainer.getHp()).append("/").append(trainer.getMaxHp()).append("\n");
+            sb.append("  MP: ").append(trainer.getMp()).append("/").append(trainer.getMaxMp()).append("\n");
 
         } else if (entity instanceof CodeAMon) {
             Monster codeAMon = (Monster) (((CodeAMon) entity).getMonster());
