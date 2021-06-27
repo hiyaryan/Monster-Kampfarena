@@ -96,14 +96,15 @@ public class Trainer extends AbstractTrainer {
 
     @Override
     public String listMonstersCompact() {
-        StringBuilder sb = new StringBuilder("=== CODEX ===\n");
+        StringBuilder sb = new StringBuilder("   === CODEX ===\n");
 
         for (String name : getCodex().keySet()) {
-            sb.append(">>> ").append(name).append(" <<<\n");
-            sb.append("HP: ").append(getCodex().get(name).getMonster().getHp())
+            sb.append("   >>> ").append(name).append(" <<<\n");
+            sb.append("   Type: ").append(getCodex().get(name).getType()).append("\n");
+            sb.append("   HP: ").append(getCodex().get(name).getMonster().getHp())
                     .append("/").append(getCodex().get(name).getMonster().getMaxHp()).append("\n");
-            sb.append("MP: ").append(getCodex().get(name).getMonster().getMp())
-                    .append("/").append(getCodex().get(name).getMonster().getMaxMp()).append("\n\n");
+            sb.append("   MP: ").append(getCodex().get(name).getMonster().getMp())
+                    .append("/").append(getCodex().get(name).getMonster().getMaxMp()).append("\n");
         }
 
         return sb.toString();
@@ -128,9 +129,9 @@ public class Trainer extends AbstractTrainer {
     @Override
     public String statsToStringCompact() {
         StringBuilder sb = new StringBuilder(">>> " + getName() + " <<<\n");
-        sb.append("Type: ").append("Trainer").append("\n");
-        sb.append("HP:   ").append(getHp()).append("/").append(getHp()).append("\n");
-        sb.append("MP:   ").append(getMp()).append("/").append(getMp()).append("\n");
+        sb.append("   Type: ").append("Trainer").append("\n");
+        sb.append("   HP:   ").append(getHp()).append("/").append(getHp()).append("\n");
+        sb.append("   MP:   ").append(getMp()).append("/").append(getMp()).append("\n");
 
         return sb.toString();
     }
