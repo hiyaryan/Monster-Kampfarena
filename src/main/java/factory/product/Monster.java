@@ -98,12 +98,12 @@ public class Monster extends AbstractMonster implements CodeAMon {
     }
 
     @Override
-    public int setWeatherBonus(int bonus) {
+    public void setWeatherBonus(int bonus) {
         return 1;
     }
 
     @Override
-    public int getWeatherBonus() {
+    public double getWeatherBonus() {
         return 1;
     }
 

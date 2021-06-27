@@ -6,10 +6,21 @@ import factory.product.Trainer;
 
 import java.util.HashMap;
 
+/**
+ * MonsterDecorator (MonsterDecorator.java)
+ *
+ * MonsterDecorator decorates a monster or Code-a-mon by their level. A monster becoming a Code-a-mon is decorated
+ * with the Initial child class, and Code-a-mon are further decorated when they evolve.
+ *
+ * @author Ryan Meneses
+ * @version 1.0
+ * @since June 21, 2021
+ */
 public abstract class MonsterDecorator implements CodeAMon {
     private CodeAMon monster;
     protected HashMap<String, Skill> skills; // Initialized in child class Initial
-    protected int weatherBonus; // A multiplier for weather bonuses
+    protected double weatherBonus; // A multiplier for weather bonuses: 0.5, 1, or 1.5
+    protected double typeBonus; // A multiplier for weather bonuses: 0.25, 1, or 2.0
     protected int exp;
 
     protected abstract void boostStats();
@@ -21,6 +32,7 @@ public abstract class MonsterDecorator implements CodeAMon {
     public MonsterDecorator(CodeAMon monster) {
         this.monster = monster;
         this.weatherBonus = 1;
+        this.typeBonus = 1;
     }
 
     @Override
@@ -60,13 +72,23 @@ public abstract class MonsterDecorator implements CodeAMon {
     }
 
     @Override
-    public int setWeatherBonus(int bonus) {
-        return bonus;
+    public void setWeatherBonus(int weatherBonus) {
+        this.weatherBonus = weatherBonus;
     }
 
     @Override
-    public int getWeatherBonus() {
-        return 0;
+    public double getWeatherBonus() {
+        return this.weatherBonus;
+    }
+
+    @Override
+    public double getTypeBonus() {
+        return typeBonus;
+    }
+
+    @Override
+    public void setTypeBonus(double typeBonus) {
+        this.typeBonus = typeBonus;
     }
 
     /**
