@@ -72,7 +72,7 @@ public class Trainer extends AbstractTrainer {
                     System.out.println("      -MP x0.75\n");
                     setHp((int) (getHp() * 0.75));
                     setMp((int) (getMp() * 0.75));
-                    System.out.println(statsToString());
+                    System.out.println(statsToStringCompact());
                 }
             }
 
@@ -104,7 +104,7 @@ public class Trainer extends AbstractTrainer {
             sb.append("   HP: ").append(getCodex().get(name).getMonster().getHp())
                     .append("/").append(getCodex().get(name).getMonster().getMaxHp()).append("\n");
             sb.append("   MP: ").append(getCodex().get(name).getMonster().getMp())
-                    .append("/").append(getCodex().get(name).getMonster().getMaxMp()).append("\n");
+                    .append("/").append(getCodex().get(name).getMonster().getMaxMp()).append("\n\n");
         }
 
         return sb.toString();
@@ -130,8 +130,8 @@ public class Trainer extends AbstractTrainer {
     public String statsToStringCompact() {
         StringBuilder sb = new StringBuilder(">>> " + getName() + " <<<\n");
         sb.append("   Type: ").append("Trainer").append("\n");
-        sb.append("   HP:   ").append(getHp()).append("/").append(getHp()).append("\n");
-        sb.append("   MP:   ").append(getMp()).append("/").append(getMp()).append("\n");
+        sb.append("   HP:   ").append(getHp()).append("/").append(getMaxHp()).append("\n");
+        sb.append("   MP:   ").append(getMp()).append("/").append(getMaxMp()).append("\n");
 
         return sb.toString();
     }

@@ -130,12 +130,12 @@ public class Battle {
                 setAttackerMove(codeAMon, codeAMonSelection);
 
                 if (codeAMon.getMonster().getMp() < ((MonsterDecorator.Skill) move.getAttackType()).getCost()) {
-                    System.out.println("   " + codeAMon.getMonster().getName() + " does not have enough MP.\n");
+                    System.out.println("\n   " + codeAMon.getMonster().getName() + " does not have enough MP.\n");
                     return -1;
                 }
 
                 if (codeAMon.getType().equals(((MonsterDecorator.Skill) codeAMonSelection).getType())) {
-                    System.out.println("   " + codeAMon.getMonster().getName()
+                    System.out.println("\n   " + codeAMon.getMonster().getName()
                             + " is using a skill that matches its type!\n");
 
                     // Adjust MP, then return the damage with weather and type bonuses applied
@@ -156,7 +156,7 @@ public class Battle {
      * attack is landed, the method returns true, else false. During this time, a trainer may call upon any Code-a-mon
      * that is alive in its CODEX to take the damage for them.
      *
-     * @param attack   Attack taken
+     * @param attack   Attack with all bonuses applied
      * @param move     Move is a coupling of the attacker and the attack type
      * @param defender A Trainer is defending
      */
@@ -195,12 +195,42 @@ public class Battle {
         for (Map.Entry<String, CodeAMon> codeAMon : defender.getCodex().entrySet()) {
             if (codeAMon.getValue().getMonster().getHp() != 0) {
                 System.out.println("\n" + codeAMon.getValue().getMonster().getName()
-                        + " is taking the damage for " + defender.getName() + ".\n");
+                        + " is taking the damage for " + defender.getName() + ".");
+
+                // Check if the move is a skill
+                if(move.getAttackType() instanceof MonsterDecorator.Skill) {
+
+                    // If skill type of the code-a-mon attacker is the defender code-a-mon type reduce damage by 0.25x.
+                    if (((MonsterDecorator.Skill) move.getAttackType()).getType()
+                            == codeAMon.getValue().getType()) {
+
+                        System.out.println("   " + codeAMon.getValue().getMonster().getName() + " is strong against "
+                                + ((MonsterDecorator.Skill) move.getAttackType()).getType() + "!");
+
+                        System.out.println("\n   Reduced damage 0.25x\n");
+
+                        damage = (int) (damage * 0.25);
+
+                        // Else if it is the code-a-mon weakness type increase damage by 1.75x.
+                    } else if (((MonsterDecorator.Skill) move.getAttackType()).getType()
+                            == codeAMon.getValue().getTypeWeakness()) {
+
+                        System.out.println("   " + codeAMon.getValue().getMonster().getName() + " is weak against "
+                                + ((MonsterDecorator.Skill) move.getAttackType()).getType() + "!");
+
+                        System.out.println("\n   Increased damage 1.75x\n");
+
+                        damage = (int) (damage * 1.75);
+                    }
+                }
 
                 adjustHp(damage, codeAMon.getValue());
 
                 if (codeAMon.getValue().getMonster().getHp() == 0) {
                     System.out.println("   " + codeAMon.getValue().getMonster().getName() + " has fainted.\n");
+
+                } else {
+                    System.out.println("   " + codeAMon.getValue().getMonster().getName() + " is still standing!\n");
                 }
 
                 System.out.println(defender.listMonstersCompact());
@@ -281,7 +311,7 @@ public class Battle {
             }
 
             trainer.setHp(hp);
-            System.out.println(trainer.getName() + " has taken " + damage + " damage!\n");
+            System.out.println("   " + trainer.getName() + " has taken " + damage + " damage!\n");
 
         } else {
             CodeAMon codeAMon = (CodeAMon) entity;
@@ -293,7 +323,7 @@ public class Battle {
             }
 
             codeAMon.getMonster().setHp(hp);
-            System.out.println(codeAMon.getMonster().getName() + " has taken " + damage + " damage!\n");
+            System.out.println("   " + codeAMon.getMonster().getName() + " has taken " + damage + " damage!\n");
         }
     }
 
@@ -324,8 +354,6 @@ public class Battle {
 
             codeAMon.setMp(mp);
         }
-
-        System.out.println(" - " + cost + "MP");
     }
 
     private boolean isTheBattleOver() {
@@ -387,16 +415,16 @@ public class Battle {
         if (entity instanceof Trainer) {
             Trainer trainer = (Trainer) entity;
 
-            sb.append("\n<<< ").append(trainer.getName()).append(" >>>\n");
-            sb.append("  HP: ").append(trainer.getHp()).append("/").append(trainer.getMaxHp()).append("\n");
-            sb.append("  MP: ").append(trainer.getMp()).append("/").append(trainer.getMaxMp()).append("\n");
+            sb.append("\n   <<< ").append(trainer.getName()).append(" >>>\n");
+            sb.append("     HP: ").append(trainer.getHp()).append("/").append(trainer.getMaxHp()).append("\n");
+            sb.append("     MP: ").append(trainer.getMp()).append("/").append(trainer.getMaxMp()).append("\n");
 
         } else if (entity instanceof CodeAMon) {
             Monster codeAMon = (Monster) (((CodeAMon) entity).getMonster());
 
-            sb.append("<<< ").append(codeAMon.getName()).append(" >>>\n");
-            sb.append("  HP: ").append(codeAMon.getHp()).append("/").append(codeAMon.getMaxHp()).append("\n");
-            sb.append("  MP: ").append(codeAMon.getMp()).append("/").append(codeAMon.getMaxMp()).append("\n");
+            sb.append("\n   <<< ").append(codeAMon.getName()).append(" >>>\n");
+            sb.append("   HP: ").append(codeAMon.getHp()).append("/").append(codeAMon.getMaxHp()).append("\n");
+            sb.append("   MP: ").append(codeAMon.getMp()).append("/").append(codeAMon.getMaxMp()).append("\n");
         }
 
         return sb.toString();

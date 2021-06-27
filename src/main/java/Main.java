@@ -4,6 +4,7 @@ import mediator.Mediator;
 import mediator.WildeLandMediator;
 import singleton.Player;
 
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -62,12 +63,15 @@ public class Main {
             int op = new Random().nextInt(4) + 1;
             switch (op) {
                 case 1:
+                    System.out.println("\n   -> Register\n");
                     tryToRegisterAtTheKampfarena(trainer);
                     break;
                 case 2:
+                    System.out.println("\n   -> Explore\n");
                     tameMonsters(trainer);
                     break;
                 case 3:
+                    System.out.println("\n   -> Sleep\n");
                     sleep(trainer);
                     break;
                 default:
@@ -86,14 +90,39 @@ public class Main {
             for (String champion : player.getTrainers().keySet()) {
                 System.out.println("   " + champion.toUpperCase() + "!\n");
             }
+
+            Thread.sleep(6000);
+            System.out.println("Thank you very much for your attendance.");
+            System.out.println("   Everyone, please welcome our newest Trainer!\n");
+
+            Thread.sleep(6000);
+            System.out.println("\n\nYou.\n");
+
         }
+        if (player.getTrainers().size() > 1) {
+            System.out.println("\nThe final day has come, and a Champion has not been declared.");
+            Thread.sleep(6000);
 
-        Thread.sleep(6000);
-        System.out.println("Thank you very much for your attendance.");
-        System.out.println("   Everyone, please welcome our newest Trainer!\n");
+            System.out.println("   However...\n");
+            Thread.sleep(6000);
 
-        Thread.sleep(6000);
-        System.out.println("\n\nYou.\n");
+            System.out.println("\nThere is always a winner at the Kampfarena.\n");
+            Thread.sleep(6000);
+
+            for (Map.Entry<String, Trainer> trainer : player.getTrainers().entrySet()) {
+                while (trainer.getValue().getHp() > -1) {
+                    System.out.println(trainer.getValue().statsToStringCompact());
+                    trainer.getValue().setHp(trainer.getValue().getHp() - 1);
+                }
+            }
+
+            for (Map.Entry<String, Trainer> trainer : player.getTrainers().entrySet()) {
+                System.out.println("   " + trainer.getValue().getName() + " is dead.\n");
+            }
+
+            Thread.sleep(6000);
+            System.out.println("\n\nMe.\n");
+        }
 
         Thread.sleep(6000);
         System.exit(0);
@@ -230,8 +259,7 @@ public class Main {
      * is from 3t-0t. The duration of a sleeping session is 2 cycles.
      */
     private static void sleep(Trainer trainer) throws InterruptedException {
-        // The Kampfarena officially opens on 1d:1t:0c
-        if (mediator.getDate().contains("3d") || mediator.getDate().contains("0d")) {
+        if (mediator.getDate().contains("3t") || mediator.getDate().contains("0t")) {
 
             System.out.println("   " + trainer.getName() + " is going to sleep.\n");
 
