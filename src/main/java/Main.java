@@ -70,7 +70,7 @@ public class Main {
                     sleep(trainer);
                     break;
                 default:
-                    System.out.println("\n   " + trainer.getName() + " is not sure what to do.\n");
+                    System.out.println("   " + trainer.getName() + " is not sure what to do.\n");
                     break;
             }
 
