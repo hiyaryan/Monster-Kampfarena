@@ -36,11 +36,11 @@ public interface CodeAMon {
 
     String listSkillsCompact();
 
-    void setWeatherBonus(int bonus);
-
-    double getWeatherBonus();
-
     double getTypeBonus();
 
     void setTypeBonus(double typeBonus);
+
+    double getWeatherBonus();
+
+    void setWeatherBonus(double bonus);
 }

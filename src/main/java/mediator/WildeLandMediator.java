@@ -1,12 +1,17 @@
 package mediator;
 
+import decorator.monster.CodeAMon;
 import decorator.wildeland.Environment;
 import decorator.wildeland.Weather;
+import factory.product.Trainer;
 import mediator.colleague.Day;
 import mediator.colleague.Night;
 import mediator.colleague.WildeLand;
 import narrator.Narration;
 import narrator.Narrator;
+import singleton.Player;
+
+import java.util.Map;
 
 /**
  * WildeLandMediator (WildeLandMediator.java)
@@ -57,9 +62,48 @@ public class WildeLandMediator implements Mediator, Runnable {
         }
     }
 
+    /**
+     * This method mediates the weather. Depending on the time, it chooses which time, day or night, and decorates it
+     * using the Weather class inside the decorator package.
+     *
+     * @return Environment
+     */
     @Override
     public synchronized Environment mediateWeather() {
         return new Weather(this.wildeLand.whatTimeIsIt());
+    }
+
+    /**
+     * This method mediates the bonuses for all the Code-a-mon inside all of the Trainers CODEXs. It compares the
+     * current weather with a Code-a-mon's weather strength or weakness. If weak, the bonus is 0.5, if strong, 1.5, else
+     * if no effect it remains 1 or returns to 1 if a previous bonus was applied. This is checked twice a day when the
+     * run method checks in with the WildeLand class about the weather.
+     */
+    private void mediateWeatherBonuses(String weather) throws NullPointerException {
+        Player player = Player.getPlayer();
+
+        for (Map.Entry<String, Trainer> trainer : player.getTrainers().entrySet()) {
+            for (Map.Entry<String, CodeAMon> codeAMon : trainer.getValue().getCodex().entrySet()) {
+
+                if (codeAMon.getValue().getWeatherStrength().toString().equals(weather)) {
+                    codeAMon.getValue().setWeatherBonus(1.5);
+
+                    System.out.println(codeAMon.getValue().getMonster().getName()
+                            + " has gained a weather buff!");
+                    System.out.println("   x1.5\n");
+
+                } else if (codeAMon.getValue().getWeatherWeakness().toString().equals(weather)) {
+                    codeAMon.getValue().setWeatherBonus(0.5);
+
+                    System.out.println(codeAMon.getValue().getMonster().getName()
+                            + " has been debuffed by the weather!");
+                    System.out.println("   x0.5\n");
+
+                } else {
+                    codeAMon.getValue().setWeatherBonus(1.0);
+                }
+            }
+        }
     }
 
     @Override
@@ -132,10 +176,19 @@ public class WildeLandMediator implements Mediator, Runnable {
                 // System.out.println(this.wildeLand.whatTimeIsIt());
 
                 // Check the weather and announcements twice a day
+                // Set the weather bonuses for the Code-a-mon
                 if ((this.time == 1 && counter == 0) || (this.time == 3 && counter == 0)) {
                     // Print the weather forecast
                     this.environment = mediateWeather();
                     this.wildeLand.howIsTheWeather(this.date);
+
+                    try {
+                        this.mediateWeatherBonuses(this.wildeLand.getWeather());
+
+                    } catch (NullPointerException npe) {
+                        System.out.println("\nThere are no Code-a-mon to buff.\n");
+                    }
+
                     this.wildeLand.isTheBattleGroundOpen();
                 }
 

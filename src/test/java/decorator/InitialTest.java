@@ -53,7 +53,7 @@ public class InitialTest {
         Initial initial = new Initial(codeAMon);
         initial.init((Trainer) trainer);
 
-        MonsterDecorator.Skill skill = initial.initSkill("Splash", "Water", 4);
+        MonsterDecorator.Skill skill = initial.initSkill("Splash", MonsterDecorator.Type.WATER, 4);
 
         System.out.println("Expected: Splash Water 4");
         System.out.println("Actual: " + skill.getName()
@@ -61,7 +61,7 @@ public class InitialTest {
                 + " " + skill.getCost() + "\n");
 
         Assert.assertEquals("Splash", skill.getName());
-        Assert.assertEquals("Water", skill.getType());
+        Assert.assertEquals(MonsterDecorator.Type.WATER, skill.getType());
         Assert.assertEquals(4, skill.getCost());
     }
 
@@ -80,7 +80,7 @@ public class InitialTest {
         Initial initial = new Initial(codeAMon);
         initial.init((Trainer) trainer);
 
-        MonsterDecorator.Skill skill = initial.initSkill("Scratch", "Poison", 4);
+        MonsterDecorator.Skill skill = initial.initSkill("Scratch", MonsterDecorator.Type.BIO, 4);
 
         System.out.println("Expected: Scratch Poison 4");
         System.out.println("Actual: " + skill.getName()
@@ -89,7 +89,7 @@ public class InitialTest {
                 + "\n");
 
         Assert.assertEquals("Scratch", skill.getName());
-        Assert.assertEquals("Poison", skill.getType());
+        Assert.assertEquals(MonsterDecorator.Type.BIO, skill.getType());
         Assert.assertEquals(4, skill.getCost());
     }
 
@@ -110,20 +110,20 @@ public class InitialTest {
         initial.init((Trainer) trainer);
 
         Initial temp = new Initial(null);
-        MonsterDecorator.Skill skill = temp.initSkill("Splash", "Water", 4);
+        MonsterDecorator.Skill skill = temp.initSkill("Splash", MonsterDecorator.Type.WATER, 4);
 
         System.out.println("Expected: Wale WATER 4 Splash");
         System.out.println("Actual: "
                 + codeAMon.getMonster().getName()
                 + " " + initial.getType()
                 + " " + initial.getSkills().get("Splash").getCost()
-                + " " +initial.getSkills().get(initial.initSkill("Splash", "Water", 4).getName()).getName()
+                + " " +initial.getSkills().get(initial.initSkill("Splash", MonsterDecorator.Type.WATER, 4).getName()).getName()
                 + "\n");
 
         Assert.assertEquals("Wale", codeAMon.getMonster().getName());
-        Assert.assertEquals("WATER", initial.getType());
+        Assert.assertEquals(MonsterDecorator.Type.WATER, initial.getType());
         Assert.assertEquals(skill.getName(),
-                initial.getSkills().get(initial.initSkill("Splash", "Water", 4).getName()).getName());
+                initial.getSkills().get(initial.initSkill("Splash", MonsterDecorator.Type.WATER, 4).getName()).getName());
     }
 
     /**
@@ -143,20 +143,20 @@ public class InitialTest {
         initial.init((Trainer) trainer);
 
         Initial temp = new Initial(null);
-        MonsterDecorator.Skill skill = temp.initSkill("Scratch", "Poison", 4);
+        MonsterDecorator.Skill skill = temp.initSkill("Scratch", MonsterDecorator.Type.BIO, 4);
 
         System.out.println("Expected: Kaht BIO 4 Scratch");
         System.out.println("Actual: "
                 + codeAMon.getMonster().getName()
                 + " " + initial.getType() + " "
                 + " " + initial.getSkills().get("Scratch").getCost()
-                + " " +initial.getSkills().get(initial.initSkill("Scratch", "Poison", 4).getName()).getName()
+                + " " +initial.getSkills().get(initial.initSkill("Scratch", MonsterDecorator.Type.BIO, 4).getName()).getName()
                 + "\n");
 
         Assert.assertEquals("Kaht", codeAMon.getMonster().getName());
-        Assert.assertEquals("BIO", initial.getType());
+        Assert.assertEquals(MonsterDecorator.Type.BIO, initial.getType());
         Assert.assertEquals(skill.getName(),
-                initial.getSkills().get(initial.initSkill("Scratch", "Poison", 4).getName()).getName());
+                initial.getSkills().get(initial.initSkill("Scratch", MonsterDecorator.Type.BIO, 4).getName()).getName());
     }
 
     /**

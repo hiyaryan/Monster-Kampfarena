@@ -30,7 +30,6 @@ public class Player {
     private AbstractFactory factory;
     private HashMap<String, Trainer> trainers;
     private HashMap<String, Monster> monsters;
-
     /**
      * Instantiate a ConcreteFactory.
      */
@@ -118,7 +117,7 @@ public class Player {
     }
 
     /**
-     * Add a wile monster to the Wilde Land.
+     * Add a wild monster to the Wilde Land.
      *
      * @param monster Monster
      */
@@ -197,8 +196,6 @@ public class Player {
 
     /**
      * Register for battle.
-     *
-     * @return
      */
     public void registerTrainers() {
         kampfarena.registerForBattle(player.getTrainers());

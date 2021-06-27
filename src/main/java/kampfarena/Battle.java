@@ -20,9 +20,9 @@ import java.util.Random;
  * @since June 24, 2021
  */
 public class Battle {
-    Player player = Player.getPlayer();
-    WildeLandMediator mediator = WildeLandMediator.getMediator();
-    Kampfarena kampfarena = Kampfarena.getKampfarena();
+    private static final Player player = Player.getPlayer();
+    private static final WildeLandMediator mediator = WildeLandMediator.getMediator();
+    private static final Kampfarena kampfarena = Kampfarena.getKampfarena();
     private Trainer trainer1;
     private Trainer trainer2;
 
@@ -126,7 +126,7 @@ public class Battle {
                 // A Code-a-mon may use a skill based on the simulation
             } else {
                 if (codeAMon.getType().equals(((MonsterDecorator.Skill) codeAMonSelection).getType())) {
-                    System.out.println("   " + codeAMon.getMonster().getName()
+                    System.out.println("\n   " + codeAMon.getMonster().getName()
                             + " is using a skill that matches its type!\n");
                     // TODO: Add a 2x bonus, subtract MP
 
@@ -207,7 +207,7 @@ public class Battle {
 
             int hp = trainer.getHp() - damage;
             if (hp < 0) {
-                System.out.println("   OVERKILL!\n");
+                System.out.println("\n   OVERKILL!\n");
                 hp = 0;
             }
 

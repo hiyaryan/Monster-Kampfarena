@@ -72,7 +72,7 @@ public abstract class MonsterDecorator implements CodeAMon {
     }
 
     @Override
-    public void setWeatherBonus(int weatherBonus) {
+    public void setWeatherBonus(double weatherBonus) {
         this.weatherBonus = weatherBonus;
     }
 
