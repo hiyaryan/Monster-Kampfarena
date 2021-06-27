@@ -36,6 +36,10 @@ public interface CodeAMon {
 
     String listSkillsCompact();
 
+    int getExp();
+
+    void setExp(int exp);
+
     double getTypeBonus();
 
     void setTypeBonus(double typeBonus);

@@ -3,7 +3,6 @@ package mediator;
 import decorator.monster.CodeAMon;
 import factory.product.Monster;
 import factory.product.Trainer;
-import kampfarena.Kampfarena;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,13 +12,6 @@ import singleton.Player;
 public class WildeLandMediatorTest {
     Mediator mediator;
     Player player;
-    Kampfarena kampfarena;
-
-    Monster monster1;
-    Monster monster2;
-
-    Trainer trainer1;
-    Trainer trainer2;
 
     /**
      * Setup a new mediator for every unit test.

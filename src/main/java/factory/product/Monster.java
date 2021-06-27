@@ -98,6 +98,16 @@ public class Monster extends AbstractMonster implements CodeAMon {
     }
 
     @Override
+    public int getExp() {
+        return 0;
+    }
+
+    @Override
+    public void setExp(int exp) {
+        System.out.println(getName() + " cannot earn EXP.");
+    }
+
+    @Override
     public void setWeatherBonus(double bonus) {
         System.out.println(getName() + " has no weather bonuses.");
     }

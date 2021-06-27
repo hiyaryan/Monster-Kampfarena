@@ -72,6 +72,16 @@ public abstract class MonsterDecorator implements CodeAMon {
     }
 
     @Override
+    public int getExp() {
+        return exp;
+    }
+
+    @Override
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    @Override
     public void setWeatherBonus(double weatherBonus) {
         this.weatherBonus = weatherBonus;
     }
