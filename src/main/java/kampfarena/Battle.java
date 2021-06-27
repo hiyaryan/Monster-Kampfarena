@@ -128,25 +128,22 @@ public class Battle {
                 // Set the Move pair Move<CodeAMon, Skill>
                 setAttackerMove(codeAMon, codeAMonSelection);
 
+                if (codeAMon.getMonster().getMp() < ((MonsterDecorator.Skill) move.getAttackType()).getCost()) {
+                    System.out.println("   " + codeAMon.getMonster().getName() + " does not have enough MP.\n");
+                    return -1;
+                }
+
                 if (codeAMon.getType().equals(((MonsterDecorator.Skill) codeAMonSelection).getType())) {
                     System.out.println("\n   " + codeAMon.getMonster().getName()
                             + " is using a skill that matches its type!");
 
-                    if(codeAMon.getMonster().getMp() < ((MonsterDecorator.Skill) move.getAttackType()).getCost()) {
-                        System.out.println("   " + codeAMon.getMonster().getName() + " does not have enough MP.\n");
-                    }
-
+                    // Adjust MP, then return the damage with bonuses applied
                     adjustMp(((MonsterDecorator.Skill) move.getAttackType()).getCost(), codeAMon);
+                    return (int) (2 * codeAMon.getMonster().getMagic() * codeAMon.getWeatherBonus());
 
-                    // TODO: Add a 2x bonus + weather bonus, subtract MP
-
-
-                    return 50;
                 } else {
-                    // TODO: Add 1.5x bonus, subtract MP
-
-
-                    return 25;
+                    adjustMp(((MonsterDecorator.Skill) move.getAttackType()).getCost(), codeAMon);
+                    return (int) (codeAMon.getMonster().getMagic() * codeAMon.getWeatherBonus());
                 }
             }
         }
@@ -162,7 +159,12 @@ public class Battle {
      * @param defender A Trainer is defending
      */
     public void damageTaken(int attack, Move<?, ?> move, Trainer defender) {
-        int damage = 0;
+        // If the attack is -1, an entity tried to attack without enough MP
+        if (attack == -1) {
+            return;
+        }
+
+        int damage;
 
         // Check if an attack was successfully made based on evasion and hit stats
         // Returns if false is returned
@@ -276,7 +278,7 @@ public class Battle {
     /**
      * This method accesses the entities stats and adjusts their MP. Formula: MP = MP - cost
      *
-     * @param cost int
+     * @param cost   int
      * @param entity Trainer or CodeAMon
      */
     private void adjustMp(int cost, Object entity) {
