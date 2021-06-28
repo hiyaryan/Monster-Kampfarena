@@ -150,25 +150,6 @@ public class KampfarenaTest {
     }
 
     /**
-     * Test registerForBattle with isRegistrationOpen is true.
-     */
-    @Test
-    public void testRegisterForBattleRegistrationIsOpenTrue() {
-        System.out.println("\n+TEST: testRegisterForBattleRegistrationIsOpenTrue\n");
-
-        while (!mediator.getWildeLand().whatTimeIsIt().contains("1t")) {
-
-        }
-
-        kampfarena.registerForBattle(player.getTrainers());
-
-        System.out.println("\nExpected: " + player.getTrainers().size());
-        System.out.println("Actual: " + kampfarena.getRegistry().size() + "\n");
-
-        Assert.assertEquals(player.getTrainers().size(), kampfarena.getRegistry().size());
-    }
-
-    /**
      * Test initiate battle during closed hours.
      */
     @Test
