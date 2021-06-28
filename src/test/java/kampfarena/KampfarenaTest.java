@@ -10,8 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 import singleton.Player;
 
-import java.util.HashMap;
-
 public class KampfarenaTest {
     Mediator mediator;
     Player player;
@@ -81,23 +79,6 @@ public class KampfarenaTest {
         System.out.println("Actual: " + Kampfarena.getKampfarena() + "\n");
 
         Assert.assertNotNull(Kampfarena.getKampfarena());
-    }
-
-    /**
-     * Test constructor attributes.
-     */
-    @Test
-    public void testKampfarenaConstructor() {
-        System.out.println("\n+TEST: testKampfarenaConstructor\n");
-
-        System.out.println("\nExpected: size=" + player.getTrainers().size());
-        System.out.println("Actual: size=" + kampfarena.getRegistry().size() + "\n");
-
-        System.out.println("Expected: false");
-        System.out.println("Actual: " + kampfarena.isABattleOngoing() + "\n");
-
-        Assert.assertEquals(player.getTrainers().size(), kampfarena.getRegistry().size());
-        Assert.assertFalse(kampfarena.isABattleOngoing());
     }
 
     /**
@@ -190,52 +171,6 @@ public class KampfarenaTest {
         System.out.println("Actual: " + kampfarena.registerForBattle(player.getTrainers()) + "\n");
 
         Assert.assertNull(kampfarena.registerForBattle(player.getTrainers()));
-    }
-
-    /**
-     * Test registerForBattle with already registered trainers.
-     */
-    @Test
-    public void testRegisterForBattleTrainerIsAlreadyRegistered() {
-        System.out.println("\n+TEST: testRegisterForBattleTrainerIsAlreadyRegistered\n");
-
-//        while(!mediator.getWildeLand().whatTimeIsIt().contains("1t"));
-
-        kampfarena.registerForBattle(player.getTrainers());
-
-        Trainer trainer3 = player.buildTrainer(player, "Trainer3");
-        player.addTrainer(trainer3);
-
-        HashMap<String, Boolean> alreadyRegistered = kampfarena.registerForBattle(player.getTrainers());
-
-        System.out.println("\nExpected: 2");
-        System.out.println("Actual: " + alreadyRegistered.size());
-
-        System.out.println("\nExpected: 3");
-        System.out.println("Actual: " + kampfarena.getRegistry().size() + "\n");
-
-        Assert.assertEquals(2 , alreadyRegistered.size());
-        Assert.assertEquals(3 , kampfarena.getRegistry().size());
-    }
-
-    /**
-     * Test initiate battle during open hours.
-     */
-    @Test
-    public void testInitiateBattleDuringOpenTime() throws InterruptedException {
-        System.out.println("\n+TEST: testInitiateBattleDuringOpenTime\n");
-
-//        while(!mediator.getWildeLand().whatTimeIsIt().contains("1t"));
-
-        kampfarena.registerForBattle(player.getTrainers());
-        kampfarena.initiateBattle();
-
-        if(kampfarena.getRegistry().size() < 2) {
-            Assert.assertFalse(kampfarena.isABattleOngoing());
-
-        } else {
-            Assert.assertTrue(kampfarena.isABattleOngoing());
-        }
     }
 
     /**
