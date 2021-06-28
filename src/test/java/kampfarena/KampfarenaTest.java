@@ -88,9 +88,7 @@ public class KampfarenaTest {
     public void testIsRegistrationOpenTrue1t() {
         System.out.println("\n+TEST: testIsRegistrationOpenTrue1t\n");
 
-        while (!mediator.getWildeLand().whatTimeIsIt().contains("1t")) {
-
-        }
+        while (!mediator.getWildeLand().whatTimeIsIt().contains("1t"));
 
         System.out.println("\nExpected: true\n");
         System.out.println("Actual: " + kampfarena.isRegistrationOpen() + "\n");
@@ -105,9 +103,7 @@ public class KampfarenaTest {
     public void testIsRegistrationOpenTrue2t() {
         System.out.println("\n+TEST: testIsRegistrationOpenTrue2t\n");
 
-        while (!mediator.getWildeLand().whatTimeIsIt().contains("2t")) {
-
-        }
+        while (!mediator.getWildeLand().whatTimeIsIt().contains("2t"));
 
         System.out.println("\nExpected: true\n");
         System.out.println("Actual: " + kampfarena.isRegistrationOpen() + "\n");
@@ -122,9 +118,7 @@ public class KampfarenaTest {
     public void testIsRegistrationOpenFalse3t() {
         System.out.println("\n+TEST: testIsRegistrationOpenFalse3t\n");
 
-        while (!mediator.getWildeLand().whatTimeIsIt().contains("3t")) {
-
-        }
+        while (!mediator.getWildeLand().whatTimeIsIt().contains("3t"));
 
         System.out.println("\nExpected: false\n");
         System.out.println("Actual: " + kampfarena.isRegistrationOpen() + "\n");
@@ -139,9 +133,7 @@ public class KampfarenaTest {
     public void testIsRegistrationOpenFalse0t() {
         System.out.println("\n+TEST: testIsRegistrationOpenFalse0t\n");
 
-        while (!mediator.getWildeLand().whatTimeIsIt().contains("0t")) {
-
-        }
+        while (!mediator.getWildeLand().whatTimeIsIt().contains("0t"));
 
         System.out.println("\nExpected: false");
         System.out.println("Actual: " + kampfarena.isRegistrationOpen() + "\n");
@@ -156,9 +148,7 @@ public class KampfarenaTest {
     public void testInitiateBattleDuringClosedTime() throws InterruptedException {
         System.out.println("\n+TEST: testInitiateBattleDuringClosedTime\n");
 
-        while (!mediator.getWildeLand().whatTimeIsIt().contains("3t")) {
-
-        }
+        while (!mediator.getWildeLand().whatTimeIsIt().contains("3t"));
 
         kampfarena.registerForBattle(player.getTrainers());
         kampfarena.initiateBattle();
