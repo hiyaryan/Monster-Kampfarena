@@ -400,6 +400,56 @@ public class BattleTest {
     }
 
     /**
+     * Test attack method.
+     */
+    @Test
+    public void testAttackMethod() throws InterruptedException {
+        System.out.println("\n+TEST: testAttackMethod\n");
+
+        dock = player.buildTrainer(player, "Dock10");
+
+        // Build trainers
+        tomm = player.buildTrainer(player, "Tomm10");
+        tomm.setHp(9999);
+        tomm.setStrength(9999);
+
+        player.addTrainer(dock);
+        player.addTrainer(tomm);
+
+        // Build monsters
+        Monster wildWale = player.buildMonster(player, "Wale10");
+        Monster wildKaht = player.buildMonster(player, "Kaht10");
+
+        player.addMonster(wildWale);
+        player.addMonster(wildKaht);
+
+        player.getMonsters().get("Wale10").setExp(9999);
+
+        player.getTrainers().get("Dock10").formBond(player.getMonsters().get("Wale10"));
+
+        player.getTrainers().get("Tomm10").formBond(player.getMonsters().get("Kaht10"));
+        player.getTrainers().get("Tomm10").getCodex().get("Kaht10").getMonster().setHp(9999);
+        player.getTrainers().get("Tomm10").getCodex().get("Kaht10").getMonster().setStrength(9999);
+        player.getTrainers().get("Tomm10").getCodex().get("Kaht10").setExp(9999);
+
+        kampfarena.registerForBattle(player.getTrainers());
+
+        if (!mediator.getDate().contains("1t") || mediator.getDate().contains("1t")) {
+            while (mediator.getDate().contains("3t") || mediator.getDate().contains("0t")) {
+                Thread.sleep(8000);
+            }
+        }
+
+        Battle battle = new Battle(kampfarena.getRegistry());
+        int attack = battle.attack(tomm);
+
+        System.out.println("\nExpected: true");
+        System.out.println("Actual: " + attack + "\n");
+
+        Assert.assertTrue(attack >= 9999);
+    }
+
+    /**
      * Test battle is over and losing Code-a-mon loses exp.
      */
     @Test
@@ -443,9 +493,9 @@ public class BattleTest {
         Battle battle = new Battle(kampfarena.getRegistry());
         int attack = battle.attack(tomm);
 
-        System.out.println("\nExpected: 9999");
+        System.out.println("\nExpected: true");
         System.out.println("Actual: " + attack + "\n");
 
-        Assert.assertEquals(9999, attack);
+        Assert.assertTrue(attack >= 9999);
     }
 }
