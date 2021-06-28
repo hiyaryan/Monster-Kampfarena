@@ -10,6 +10,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import singleton.Player;
 
 public class MonsterDecoratorTest {
     AbstractMonster monster;
@@ -96,7 +97,7 @@ public class MonsterDecoratorTest {
     }
 
     @Test
-    public void testInitWithATamedMonster() {
+    public void testInitWithTamedWale() {
         monster = new Monster("Wale");
 
         trainer = new Trainer("Dock");
@@ -109,5 +110,65 @@ public class MonsterDecoratorTest {
         System.out.println("Actual: " + monster.getTrainer().getName() + "\n");
 
         Assert.assertNotEquals("Tomm", monster.getTrainer().getName());
+    }
+
+    @Test
+    public void testDeclareSkillAndGiveTypeBranches() {
+        Player player = Player.getPlayer();
+
+        Monster wildWale = new Monster("Wale");
+        Monster wildKaht = new Monster("Kaht");
+        Monster wildPyth = new Monster("Pyth");
+        Monster wildJaxx = new Monster("Jaxx");
+        Monster wildCoco = new Monster("Coco");
+        Monster wildAntt = new Monster("Antt");
+        Monster wildGith = new Monster("Gith");
+        Monster wildServ = new Monster("Serv");
+        Monster wildClie = new Monster("Clie");
+        Monster wildDesi = new Monster("Desi");
+        Monster wildExml = new Monster("Exml");
+        Monster wildAdle = new Monster("Adle");
+
+        player.addMonster(wildKaht);
+        player.addMonster(wildWale);
+        player.addMonster(wildPyth);
+        player.addMonster(wildJaxx);
+        player.addMonster(wildCoco);
+        player.addMonster(wildAntt);
+        player.addMonster(wildGith);
+        player.addMonster(wildServ);
+        player.addMonster(wildClie);
+        player.addMonster(wildDesi);
+        player.addMonster(wildExml);
+        player.addMonster(wildAdle);
+
+        Trainer dock = new Trainer("Dock");
+        player.addTrainer(dock);
+
+        dock.formBond(wildKaht);
+        dock.formBond(wildWale);
+        dock.formBond(wildPyth);
+        dock.formBond(wildJaxx);
+        dock.formBond(wildCoco);
+        dock.formBond(wildAntt);
+
+        Trainer tomm = new Trainer("Tomm");
+        player.addTrainer(tomm);
+
+        tomm.formBond(wildGith);
+        tomm.formBond(wildServ);
+        tomm.formBond(wildClie);
+        tomm.formBond(wildDesi);
+        tomm.formBond(wildExml);
+        tomm.formBond(wildAdle);
+
+        System.out.println("\nExpected: 6");
+        System.out.println("Actual: " + dock.getCodex().size() + "\n");
+
+        System.out.println("\nExpected: 6");
+        System.out.println("Actual: " + tomm.getCodex().size() + "\n");
+
+        Assert.assertEquals(6, dock.getCodex().size());
+        Assert.assertEquals(6, tomm.getCodex().size());
     }
 }

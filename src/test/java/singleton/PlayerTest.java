@@ -31,10 +31,61 @@ public class PlayerTest {
     }
 
     /**
+     * Test exploreTheWildeLand method.
+     */
+    @Test
+    public void testExploreTheWildeLand() throws InterruptedException {
+        System.out.println("\n+TEST: testExploreTheWildeLand\n");
+
+        Monster wildWale = new Monster("Wale");
+        Monster wildKaht = new Monster("Kaht");
+        Monster wildPyth = new Monster("Pyth");
+        Monster wildJaxx = new Monster("Jaxx");
+        Monster wildCoco = new Monster("Coco");
+        Monster wildAntt = new Monster("Antt");
+        Monster wildGith = new Monster("Gith");
+        Monster wildServ = new Monster("Serv");
+        Monster wildClie = new Monster("Clie");
+        Monster wildDesi = new Monster("Desi");
+        Monster wildExml = new Monster("Exml");
+        Monster wildAdle = new Monster("Adle");
+
+        player.addMonster(wildKaht);
+        player.addMonster(wildWale);
+        player.addMonster(wildPyth);
+        player.addMonster(wildJaxx);
+        player.addMonster(wildCoco);
+        player.addMonster(wildAntt);
+        player.addMonster(wildGith);
+        player.addMonster(wildServ);
+        player.addMonster(wildClie);
+        player.addMonster(wildDesi);
+        player.addMonster(wildExml);
+        player.addMonster(wildAdle);
+
+        Trainer dock = new Trainer("Dock");
+        dock.setMaxMp(9999);
+        dock.setMp(9990);
+
+        player.addTrainer(dock);
+
+        while (dock.getCodex().size() == 0) {
+            player.exploreTheWildeLand(dock.getName());
+        }
+
+        System.out.println("\nExpected: true");
+        System.out.println("Actual: " + (dock.getCodex().size() > 0) + "\n");
+
+        Assert.assertTrue(dock.getCodex().size() > 0);
+    }
+
+    /**
      * Test healHp method.
      */
     @Test
     public void testHealHpMethod() {
+        System.out.println("\n+TEST: testHealHpMethod\n");
+
         Monster wildWale = new Monster("Wale");
         wildWale.setMaxHp(9999);
         wildWale.setHp(9990);
@@ -63,6 +114,8 @@ public class PlayerTest {
      */
     @Test
     public void testHealMpMethod() {
+        System.out.println("\n+TEST: testHealMpMethod\n");
+
         Monster wildWale = new Monster("Wale");
         Monster wildKaht = new Monster("Kaht");
 
