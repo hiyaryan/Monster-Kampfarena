@@ -9,8 +9,8 @@ import java.util.HashMap;
 /**
  * MonsterDecorator (MonsterDecorator.java)
  *
- * MonsterDecorator decorates a monster or Code-a-mon by their level. A monster becoming a Code-a-mon is decorated
- * with the Initial child class, and Code-a-mon are further decorated when they evolve.
+ * MonsterDecorator decorates a monster or Code-a-mon by their level. A monster becoming a Code-a-mon is decorated with
+ * the Initial child class, and Code-a-mon are further decorated when they evolve.
  *
  * @author Ryan Meneses
  * @version 1.0
@@ -84,14 +84,14 @@ public abstract class MonsterDecorator implements CodeAMon {
     }
 
     /**
-     * This method is called after every battle. It checks how much EXP is stored in the exp attribute and levels up
-     * the Code-a-mon based on the following logic.
+     * This method is called after every battle. It checks how much EXP is stored in the exp attribute and levels up the
+     * Code-a-mon based on the following logic.
      *
      * lvl++ if exp == 100 * lvl
      */
     @Override
     public void levelUp() {
-        while(this.exp == 100 * codeAMon.getMonster().getLvl()) {
+        while (this.exp == 100 * codeAMon.getMonster().getLvl()) {
             this.exp = this.exp - 100 * codeAMon.getMonster().getLvl();
 
             codeAMon.getMonster().setLvl(codeAMon.getMonster().getLvl() + 1);

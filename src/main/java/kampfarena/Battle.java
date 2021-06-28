@@ -88,9 +88,9 @@ public class Battle {
         }
 
         // When the battle is over, Code-a-mon that are alive may level up while those that died loose their exp
-        for(Map.Entry<String, Trainer> trainer : player.getTrainers().entrySet()) {
-            for(Map.Entry<String, CodeAMon> codeAMon : trainer.getValue().getCodex().entrySet()) {
-                if(codeAMon.getValue().getMonster().getHp() != 0) {
+        for (Map.Entry<String, Trainer> trainer : player.getTrainers().entrySet()) {
+            for (Map.Entry<String, CodeAMon> codeAMon : trainer.getValue().getCodex().entrySet()) {
+                if (codeAMon.getValue().getMonster().getHp() != 0) {
                     codeAMon.getValue().levelUp();
 
                 } else {
@@ -211,7 +211,7 @@ public class Battle {
                         + " is taking the damage for " + defender.getName() + ".");
 
                 // Check if the move is a skill
-                if(move.getAttackType() instanceof MonsterDecorator.Skill) {
+                if (move.getAttackType() instanceof MonsterDecorator.Skill) {
 
                     // If skill type of the code-a-mon attacker is the defender code-a-mon type reduce damage by 0.25x.
                     if (((MonsterDecorator.Skill) move.getAttackType()).getType()
@@ -376,16 +376,16 @@ public class Battle {
     }
 
     /**
-     * This method earns a Code-a-mon EXP. EXP is based off the total amount of damage inflicted on the
-     * defender. Overkills earn more EXP. Note that Trainers do not earn EXP.
+     * This method earns a Code-a-mon EXP. EXP is based off the total amount of damage inflicted on the defender.
+     * Overkills earn more EXP. Note that Trainers do not earn EXP.
      *
-     * @param damage damage inflicted
-     * @param move the move performed by the entity that inflicted damage
+     * @param damage     damage inflicted
+     * @param move       the move performed by the entity that inflicted damage
      * @param isOverkill was it an overkill?
      */
     public void earnExp(int damage, Move<?, ?> move, boolean isOverkill) {
         int exp = 0;
-        if(move.getAttacker() instanceof CodeAMon) {
+        if (move.getAttacker() instanceof CodeAMon) {
             // If the Code-a-mon did an overkill, they earn 0.5 times additional EXP
             if (isOverkill) {
                 exp = (int) (damage + (damage * 0.5));
@@ -474,10 +474,11 @@ public class Battle {
     }
 
     /**
-     * This inner class forms a pair.
+     * This inner class forms a pair. It stores the current move made in battle by an attacker of type Trainer or
+     * CodeAMon and is used throughout the battle during that entities turn to determine a variety of battle conditions.
      *
-     * @param <K>
-     * @param <V>
+     * @param <K> key Entity, either a Trainer or CodeAMon
+     * @param <V> value Entity Attack, either a Trainer's CODEX or CodeAMon's Skills
      */
     private static class Move<K, V> {
         private final K k;
