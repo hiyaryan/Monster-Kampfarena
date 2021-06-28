@@ -406,6 +406,10 @@ public class BattleTest {
     public void testAttackMethod() throws InterruptedException {
         System.out.println("\n+TEST: testAttackMethod\n");
 
+        while (kampfarena.getRegistry().size() > 2) {
+            kampfarena.initiateBattle();
+        }
+
         dock = player.buildTrainer(player, "Dock10");
 
         // Build trainers
@@ -444,7 +448,7 @@ public class BattleTest {
         int attack = battle.attack(tomm);
 
         System.out.println("\nExpected: true");
-        System.out.println("Actual: " + attack + "\n");
+        System.out.println("Actual: " + (attack >= 9999) + "\n");
 
         Assert.assertTrue(attack >= 9999);
     }
