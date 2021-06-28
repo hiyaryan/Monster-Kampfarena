@@ -242,11 +242,9 @@ public class Battle {
                 if (codeAMon.getValue().getMonster().getHp() == 0) {
                     System.out.println("   " + codeAMon.getValue().getMonster().getName() + " has fainted.\n");
 
-                } else {
-                    System.out.println("   " + codeAMon.getValue().getMonster().getName() + " is still standing!\n");
                 }
 
-                System.out.println(defender.listMonstersCompact());
+                System.out.println(getStats(codeAMon.getValue()));
 
                 earnExp(damage, move, isOverkill);
                 return;
@@ -342,7 +340,7 @@ public class Battle {
             }
 
             codeAMon.getMonster().setHp(hp);
-            System.out.println("   " + codeAMon.getMonster().getName() + " has taken " + damage + " damage!\n");
+            System.out.println("   " + codeAMon.getMonster().getName() + " has taken " + damage + " damage!");
         }
 
         return isOverkill;
@@ -467,9 +465,9 @@ public class Battle {
         } else if (entity instanceof CodeAMon) {
             Monster codeAMon = (Monster) (((CodeAMon) entity).getMonster());
 
-            sb.append("\n   <<< ").append(codeAMon.getName()).append(" >>>\n");
-            sb.append("   HP: ").append(codeAMon.getHp()).append("/").append(codeAMon.getMaxHp()).append("\n");
-            sb.append("   MP: ").append(codeAMon.getMp()).append("/").append(codeAMon.getMaxMp()).append("\n");
+            sb.append("\n<<< ").append(codeAMon.getName()).append(" >>>\n");
+            sb.append("  HP: ").append(codeAMon.getHp()).append("/").append(codeAMon.getMaxHp()).append("\n");
+            sb.append("  MP: ").append(codeAMon.getMp()).append("/").append(codeAMon.getMaxMp()).append("\n");
         }
 
         return sb.toString();

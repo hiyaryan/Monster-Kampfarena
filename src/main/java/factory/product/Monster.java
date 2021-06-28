@@ -51,7 +51,7 @@ public class Monster extends AbstractMonster implements CodeAMon {
     public String statsToString() {
         StringBuilder sb = new StringBuilder(">>> " + super.getName() + " <<<\n");
         sb.append("Type: ").append("None").append("\n");
-        sb.append("Lvl: ").append(super.getLvl()).append("\n");
+        sb.append("Lvl:  ").append(super.getLvl()).append("\n");
         sb.append("HP:   ").append(super.getHp()).append("/").append(super.getMaxHp()).append("\n");
         sb.append("MP:   ").append(super.getMp()).append("/").append(super.getMaxMp()).append("\n");
         sb.append("STR:  ").append(getStrength()).append("\n");

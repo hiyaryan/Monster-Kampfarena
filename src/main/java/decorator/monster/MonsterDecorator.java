@@ -95,7 +95,7 @@ public abstract class MonsterDecorator implements CodeAMon {
             this.exp = this.exp - 100 * codeAMon.getMonster().getLvl();
 
             codeAMon.getMonster().setLvl(codeAMon.getMonster().getLvl() + 1);
-            System.out.println("\n" + codeAMon.getMonster().getName() + " has leveled up!\n");
+            System.out.println("\n" + codeAMon.getMonster().getName() + ", LEVEL UP!\n");
 
             improveStats();
             System.out.println(codeAMon.getMonster().statsToString());
