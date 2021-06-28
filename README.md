@@ -113,6 +113,6 @@
 > * main
 
 ### Screencast
-> Please view the following link for a short screen cast
+> Please view the following link for a screen cast
 >
-> \<VIDEO-LINK\>
+> Screencast: https://youtu.be/R4XnfzDxY64
