@@ -199,7 +199,7 @@ public class KampfarenaTest {
     public void testRegisterForBattleTrainerIsAlreadyRegistered() {
         System.out.println("\n+TEST: testRegisterForBattleTrainerIsAlreadyRegistered\n");
 
-        while(!mediator.getWildeLand().whatTimeIsIt().contains("1t"));
+//        while(!mediator.getWildeLand().whatTimeIsIt().contains("1t"));
 
         kampfarena.registerForBattle(player.getTrainers());
 
@@ -225,7 +225,7 @@ public class KampfarenaTest {
     public void testInitiateBattleDuringOpenTime() throws InterruptedException {
         System.out.println("\n+TEST: testInitiateBattleDuringOpenTime\n");
 
-        while(!mediator.getWildeLand().whatTimeIsIt().contains("1t"));
+//        while(!mediator.getWildeLand().whatTimeIsIt().contains("1t"));
 
         kampfarena.registerForBattle(player.getTrainers());
         kampfarena.initiateBattle();
