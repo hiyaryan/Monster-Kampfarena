@@ -22,7 +22,7 @@ public class BattleTest {
      * Setup a new monster and trainer for every unit test.
      */
     @Before
-    public void setUp() throws InterruptedException {
+    public void setUp() {
         System.out.println("\n===============================");
         System.out.println("    Battle.java Test Suite");
         System.out.println("===============================");
@@ -73,44 +73,6 @@ public class BattleTest {
         System.out.println("Actual: " + (kampfarena.getRegistry().size() > 0) + "\n");
 
         Assert.assertTrue(kampfarena.getRegistry().size() > 0);
-    }
-
-    /**
-     * Test register for battle with two trainers repeated.
-     */
-    @Test
-    public void testRegisterForBattleWithTwoTrainersRepeated() throws InterruptedException {
-        System.out.println("\n+TEST: testRegisterForBattle\n");
-
-        // Build trainers
-        dock = player.buildTrainer(player, "Dock2");
-        tomm = player.buildTrainer(player, "Tomm2");
-
-        player.addTrainer(dock);
-        player.addTrainer(tomm);
-
-        // Build monsters
-        Monster wildWale = player.buildMonster(player, "Wale2");
-        Monster wildKaht = player.buildMonster(player, "Kaht2");
-
-        player.addMonster(wildWale);
-        player.addMonster(wildKaht);
-
-        player.getTrainers().get("Dock2").formBond(player.getMonsters().get("Wale2"));
-        player.getTrainers().get("Tomm2").formBond(player.getMonsters().get("Kaht2"));
-
-        kampfarena.registerForBattle(player.getTrainers());
-
-        while (kampfarena.getRegistry().size() == 0) {
-            Thread.sleep(1000);
-        }
-
-        HashMap<String, Boolean> alreadyRegistered = kampfarena.registerForBattle(player.getTrainers());
-
-        System.out.println("\nExpected: 2");
-        System.out.println("Actual: " + alreadyRegistered.size() + "\n");
-
-        Assert.assertEquals(2, alreadyRegistered.size());
     }
 
     /**
@@ -436,49 +398,4 @@ public class BattleTest {
         Assert.assertFalse(kampfarena.isABattleOngoing());
         Assert.assertEquals(0, player.getMonsters().get("Wale9").getExp());
     }
-
-//    /**
-//     * Test battle is over and losing Code-a-mon loses exp.
-//     */
-//    @Test
-//    public void testBattleIsOverAndCodeAMonLosesExp() throws InterruptedException {
-//        System.out.println("\n+TEST: testBattleIsOverAndCodeAMonLosesExp\n");
-//
-//        // Build trainers
-//        dock = player.buildTrainer(player, "Dock");
-//        player.getMonsters().get("Wale").setExp(9999);
-//
-//        tomm = player.buildTrainer(player, "Tomm");
-//        tomm.setHp(9999);
-//        tomm.setStrength(9999);
-//
-//        player.addTrainer(dock);
-//        player.addTrainer(tomm);
-//
-//        player.getTrainers().get("Dock").formBond(player.getMonsters().get("Wale"));
-//
-//        player.getTrainers().get("Tomm").formBond(player.getMonsters().get("Kaht"));
-//        player.getTrainers().get("Tomm").getCodex().get("Kaht").getMonster().setHp(9999);
-//        player.getTrainers().get("Tomm").getCodex().get("Kaht").getMonster().setStrength(9999);
-//        player.getTrainers().get("Tomm").getCodex().get("Kaht").setExp(9999);
-//
-//        kampfarena.registerForBattle(player.getTrainers());
-//
-//        if (!mediator.getDate().contains("1t") || mediator.getDate().contains("1t")) {
-//            while (mediator.getDate().contains("3t") || mediator.getDate().contains("0t")) {
-//                Thread.sleep(8000);
-//            }
-//        }
-//
-//        kampfarena.initiateBattle();
-//
-//        System.out.println("\nExpected: false");
-//        System.out.println("Actual: " + kampfarena.isABattleOngoing() + "\n");
-//
-//        System.out.println("\nExpected: 0");
-//        System.out.println("Actual: " + player.getMonsters().get("Wale").getExp() + "\n");
-//
-//        Assert.assertFalse(kampfarena.isABattleOngoing());
-//        Assert.assertEquals(0, player.getMonsters().get("Wale").getExp());
-//    }
 }
